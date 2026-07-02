@@ -54,7 +54,9 @@
       "Bash(Rscript scripts/04_analysis/run_fotmob_additional_robustness.R)",
       "Bash(git commit -q -m 'Add two-way clustering, position standardization, and Lee bounds *)",
       "Bash(git commit -q -m 'Add 0-10 validity rule for FotMob ratings in cleaning step *)",
-      "Bash(git commit -q -m 'Rating measurement diagnostics and club-month FE within-teammates spec *)"
+      "Bash(git commit -q -m 'Rating measurement diagnostics and club-month FE within-teammates spec *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_rating_anatomy.R)",
+      "Bash(git commit -q -m 'Add consolidated rating anatomy: script, tables, and RATING_ANATOMY.md *)"
     ]
   }
 }
