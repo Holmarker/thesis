@@ -1,0 +1,5 @@
+rule,n
+A_new_pairs_from_review,40
+B_resolved_confirmed_conflicts,220
+total_merge_safe_before,8512
+total_merge_safe_after,8772
