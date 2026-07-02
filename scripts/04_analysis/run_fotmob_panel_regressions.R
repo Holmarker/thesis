@@ -49,6 +49,18 @@ football_season <- function(month) {
   paste0(start_year, "/", start_year + 1L)
 }
 
+standardize_within <- function(x) {
+  x <- if_else(!is.na(x) & x > 0, x, NA_real_)
+  mu <- mean(x, na.rm = TRUE)
+  sigma <- sd(x, na.rm = TRUE)
+
+  if (is.na(sigma) || sigma == 0) {
+    return(rep(NA_real_, length(x)))
+  }
+
+  (x - mu) / sigma
+}
+
 load_panel <- function(path) {
   read_csv(path, show_col_types = FALSE) %>%
     mutate(
@@ -63,8 +75,29 @@ load_panel <- function(path) {
       season = football_season(Month),
       has_positive_mean_rating = !is.na(fotmob_mean_rating) & fotmob_mean_rating > 0,
       has_positive_weighted_rating = !is.na(fotmob_minutes_weighted_rating) & fotmob_minutes_weighted_rating > 0
-    )
+    ) %>%
+    group_by(fotmob_source_league, season) %>%
+    mutate(
+      z_mean_rating_league_season = standardize_within(fotmob_mean_rating),
+      z_weighted_rating_league_season = standardize_within(fotmob_minutes_weighted_rating)
+    ) %>%
+    ungroup() %>%
+    group_by(fotmob_source_league, Month) %>%
+    mutate(
+      z_mean_rating_league_month = standardize_within(fotmob_mean_rating),
+      z_weighted_rating_league_month = standardize_within(fotmob_minutes_weighted_rating)
+    ) %>%
+    ungroup()
 }
+
+outcome_vars <- c(
+  "fotmob_mean_rating",
+  "fotmob_minutes_weighted_rating",
+  "z_mean_rating_league_season",
+  "z_weighted_rating_league_season",
+  "z_mean_rating_league_month",
+  "z_weighted_rating_league_month"
+)
 
 make_expiry_bin_6m <- function(days_to_expiry) {
   months_to_expiry <- days_to_expiry / 30.44
@@ -162,26 +195,24 @@ regression_sample_coverage <- function(df, sample_name) {
     relocate(sample_name)
 }
 
-run_bosman_models <- function(df, sample_name) {
-  list(
-    tidy_fe_model(
-      feols(fotmob_mean_rating ~ Bosman | player_id + Month, data = df, cluster = ~player_id),
-      "bosman_fe",
-      sample_name,
-      "fotmob_mean_rating"
-    ),
+run_models_for_outcomes <- function(df, model_name, sample_name, rhs) {
+  lapply(outcome_vars, function(outcome) {
     tidy_fe_model(
       feols(
-        fotmob_minutes_weighted_rating ~ Bosman | player_id + Month,
+        as.formula(paste0(outcome, " ~ ", rhs, " | player_id + Month")),
         data = df,
         cluster = ~player_id
       ),
-      "bosman_fe",
+      model_name,
       sample_name,
-      "fotmob_minutes_weighted_rating"
+      outcome
     )
-  ) %>%
+  }) %>%
     bind_rows()
+}
+
+run_bosman_models <- function(df, sample_name) {
+  run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman")
 }
 
 run_expiry_bin_models <- function(df, sample_name) {
@@ -189,57 +220,23 @@ run_expiry_bin_models <- function(df, sample_name) {
     mutate(expiry_bin_6m = make_expiry_bin_6m(DaysToExpiry)) %>%
     filter(!is.na(expiry_bin_6m))
 
-  list(
-    tidy_fe_model(
-      feols(
-        fotmob_mean_rating ~ i(expiry_bin_6m, ref = "24:30") | player_id + Month,
-        data = expiry_df,
-        cluster = ~player_id
-      ),
-      "expiry_bin_6m_fe",
-      sample_name,
-      "fotmob_mean_rating"
-    ),
-    tidy_fe_model(
-      feols(
-        fotmob_minutes_weighted_rating ~ i(expiry_bin_6m, ref = "24:30") | player_id + Month,
-        data = expiry_df,
-        cluster = ~player_id
-      ),
-      "expiry_bin_6m_fe",
-      sample_name,
-      "fotmob_minutes_weighted_rating"
-    )
-  ) %>%
-    bind_rows()
+  run_models_for_outcomes(
+    expiry_df,
+    "expiry_bin_6m_fe",
+    sample_name,
+    'i(expiry_bin_6m, ref = "24:30")'
+  )
 }
 
 run_observed_renewal_models <- function(df, sample_name) {
   renewal_df <- prepare_renewal_panel(df)
 
-  list(
-    tidy_fe_model(
-      feols(
-        fotmob_mean_rating ~ signed_new_contract + post_observed_renewal | player_id + Month,
-        data = renewal_df,
-        cluster = ~player_id
-      ),
-      "observed_renewal_status_fe",
-      sample_name,
-      "fotmob_mean_rating"
-    ),
-    tidy_fe_model(
-      feols(
-        fotmob_minutes_weighted_rating ~ signed_new_contract + post_observed_renewal | player_id + Month,
-        data = renewal_df,
-        cluster = ~player_id
-      ),
-      "observed_renewal_status_fe",
-      sample_name,
-      "fotmob_minutes_weighted_rating"
-    )
-  ) %>%
-    bind_rows()
+  run_models_for_outcomes(
+    renewal_df,
+    "observed_renewal_status_fe",
+    sample_name,
+    "signed_new_contract + post_observed_renewal"
+  )
 }
 
 ensure_dir(results_dir)
