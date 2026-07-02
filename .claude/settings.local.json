@@ -30,7 +30,9 @@
       "Read(//Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Database/Data_Overview/**)",
       "Read(//Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Database/Data_Overview/Arkiv/**)",
       "Read(//Users/magnu/Off The Pitch Dropbox/**)",
-      "Bash(git commit -q -m 'Update regression SUMMARY/MEMORY for rebuilt panel; refresh RDD and diagnostics outputs *)"
+      "Bash(git commit -q -m 'Update regression SUMMARY/MEMORY for rebuilt panel; refresh RDD and diagnostics outputs *)",
+      "Bash(python3 -)",
+      "Bash(git commit -q -m 'Robustness audit: downgrade Bosman-age and post-renewal findings *)"
     ]
   }
 }

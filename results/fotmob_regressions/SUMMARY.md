@@ -37,20 +37,17 @@ Preferred outcome: `z_mean_rating_league_season` (league-season standardized mea
 
 - `bosman_fe` (pooled)
   - No pooled Bosman effect: `+0.031`, `p = 0.19` (all-comps); `+0.002`, `p = 0.95` (source-league).
-- **Bosman x age (heterogeneity, the headline result)**
-  - `u23`: `+0.198`, `p = 0.011`
-  - `23_28`: `+0.128`, `p = 0.0004`
-  - `29_plus`: `-0.040`, `p = 0.25`
-  - The pooled null hides offsetting groups: players with careers still to build perform better in the Bosman window; older players do not. Robust to the 2024/25 data expansion.
+- **Bosman x age (heterogeneity) — suggestive only, fails season-stability audit**
+  - Pooled: `u23`: `+0.198`, `p = 0.011`; `23_28`: `+0.128`, `p = 0.0004`; `29_plus`: `-0.040`, `p = 0.25`.
+  - Audit (`run_fotmob_robustness_audit_bosman.R`): no single season is individually significant for u23, and the estimate declines monotonically as coverage improves (2023/24: `+0.26`; 2024/25: `+0.18`; 2025/26 — the best-measured season: `+0.06`, `p = 0.61`). The minutes-weighted version is `p = 0.056`. Only 533 u23 Bosman rows / 219 players drive the pooled result.
+  - Read as suggestive of a career-concerns pattern at most; do not present as a robust effect.
 - `expiry_bin_6m_fe`
   - `48+` months to expiry: `-0.093`, `p = 0.0017` (all-comps). Likely contract-sorting/selection, not a clean treatment; the source-league estimate is smaller and insignificant (`-0.034`, `p = 0.27`).
-- `observed_renewal_status_fe`
-  - `post_observed_renewal`: `-0.097`, `p < 0.0001` — the most robust pattern in the panel. Within-league relative ratings decline after signing an extension.
-  - `signing_month`: `-0.067`, `p = 0.0017`.
-  - Renewal splits: strongest for attackers (`-0.128`, `p = 0.003`) and outside the top-5 (`-0.124`, `p = 0.0005`); absent for age 29+.
-  - These remain descriptive conditional associations: renewal timing is endogenous to expected value, club plans, and prior performance.
+- `observed_renewal_status_fe` — **does not survive the audit**
+  - Pooled: `post_observed_renewal` `-0.097`, `p < 0.0001`; `signing_month` `-0.067`, `p = 0.0017`.
+  - Audit (`run_fotmob_robustness_audit_renewal.R`): within every single season the post-renewal coefficient is insignificant (`p = 0.16-0.73`, mixed signs), and the event-study around the first observed renewal shows within-league z ratings slightly *rising* after signing (`+0.08` SD by months +4 to +6). The pooled negative coefficient appears to be mean reversion plus cross-season composition, not a within-player decline.
 
-Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` cells are expected by chance. The age gradient is credible because it is monotone with one cell at `p = 0.0004`; treat single-cell subgroup findings with care.
+Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` cells are expected by chance. Pooled significance that vanishes within every season should be treated as an artifact of composition shifts across seasons (the panel's league mix changes drastically from 2022/23 to 2025/26).
 
 ## RDD Takeaways
 
@@ -77,11 +74,12 @@ The RDD remains unusable as primary causal evidence:
 
 ## Research Interpretation
 
-The defensible narrative has sharpened since the first pass:
+After the robustness audit (2026-07-02), the defensible narrative is a careful null:
 
-1. No broad Bosman performance boost, but a robust positive Bosman-window effect for players under ~29, consistent with career-concerns incentives concentrated among players with future contracts to win.
-2. A robust within-player post-renewal rating decline, consistent with incentive slack after locking in security — though endogenous renewal timing precludes a clean causal claim.
-3. The RDD fails placebo diagnostics and should not be presented as causal evidence.
+1. No robust Bosman performance effect — pooled or within any age group — once season-stability is required. The u23/23-28 pooled positives are suggestive of a career-concerns pattern but shrink toward zero in the best-measured seasons.
+2. No robust post-renewal effect. The pooled negative coefficient is contradicted by within-season estimates and by the event-study path; it is best explained by mean reversion and cross-season composition shifts.
+3. The RDD fails placebo diagnostics and raw means near the cutoff differ by ~0.08 in the opposite direction of the headline estimate (which is a local-slope extrapolation artifact with a 120-vs-906 support imbalance at the 30-day bandwidth).
+4. A well-audited null on contract-timing incentives in the FotMob panel is the honest headline. Composition change across seasons (top-5-only in 2022/23-2023/24 vs ~40 leagues later) is the single largest threat to any pooled estimate in this design.
 
 ## Remaining Improvements
 

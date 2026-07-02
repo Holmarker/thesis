@@ -27,8 +27,9 @@ This folder stores output tables for FotMob-based regression analyses related to
 
 ## Quick interpretation memory
 
-- Pooled Bosman: null. Bosman x age: robust positive for u23 (+0.20 SD) and 23-28 (+0.13 SD), null for 29+ — the headline finding.
-- Post-observed-renewal: -0.10 SD within player (p<0.0001), strongest for attackers and non-top-5 leagues. Descriptive (endogenous timing).
+- Pooled Bosman: null. Bosman x age pooled positives (u23 +0.20, 23-28 +0.13) FAIL the season-stability audit — insignificant within every season, shrinking as coverage improves. Suggestive at most.
+- Post-observed-renewal pooled -0.10 (p<0.0001) FAILS the audit: insignificant within every season, event-study shows ratings rising post-renewal. Mean reversion + composition.
+- Audit scripts: run_fotmob_robustness_audit_bosman.R / _renewal.R.
 - 48+ expiry bin: negative, likely selection.
 - RDD: fails placebo cutoffs (150/210 days significant); do not use causally.
 - Raw vs standardized outcomes diverge — league composition matters; use `z_*_league_season` as preferred outcome.
