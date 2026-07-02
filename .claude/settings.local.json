@@ -42,7 +42,9 @@
       "Bash(Rscript scripts/04_analysis/run_fotmob_spell_fe_regressions.R)",
       "Bash(git commit -q -m 'Add contract-spell / league-month FE specifications, MDE, and BH correction *)",
       "Bash(Rscript scripts/04_analysis/run_fotmob_selection_margin.R)",
-      "Bash(git commit -q -m 'Add extensive-margin selection analysis: playing time falls near expiry *)"
+      "Bash(git commit -q -m 'Add extensive-margin selection analysis: playing time falls near expiry *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_expiry_event_study.R)",
+      "Bash(git commit -q -m 'Add contract-cycle event study as main exhibit replacing RDD *)"
     ]
   }
 }

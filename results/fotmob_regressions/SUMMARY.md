@@ -71,6 +71,15 @@ Implications: (1) the rating regressions condition on playing, and playing is wh
 
 Caveats: part of the extensive-margin effect may be mechanical — mid-season transfer timing (expiry proximity peaks before January moves), injuries running contracts down, or clubs protecting sale value. Distinguishing these channels requires transfer-event data.
 
+## Contract-Cycle Event Study (replaces the RDD as the main exhibit)
+
+`run_fotmob_expiry_event_study.R` estimates outcomes as a function of months-to-expiry (24+ down to 0, reference 18 months), within player x contract spell with league x month FE (primary) and player + month FE (comparison). Results in `fotmob_expiry_event_study.csv`, figure in `fotmob_expiry_event_study.png`.
+
+- Playing probability and minutes decline smoothly and monotonically from roughly 12 months before expiry, reaching about -25pp playing probability and -70 minutes/month in the expiry month (primary spec).
+- There is no jump at the 6-month Bosman threshold: the decline is a smooth ramp through it. This is direct evidence for why the RDD finds nothing real at 180 days — the theory-consistent pattern is anticipatory and continuous, not discontinuous.
+- Standardized rating conditional on playing is flat across the entire contract cycle in the primary spec (CIs straddle zero everywhere): the intensive-margin null, shown rather than asserted.
+- Both FE structures agree qualitatively.
+
 ## RDD Takeaways
 
 Main estimates in `fotmob_rdd_results.csv`, robustness in `fotmob_rdd_robustness.csv`. Local linear models around `DaysToExpiry = 180` with Month FE, clustered by player.
