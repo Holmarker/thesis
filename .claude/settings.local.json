@@ -35,7 +35,12 @@
       "Bash(git commit -q -m 'Robustness audit: downgrade Bosman-age and post-renewal findings *)",
       "Bash(awk '{print $NF}')",
       "Bash(tail -4 \"/Users/magnu/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale/RSpeciale/data/historical/logs/scrape_2024_2025_straight.log\" && ls -la \"/Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Database/Data_Overview/Spiller data.xlsx\")",
-      "Bash(git commit -q -m 'Refresh thesis descriptive statistics on rebuilt panel *)"
+      "Bash(git commit -q -m 'Refresh thesis descriptive statistics on rebuilt panel *)",
+      "Bash(git commit -q -m 'Add 2025/26 league config for season run-in scrape *)",
+      "Bash(awk '$NF==0')",
+      "Bash(caffeinate -is *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_spell_fe_regressions.R)",
+      "Bash(git commit -q -m 'Add contract-spell / league-month FE specifications, MDE, and BH correction *)"
     ]
   }
 }

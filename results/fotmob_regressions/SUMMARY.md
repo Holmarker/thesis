@@ -47,7 +47,15 @@ Preferred outcome: `z_mean_rating_league_season` (league-season standardized mea
   - Pooled: `post_observed_renewal` `-0.097`, `p < 0.0001`; `signing_month` `-0.067`, `p = 0.0017`.
   - Audit (`run_fotmob_robustness_audit_renewal.R`): within every single season the post-renewal coefficient is insignificant (`p = 0.16-0.73`, mixed signs), and the event-study around the first observed renewal shows within-league z ratings slightly *rising* after signing (`+0.08` SD by months +4 to +6). The pooled negative coefficient appears to be mean reversion plus cross-season composition, not a within-player decline.
 
-Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` cells are expected by chance. Pooled significance that vanishes within every season should be treated as an artifact of composition shifts across seasons (the panel's league mix changes drastically from 2022/23 to 2025/26).
+Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` cells are expected by chance. `fotmob_heterogeneity_results.csv` now carries Benjamini-Hochberg adjusted q-values (`p_bh_within_family`, adjusted across subgroups within each model x outcome x term family). Several age-group cells survive BH — but BH does not repair the season-stability failure; pooled significance that vanishes within every season should be treated as an artifact of composition shifts across seasons (the panel's league mix changes drastically from 2022/23 to 2025/26).
+
+## Specification Robustness: Contract-Spell and League-Month FE
+
+`run_fotmob_spell_fe_regressions.R` re-estimates the Bosman and expiry-bin models under four FE structures (`fotmob_spell_fe_results.csv`): the baseline `player + Month`, `player + league x Month` (absorbs league-time composition), `player-contract-spell + Month` (within-spell identification: expiry approaches deterministically with time), and `spell + league x Month`. Identification is real: 2,082 of 5,412 players have multiple observed contract spells (7,901 spells).
+
+- Bosman (all-comps, z league-season): `+0.031` (player+month), `+0.041` (player+league-month), `-0.077` (spell+month, `p = 0.004`), `-0.038` (spell+league-month, `p = 0.16`). The sign is not even stable across FE structures — no defensible Bosman effect.
+- `48+` expiry bin: `-0.09` to `-0.11` and significant under player FE, but insignificant and sign-unstable under spell FE — confirming the earlier suspicion that the 48+ result reflects sorting across contracts, not within-contract behavior.
+- Minimum detectable effect (80% power, 5% two-sided) for the Bosman coefficient is ~0.07 SD in all specifications: the null is informative — effects larger than ~0.07 SD of within-league-season rating are ruled out with good power.
 
 ## RDD Takeaways
 
