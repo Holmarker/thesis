@@ -59,6 +59,10 @@ In **event-free** matches (no goals, assists, or cards; 74% of all observations)
 
 A short cameo is near-guaranteed a rating in [5.5, 7.5]: not enough events accumulate to move away from the ~6.2 anchor in either direction. Bad sub appearances are rated too kindly, brilliant ones too stingily. For low-minute players the outcome has mechanically compressed variance, attenuating any estimated effect for bench/marginal players.
 
+## Responses to the sub-shrinkage problem
+
+Two corrected outcomes were built and re-tested (`run_fotmob_sub_adjusted_ratings.R`, `../fotmob_regressions/fotmob_sub_adjusted_rating_results.csv`): a monthly rating from >=60-minute appearances only, and match ratings z-scored within minutes-bin x league-season before aggregation. Both show the familiar signature - small positives under naive player+month FE (p ~ 0.02) that vanish under spell FE and are near-exact zeros within club-month (-0.006 / -0.005, p ~ 0.85). Correcting the shrinkage sharpens the null rather than revealing an effect. (The shrinkage itself cannot be "undone": a 10-minute cameo contains little information; one can only exclude, rescale, or down-weight it.)
+
 ## Consequences for the thesis design
 
 1. **Minutes-weighted rating** is preferred over the plain mean (correlation with monthly minutes 0.20 vs 0.37), and the mechanical gradient is flat above ~270 minutes/month - motivating the regulars restriction.
