@@ -4,11 +4,11 @@ library(readr)
 library(stringr)
 library(tibble)
 
-ratings_checkpoint_dir <- "RSpeciale/data/checkpoints/ratings"
-historical_ratings_checkpoint_dir <- "RSpeciale/data/historical/checkpoints/ratings"
-clean_row_out <- "RSpeciale/data/fotmob_ratings_clean.csv"
-monthly_all_out <- "RSpeciale/data/fotmob_ratings_monthly_all_comps.csv"
-monthly_league_out <- "RSpeciale/data/fotmob_ratings_monthly_source_league.csv"
+ratings_checkpoint_dir <- "data/checkpoints/ratings"
+historical_ratings_checkpoint_dir <- "data/historical/checkpoints/ratings"
+clean_row_out <- "data/fotmob_ratings_clean.csv"
+monthly_all_out <- "data/fotmob_ratings_monthly_all_comps.csv"
+monthly_league_out <- "data/fotmob_ratings_monthly_source_league.csv"
 
 read_ratings_csv <- function(path) {
   as_tibble(utils::read.csv(
@@ -81,6 +81,9 @@ coerce_ratings <- function(df) {
       yellow_cards = as.integer(yellow_cards),
       red_cards = as.integer(red_cards),
       rating = as.numeric(rating),
+      # FotMob ratings live on a 0-10 scale; out-of-range values are
+      # source-side glitches (e.g. extra-time accumulation) -> set NA
+      rating = if_else(!is.na(rating) & (rating <= 0 | rating > 10), NA_real_, rating),
       is_top_rating = as.logical(is_top_rating),
       player_of_the_match = as.logical(player_of_the_match),
       on_bench = as.logical(on_bench)
