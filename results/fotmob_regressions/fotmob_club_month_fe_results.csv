@@ -1,0 +1,7 @@
+variant,outcome_name,term,estimate,std_error,t_value,p_value,nobs
+"played, spell + club-month FE, cluster club",played,BosmanTRUE,-0.023987178504680958,0.0063813388781298885,-3.7589570093025095,1.7741264072105943e-4,152817
+"minutes, spell + club-month FE, cluster club",Minutes_tm,BosmanTRUE,-5.3062854144849245,2.597254336066428,-2.0430365023555437,0.04122967382543842,152817
+"z mean rating, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.06409114130350975,0.031381827778183255,-2.042301097199511,0.041434216240183175,56119
+"z weighted rating, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.01661291022233908,0.025173913385683977,-0.6599256129873947,0.509482897925243,56119
+"z mean rating, regulars 270+ min, spell + club-month FE",z_mean,BosmanTRUE,-0.04044928162689628,0.03183997437660068,-1.2703930332501339,0.2043957248612066,21930
+"z weighted rating, regulars 270+ min, spell + club-month FE",z_weighted,BosmanTRUE,-0.02925888953215767,0.033196124940082554,-0.8813947286006601,0.3784275192693848,21930

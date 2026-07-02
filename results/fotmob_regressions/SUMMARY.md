@@ -65,6 +65,15 @@ Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` 
 - Standardizing ratings within league x season x position group (keepers vs outfield) changes nothing (`+0.024` / `-0.042`, both insignificant).
 - Lee-style trimming bounds: because Bosman players play ~5pp less, the conditional-on-playing comparison is selected. Trimming the over-observed control group by the differential observation share bounds the Bosman rating gap at roughly `[-0.31, +0.19]` SD around the untrimmed `-0.02`. The bounds comfortably include zero: given the extensive-margin selection, the conditional rating data cannot even sign a Bosman performance effect — reinforcing that the extensive margin is where the identifiable action is.
 
+## Rating Measurement Properties and Club-Month FE
+
+Diagnostics on the rating variable itself (match level, n=336,797): mean 6.86, sd 0.79, 0.1 granularity; a goal is worth ~+1.1; ratings rise mechanically with minutes played (6.24 below 15 minutes vs 7.09 for full matches — the monthly mean rating correlates 0.37 with monthly minutes, the minutes-weighted version 0.20, flat above ~270 min/month). Within-player match-to-match sd (0.74) is more than twice the between-player sd of averages (0.31): a single match rating is mostly noise. About 31% of match-level rating variance sits at the team-match level (ratings co-move with team results), similarly 32% at team-season level. One out-of-range rating (12.6, extra-time glitch) led to a 0-10 validity rule in the cleaning step.
+
+`run_fotmob_club_month_fe.R` (`fotmob_club_month_fe_results.csv`) therefore compares players to their own teammates (club x month FE, spell FE, clustered by club):
+
+- Playing: `-2.4pp` (`p = 0.0002`); minutes: `-5.3` (`p = 0.04`) — the extensive-margin effect survives the within-teammates comparison.
+- Mean rating: marginal `-0.064` (`p = 0.04`), but this is the mechanical minutes channel: the minutes-weighted rating is null (`-0.017`, `p = 0.51`) and both are null among regulars with 270+ minutes (`p = 0.20` / `p = 0.38`), where the minutes-rating gradient is flat.
+
 ## Selection Into Playing (Extensive Margin)
 
 `run_fotmob_selection_margin.R` estimates whether contract status predicts playing itself, on the FULL panels (152,817 player-months) with always-observed Transfermarkt outcomes (`fotmob_selection_margin_results.csv`).

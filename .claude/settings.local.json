@@ -53,7 +53,8 @@
       "Bash(git commit -q -m 'Off-season and transfer-window robustness for the event study *)",
       "Bash(Rscript scripts/04_analysis/run_fotmob_additional_robustness.R)",
       "Bash(git commit -q -m 'Add two-way clustering, position standardization, and Lee bounds *)",
-      "Bash(git commit -q -m 'Add 0-10 validity rule for FotMob ratings in cleaning step *)"
+      "Bash(git commit -q -m 'Add 0-10 validity rule for FotMob ratings in cleaning step *)",
+      "Bash(git commit -q -m 'Rating measurement diagnostics and club-month FE within-teammates spec *)"
     ]
   }
 }
