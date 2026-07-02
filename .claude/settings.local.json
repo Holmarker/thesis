@@ -50,7 +50,9 @@
       "Bash(Rscript scripts/04_analysis/run_fotmob_expiry_event_study_age.R)",
       "Bash(git commit -q -m 'Age robustness for the contract-cycle event study *)",
       "Bash(cp /private/tmp/claude-501/-Users-magnu-Library-CloudStorage-OneDrive-Personligt-Desktop-AU-Speciale-RSpeciale/231667e9-d6f2-494c-9366-6194bceccbb6/scratchpad/deadmonths.R scripts/04_analysis/run_fotmob_expiry_event_study_active_months.R)",
-      "Bash(git commit -q -m 'Off-season and transfer-window robustness for the event study *)"
+      "Bash(git commit -q -m 'Off-season and transfer-window robustness for the event study *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_additional_robustness.R)",
+      "Bash(git commit -q -m 'Add two-way clustering, position standardization, and Lee bounds *)"
     ]
   }
 }

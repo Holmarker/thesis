@@ -1,0 +1,8 @@
+exercise,outcome_name,note,term,estimate,std_error,t_value,p_value,nobs
+twoway_cluster,z_ls,"player+Month FE, cluster player & Month",BosmanTRUE,0.030629046629455422,0.0304084295079828,1.0072551304043738,0.319720010281103,56119
+twoway_cluster,z_ls,"spell+league-month FE, cluster player & Month",BosmanTRUE,-0.03759273565716699,0.02501934924055017,-1.5025465009393,0.14061980711658376,56119
+position_standardized,z_lsp,player+Month FE,BosmanTRUE,0.024073568824433133,0.023444692339348934,1.026823831849937,0.304550713810702,56118
+position_standardized,z_lsp,spell+league-month FE,BosmanTRUE,-0.04162645796095293,0.02665377830218721,-1.561746987200575,0.11840785499255878,56118
+lee_bound,z_ls,"lower bound (trim control group, league-month FE)",BosmanTRUE,-0.3133976266409811,0.024577165002579386,-12.75157759685016,1.294946218352979e-36,23743
+lee_bound,z_ls,"upper bound (trim control group, league-month FE)",BosmanTRUE,0.19429081492043795,0.025666307323764664,7.5698779910011575,4.4690596106190955e-14,23743
+lee_bound,z_ls,untrimmed reference (league-month FE),BosmanTRUE,-0.022033869971654827,0.025144566380901075,-0.8762875301914523,0.3809168740128017,30556

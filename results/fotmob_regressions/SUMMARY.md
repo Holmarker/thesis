@@ -57,6 +57,14 @@ Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` 
 - `48+` expiry bin: `-0.09` to `-0.11` and significant under player FE, but insignificant and sign-unstable under spell FE — confirming the earlier suspicion that the 48+ result reflects sorting across contracts, not within-contract behavior.
 - Minimum detectable effect (80% power, 5% two-sided) for the Bosman coefficient is ~0.07 SD in all specifications: the null is informative — effects larger than ~0.07 SD of within-league-season rating are ruled out with good power.
 
+## Additional Robustness (two-way clustering, position standardization, Lee bounds)
+
+`run_fotmob_additional_robustness.R` (`fotmob_additional_robustness.csv`):
+
+- Two-way clustering (player and month) leaves the Bosman rating null unchanged in both FE structures.
+- Standardizing ratings within league x season x position group (keepers vs outfield) changes nothing (`+0.024` / `-0.042`, both insignificant).
+- Lee-style trimming bounds: because Bosman players play ~5pp less, the conditional-on-playing comparison is selected. Trimming the over-observed control group by the differential observation share bounds the Bosman rating gap at roughly `[-0.31, +0.19]` SD around the untrimmed `-0.02`. The bounds comfortably include zero: given the extensive-margin selection, the conditional rating data cannot even sign a Bosman performance effect — reinforcing that the extensive margin is where the identifiable action is.
+
 ## Selection Into Playing (Extensive Margin)
 
 `run_fotmob_selection_margin.R` estimates whether contract status predicts playing itself, on the FULL panels (152,817 player-months) with always-observed Transfermarkt outcomes (`fotmob_selection_margin_results.csv`).
