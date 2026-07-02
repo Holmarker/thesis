@@ -80,6 +80,8 @@ Caveats: part of the extensive-margin effect may be mechanical — mid-season tr
 - Standardized rating conditional on playing is flat across the entire contract cycle in the primary spec (CIs straddle zero everywhere): the intensive-margin null, shown rather than asserted.
 - Both FE structures agree qualitatively.
 - Age robustness (`run_fotmob_expiry_event_study_age.R`, `fotmob_expiry_event_study_age.png`): the profile is unchanged by quadratic age controls, and the decline is equally present for players under 24 at spell start — for whom aging raises playing time — so the contract-cycle decline cannot be an aging artifact.
+- Off-season robustness (`run_fotmob_expiry_event_study_active_months.R`): 88% of month-0 observations fall in June, raising a mechanical no-games concern; but the league x month FE compare expiring players to same-league-same-month peers, and restricting to active league-months (>=25% of players with minutes) leaves the profile unchanged (month 0: -0.261 vs -0.255; month 6: -0.071 vs -0.069).
+- Transfer-window timing: ratings show no Bosman x pre-window interaction (p = 0.86); the playing-time penalty deepens marginally before windows (-1.6pp, p = 0.056), weakly consistent with a departure-anticipation channel.
 
 ## RDD Takeaways
 
