@@ -30,6 +30,8 @@ This folder stores output tables for FotMob-based regression analyses related to
 - Pooled Bosman: null. Bosman x age pooled positives (u23 +0.20, 23-28 +0.13) FAIL the season-stability audit — insignificant within every season, shrinking as coverage improves. Suggestive at most.
 - Post-observed-renewal pooled -0.10 (p<0.0001) FAILS the audit: insignificant within every season, event-study shows ratings rising post-renewal. Mean reversion + composition.
 - Audit scripts: run_fotmob_robustness_audit_bosman.R / _renewal.R.
+- Spell-FE specs (run_fotmob_spell_fe_regressions.R): Bosman sign flips across FE structures; 48+ bin dies under spell FE (was sorting). MDE ~0.07 SD.
+- EXTENSIVE MARGIN (run_fotmob_selection_margin.R): the one robust finding — Bosman-window players play 4-7pp less (all four specs, TM outcomes, full panel); 0:6 expiry bin up to -19pp. Rating regressions condition on playing -> surviving players positively selected.
 - 48+ expiry bin: negative, likely selection.
 - RDD: fails placebo cutoffs (150/210 days significant); do not use causally.
 - Raw vs standardized outcomes diverge — league composition matters; use `z_*_league_season` as preferred outcome.

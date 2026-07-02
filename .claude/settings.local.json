@@ -40,7 +40,9 @@
       "Bash(awk '$NF==0')",
       "Bash(caffeinate -is *)",
       "Bash(Rscript scripts/04_analysis/run_fotmob_spell_fe_regressions.R)",
-      "Bash(git commit -q -m 'Add contract-spell / league-month FE specifications, MDE, and BH correction *)"
+      "Bash(git commit -q -m 'Add contract-spell / league-month FE specifications, MDE, and BH correction *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_selection_margin.R)",
+      "Bash(git commit -q -m 'Add extensive-margin selection analysis: playing time falls near expiry *)"
     ]
   }
 }

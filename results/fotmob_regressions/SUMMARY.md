@@ -57,6 +57,20 @@ Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` 
 - `48+` expiry bin: `-0.09` to `-0.11` and significant under player FE, but insignificant and sign-unstable under spell FE — confirming the earlier suspicion that the 48+ result reflects sorting across contracts, not within-contract behavior.
 - Minimum detectable effect (80% power, 5% two-sided) for the Bosman coefficient is ~0.07 SD in all specifications: the null is informative — effects larger than ~0.07 SD of within-league-season rating are ruled out with good power.
 
+## Selection Into Playing (Extensive Margin)
+
+`run_fotmob_selection_margin.R` estimates whether contract status predicts playing itself, on the FULL panels (152,817 player-months) with always-observed Transfermarkt outcomes (`fotmob_selection_margin_results.csv`).
+
+The one result that survives all four FE structures:
+
+- Bosman-window players are 4.4-6.6pp less likely to play at all (`played_tm`), with fewer matches and minutes; significant in every spec including spell + league x month (`-4.6pp`, `p = 0.0003`).
+- The `0:6` months-to-expiry bin is stronger still: `-18.8pp` playing probability in the strictest spec (`p < 0.0001`).
+- Within FotMob-covered league-months, conditional playing probability shows no effect — consistent with the TM effect operating at the squad-role level.
+
+Implications: (1) the rating regressions condition on playing, and playing is where the contract-status action is — surviving players are positively selected, so intensive-margin rating estimates are upward-biased for any true negative effect; (2) the defensible substantive finding of the panel is "no detectable intensive-margin performance effect (MDE ~0.07 SD), but a robust extensive-margin reduction in playing time as contracts run down."
+
+Caveats: part of the extensive-margin effect may be mechanical — mid-season transfer timing (expiry proximity peaks before January moves), injuries running contracts down, or clubs protecting sale value. Distinguishing these channels requires transfer-event data.
+
 ## RDD Takeaways
 
 Main estimates in `fotmob_rdd_results.csv`, robustness in `fotmob_rdd_robustness.csv`. Local linear models around `DaysToExpiry = 180` with Month FE, clustered by player.
