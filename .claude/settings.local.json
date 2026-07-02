@@ -44,7 +44,11 @@
       "Bash(Rscript scripts/04_analysis/run_fotmob_selection_margin.R)",
       "Bash(git commit -q -m 'Add extensive-margin selection analysis: playing time falls near expiry *)",
       "Bash(Rscript scripts/04_analysis/run_fotmob_expiry_event_study.R)",
-      "Bash(git commit -q -m 'Add contract-cycle event study as main exhibit replacing RDD *)"
+      "Bash(git commit -q -m 'Add contract-cycle event study as main exhibit replacing RDD *)",
+      "Bash(caffeinate -is bash -c 'for i in $\\(seq 1 20\\); do *)",
+      "Bash(caffeinate -is bash -c 'diag\\(\\) { *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_expiry_event_study_age.R)",
+      "Bash(git commit -q -m 'Age robustness for the contract-cycle event study *)"
     ]
   }
 }

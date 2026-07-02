@@ -79,6 +79,7 @@ Caveats: part of the extensive-margin effect may be mechanical — mid-season tr
 - There is no jump at the 6-month Bosman threshold: the decline is a smooth ramp through it. This is direct evidence for why the RDD finds nothing real at 180 days — the theory-consistent pattern is anticipatory and continuous, not discontinuous.
 - Standardized rating conditional on playing is flat across the entire contract cycle in the primary spec (CIs straddle zero everywhere): the intensive-margin null, shown rather than asserted.
 - Both FE structures agree qualitatively.
+- Age robustness (`run_fotmob_expiry_event_study_age.R`, `fotmob_expiry_event_study_age.png`): the profile is unchanged by quadratic age controls, and the decline is equally present for players under 24 at spell start — for whom aging raises playing time — so the contract-cycle decline cannot be an aging artifact.
 
 ## RDD Takeaways
 
