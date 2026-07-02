@@ -12,7 +12,9 @@
       "Bash(git commit -q -m 'Add heterogeneity splits: age, position, starter role, league tier *)",
       "Bash(Rscript scripts/02_crosswalk/recover_crosswalk_matches.R)",
       "Bash(grep -v 'pakke\\\\|maskerede\\\\|Vedhaefter\\\\|date, intersect\\\\|^$\\\\|Advarsel\\\\|intersect, setdiff')",
-      "Bash(git commit -q -m 'Add crosswalk recovery via age+nationality uniqueness rule *)"
+      "Bash(git commit -q -m 'Add crosswalk recovery via age+nationality uniqueness rule *)",
+      "Bash(git commit -q -m 'Add club alias table \\(learned pairs + city translations + league assignment\\) *)",
+      "Bash(tail -3 data/historical/logs/scrape_2024_2025_resume.log)"
     ]
   }
 }
