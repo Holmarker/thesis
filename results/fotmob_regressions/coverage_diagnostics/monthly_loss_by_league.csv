@@ -1,0 +1,211 @@
+season,source_league_name,coverage_status,monthly_rows,unique_players,total_minutes
+2022/2023,English Premier League,in_full_panel_not_strict,150,71,230
+2022/2023,Italian Serie A,in_full_panel_not_strict,103,47,150
+2022/2023,German Bundesliga,in_full_panel_not_strict,122,44,157
+2022/2023,Spanish LaLiga,in_full_panel_not_strict,110,42,134
+2022/2023,French Ligue 1,in_full_panel_not_strict,38,20,62
+2022/2023,English Premier League,in_strict_panel,1295,180,305263
+2022/2023,Italian Serie A,in_strict_panel,898,139,204547
+2022/2023,German Bundesliga,in_strict_panel,760,124,164954
+2022/2023,Spanish LaLiga,in_strict_panel,797,113,168692
+2022/2023,French Ligue 1,in_strict_panel,568,77,129899
+2022/2023,Italian Serie A,missing_contract_panel_month,247,58,25735
+2022/2023,Spanish LaLiga,missing_contract_panel_month,156,39,14252
+2022/2023,German Bundesliga,missing_contract_panel_month,155,38,19757
+2022/2023,English Premier League,missing_contract_panel_month,77,32,5689
+2022/2023,French Ligue 1,missing_contract_panel_month,119,24,21154
+2023/2024,Italian Serie A,in_full_panel_not_strict,246,93,292
+2023/2024,English Premier League,in_full_panel_not_strict,173,71,279
+2023/2024,German Bundesliga,in_full_panel_not_strict,170,69,321
+2023/2024,Spanish LaLiga,in_full_panel_not_strict,107,45,120
+2023/2024,French Ligue 1,in_full_panel_not_strict,76,37,139
+2023/2024,English Premier League,in_strict_panel,1556,216,360002
+2023/2024,Italian Serie A,in_strict_panel,1511,206,319303
+2023/2024,German Bundesliga,in_strict_panel,1172,166,236904
+2023/2024,Spanish LaLiga,in_strict_panel,997,142,207955
+2023/2024,French Ligue 1,in_strict_panel,810,120,170043
+2023/2024,Italian Serie A,missing_contract_panel_month,142,45,12751
+2023/2024,Spanish LaLiga,missing_contract_panel_month,86,31,8182
+2023/2024,French Ligue 1,missing_contract_panel_month,64,27,4097
+2023/2024,English Premier League,missing_contract_panel_month,96,26,11232
+2023/2024,German Bundesliga,missing_contract_panel_month,106,23,16334
+2024/2025,Italian Serie A,in_full_panel_not_strict,127,82,0
+2024/2025,English Championship,in_full_panel_not_strict,103,79,0
+2024/2025,Dutch Eredivisie,in_full_panel_not_strict,123,71,0
+2024/2025,Brazilian Serie A,in_full_panel_not_strict,98,65,0
+2024/2025,German Bundesliga,in_full_panel_not_strict,76,49,0
+2024/2025,English Premier League,in_full_panel_not_strict,63,48,0
+2024/2025,Turkish Super Lig,in_full_panel_not_strict,51,45,0
+2024/2025,Spanish LaLiga,in_full_panel_not_strict,55,42,0
+2024/2025,French Ligue 1,in_full_panel_not_strict,58,40,0
+2024/2025,Italian Serie B,in_full_panel_not_strict,61,35,0
+2024/2025,Saudi Pro League,in_full_panel_not_strict,38,35,0
+2024/2025,English League One,in_full_panel_not_strict,52,32,0
+2024/2025,German 2. Bundesliga,in_full_panel_not_strict,41,30,0
+2024/2025,Belgian Challenger Pro League,in_full_panel_not_strict,46,29,0
+2024/2025,Portuguese Primeira Liga,in_full_panel_not_strict,44,28,0
+2024/2025,Turkish 1.Lig,in_full_panel_not_strict,39,25,0
+2024/2025,Spanish LaLiga 2,in_full_panel_not_strict,31,23,0
+2024/2025,Brazilian Serie B,in_full_panel_not_strict,40,22,0
+2024/2025,Swiss Super League,in_full_panel_not_strict,36,19,0
+2024/2025,French Ligue 2,in_full_panel_not_strict,27,17,0
+2024/2025,Polish Ekstraklasa,in_full_panel_not_strict,19,15,0
+2024/2025,Scottish Premiership,in_full_panel_not_strict,12,11,0
+2024/2025,Czech First League,in_full_panel_not_strict,12,8,0
+2024/2025,Croatian 1.HNL,in_full_panel_not_strict,8,8,0
+2024/2025,Norwegian Eliteserien,in_full_panel_not_strict,9,5,0
+2024/2025,Swedish Allsvenskan,in_full_panel_not_strict,5,5,0
+2024/2025,Serbian Super Liga,in_full_panel_not_strict,4,4,0
+2024/2025,Ukrainian Premier Liga,in_full_panel_not_strict,3,2,0
+2024/2025,Bulgarian Parva Liga,in_full_panel_not_strict,1,1,0
+2024/2025,English Championship,in_strict_panel,904,372,163513
+2024/2025,English Premier League,in_strict_panel,902,368,206979
+2024/2025,Italian Serie A,in_strict_panel,831,318,154871
+2024/2025,German Bundesliga,in_strict_panel,647,249,116484
+2024/2025,Dutch Eredivisie,in_strict_panel,610,245,104241
+2024/2025,French Ligue 1,in_strict_panel,589,229,100453
+2024/2025,Spanish LaLiga,in_strict_panel,606,228,127472
+2024/2025,Brazilian Serie A,in_strict_panel,668,208,150874
+2024/2025,Saudi Pro League,in_strict_panel,421,202,95622
+2024/2025,Turkish Super Lig,in_strict_panel,518,201,99723
+2024/2025,Portuguese Primeira Liga,in_strict_panel,384,149,64893
+2024/2025,Italian Serie B,in_strict_panel,237,97,35447
+2024/2025,English League One,in_strict_panel,209,91,31680
+2024/2025,German 2. Bundesliga,in_strict_panel,204,81,31917
+2024/2025,Spanish LaLiga 2,in_strict_panel,190,75,27584
+2024/2025,Turkish 1.Lig,in_strict_panel,155,70,21919
+2024/2025,Scottish Premiership,in_strict_panel,151,57,27120
+2024/2025,Swiss Super League,in_strict_panel,135,56,26738
+2024/2025,Polish Ekstraklasa,in_strict_panel,125,54,19553
+2024/2025,Brazilian Serie B,in_strict_panel,131,49,21692
+2024/2025,French Ligue 2,in_strict_panel,106,43,16456
+2024/2025,Belgian Challenger Pro League,in_strict_panel,70,36,9149
+2024/2025,Swedish Allsvenskan,in_strict_panel,91,29,17909
+2024/2025,Croatian 1.HNL,in_strict_panel,69,26,10225
+2024/2025,Czech First League,in_strict_panel,64,24,10934
+2024/2025,Norwegian Eliteserien,in_strict_panel,64,19,14690
+2024/2025,Ukrainian Premier Liga,in_strict_panel,39,15,6157
+2024/2025,Serbian Super Liga,in_strict_panel,27,10,2657
+2024/2025,Bulgarian Parva Liga,in_strict_panel,20,9,3544
+2024/2025,Hungarian Nemzeti Bajnoksag,in_strict_panel,19,7,3502
+2024/2025,German 2. Bundesliga,missing_contract_panel_month,594,221,87175
+2024/2025,English League One,missing_contract_panel_month,515,204,81500
+2024/2025,Italian Serie B,missing_contract_panel_month,473,168,60568
+2024/2025,Swedish Allsvenskan,missing_contract_panel_month,536,158,99073
+2024/2025,Ukrainian Premier Liga,missing_contract_panel_month,410,158,62982
+2024/2025,Swiss Super League,missing_contract_panel_month,370,141,62804
+2024/2025,English Championship,missing_contract_panel_month,359,140,70289
+2024/2025,Norwegian Eliteserien,missing_contract_panel_month,485,135,92598
+2024/2025,Scottish Premiership,missing_contract_panel_month,345,130,55597
+2024/2025,Brazilian Serie B,missing_contract_panel_month,351,126,62224
+2024/2025,Czech First League,missing_contract_panel_month,314,117,46634
+2024/2025,Spanish LaLiga 2,missing_contract_panel_month,297,115,43713
+2024/2025,Polish Ekstraklasa,missing_contract_panel_month,318,114,58849
+2024/2025,Croatian 1.HNL,missing_contract_panel_month,281,103,45987
+2024/2025,Brazilian Serie A,missing_contract_panel_month,240,91,46676
+2024/2025,Bulgarian Parva Liga,missing_contract_panel_month,226,87,40239
+2024/2025,German Bundesliga,missing_contract_panel_month,213,85,39073
+2024/2025,French Ligue 2,missing_contract_panel_month,211,83,28198
+2024/2025,Dutch Eredivisie,missing_contract_panel_month,201,77,28728
+2024/2025,Saudi Pro League,missing_contract_panel_month,143,73,16989
+2024/2025,Italian Serie A,missing_contract_panel_month,174,64,24955
+2024/2025,Portuguese Primeira Liga,missing_contract_panel_month,164,64,20073
+2024/2025,French Ligue 1,missing_contract_panel_month,153,63,21177
+2024/2025,Spanish LaLiga,missing_contract_panel_month,132,50,24590
+2024/2025,Hungarian Nemzeti Bajnoksag,missing_contract_panel_month,116,47,17988
+2024/2025,Turkish Super Lig,missing_contract_panel_month,97,39,13155
+2024/2025,Turkish 1.Lig,missing_contract_panel_month,73,34,6718
+2024/2025,Belgian Challenger Pro League,missing_contract_panel_month,63,30,7356
+2024/2025,English Premier League,missing_contract_panel_month,61,29,9150
+2024/2025,Serbian Super Liga,missing_contract_panel_month,50,24,5663
+2025/2026,Italian Serie A,in_full_panel_not_strict,307,142,0
+2025/2026,English Championship,in_full_panel_not_strict,224,125,0
+2025/2026,Dutch Eredivisie,in_full_panel_not_strict,283,105,0
+2025/2026,English Premier League,in_full_panel_not_strict,179,93,0
+2025/2026,French Ligue 1,in_full_panel_not_strict,178,91,0
+2025/2026,Spanish LaLiga,in_full_panel_not_strict,136,83,0
+2025/2026,German Bundesliga,in_full_panel_not_strict,186,79,0
+2025/2026,Turkish Super Lig,in_full_panel_not_strict,157,79,0
+2025/2026,Portuguese Primeira Liga,in_full_panel_not_strict,136,75,0
+2025/2026,Brazilian Serie A,in_full_panel_not_strict,145,73,0
+2025/2026,German 2. Bundesliga,in_full_panel_not_strict,127,73,0
+2025/2026,Saudi Pro League,in_full_panel_not_strict,117,62,0
+2025/2026,Swiss Super League,in_full_panel_not_strict,131,58,0
+2025/2026,Italian Serie B,in_full_panel_not_strict,125,53,0
+2025/2026,Spanish LaLiga 2,in_full_panel_not_strict,82,51,0
+2025/2026,Polish Ekstraklasa,in_full_panel_not_strict,78,40,0
+2025/2026,Croatian 1.HNL,in_full_panel_not_strict,63,32,0
+2025/2026,English League One,in_full_panel_not_strict,58,31,0
+2025/2026,French Ligue 2,in_full_panel_not_strict,67,30,0
+2025/2026,Brazilian Serie B,in_full_panel_not_strict,56,29,0
+2025/2026,Turkish 1.Lig,in_full_panel_not_strict,56,29,0
+2025/2026,Belgian Challenger Pro League,in_full_panel_not_strict,44,20,0
+2025/2026,Czech First League,in_full_panel_not_strict,33,20,0
+2025/2026,Bulgarian Parva Liga,in_full_panel_not_strict,41,19,0
+2025/2026,Ukrainian Premier Liga,in_full_panel_not_strict,41,19,0
+2025/2026,Scottish Premiership,in_full_panel_not_strict,27,18,0
+2025/2026,Serbian Super Liga,in_full_panel_not_strict,41,16,0
+2025/2026,Swedish Allsvenskan,in_full_panel_not_strict,26,15,0
+2025/2026,Norwegian Eliteserien,in_full_panel_not_strict,35,14,0
+2025/2026,Hungarian Nemzeti Bajnoksag,in_full_panel_not_strict,7,2,0
+2025/2026,English Championship,in_strict_panel,2996,481,788941
+2025/2026,English Premier League,in_strict_panel,2990,401,782895
+2025/2026,Italian Serie A,in_strict_panel,2673,398,631993
+2025/2026,German Bundesliga,in_strict_panel,2162,327,525106
+2025/2026,French Ligue 1,in_strict_panel,2125,319,467177
+2025/2026,Dutch Eredivisie,in_strict_panel,2056,315,476462
+2025/2026,Spanish LaLiga,in_strict_panel,2025,285,460545
+2025/2026,Turkish Super Lig,in_strict_panel,1625,248,341650
+2025/2026,Brazilian Serie A,in_strict_panel,1101,228,269090
+2025/2026,Portuguese Primeira Liga,in_strict_panel,1417,212,303958
+2025/2026,German 2. Bundesliga,in_strict_panel,1274,210,249126
+2025/2026,Saudi Pro League,in_strict_panel,1274,194,286669
+2025/2026,Swiss Super League,in_strict_panel,1087,169,249621
+2025/2026,Spanish LaLiga 2,in_strict_panel,1041,157,209779
+2025/2026,Italian Serie B,in_strict_panel,694,118,135943
+2025/2026,English League One,in_strict_panel,701,112,174500
+2025/2026,Polish Ekstraklasa,in_strict_panel,743,111,173191
+2025/2026,French Ligue 2,in_strict_panel,595,98,111979
+2025/2026,Scottish Premiership,in_strict_panel,602,89,149447
+2025/2026,Croatian 1.HNL,in_strict_panel,545,89,119756
+2025/2026,Turkish 1.Lig,in_strict_panel,481,81,105102
+2025/2026,Swedish Allsvenskan,in_strict_panel,296,75,62822
+2025/2026,Belgian Challenger Pro League,in_strict_panel,408,70,105283
+2025/2026,Bulgarian Parva Liga,in_strict_panel,387,63,94073
+2025/2026,Brazilian Serie B,in_strict_panel,247,62,46425
+2025/2026,Norwegian Eliteserien,in_strict_panel,239,57,59045
+2025/2026,Czech First League,in_strict_panel,357,55,75012
+2025/2026,Ukrainian Premier Liga,in_strict_panel,296,48,54981
+2025/2026,Serbian Super Liga,in_strict_panel,270,44,54113
+2025/2026,Hungarian Nemzeti Bajnoksag,in_strict_panel,78,15,13718
+2025/2026,Italian Serie B,missing_contract_panel_month,1714,275,295977
+2025/2026,English League One,missing_contract_panel_month,1576,245,413460
+2025/2026,German 2. Bundesliga,missing_contract_panel_month,1141,218,196814
+2025/2026,English Championship,missing_contract_panel_month,837,198,177176
+2025/2026,Saudi Pro League,missing_contract_panel_month,885,173,112415
+2025/2026,Turkish 1.Lig,missing_contract_panel_month,930,150,181250
+2025/2026,Ukrainian Premier Liga,missing_contract_panel_month,892,148,131944
+2025/2026,Swedish Allsvenskan,missing_contract_panel_month,575,140,111557
+2025/2026,Belgian Challenger Pro League,missing_contract_panel_month,864,138,167197
+2025/2026,Brazilian Serie B,missing_contract_panel_month,550,133,89983
+2025/2026,Scottish Premiership,missing_contract_panel_month,867,128,179836
+2025/2026,Swiss Super League,missing_contract_panel_month,659,128,116809
+2025/2026,Dutch Eredivisie,missing_contract_panel_month,536,127,87532
+2025/2026,Serbian Super Liga,missing_contract_panel_month,811,126,117250
+2025/2026,Polish Ekstraklasa,missing_contract_panel_month,748,125,125822
+2025/2026,German Bundesliga,missing_contract_panel_month,562,121,99689
+2025/2026,French Ligue 2,missing_contract_panel_month,651,120,115710
+2025/2026,Czech First League,missing_contract_panel_month,785,119,136971
+2025/2026,Spanish LaLiga 2,missing_contract_panel_month,567,117,88805
+2025/2026,Italian Serie A,missing_contract_panel_month,426,114,52283
+2025/2026,Croatian 1.HNL,missing_contract_panel_month,606,113,107487
+2025/2026,Norwegian Eliteserien,missing_contract_panel_month,465,105,105212
+2025/2026,Turkish Super Lig,missing_contract_panel_month,413,104,61257
+2025/2026,French Ligue 1,missing_contract_panel_month,289,101,35744
+2025/2026,Brazilian Serie A,missing_contract_panel_month,373,98,69857
+2025/2026,Portuguese Primeira Liga,missing_contract_panel_month,346,94,51324
+2025/2026,Bulgarian Parva Liga,missing_contract_panel_month,384,78,60991
+2025/2026,Spanish LaLiga,missing_contract_panel_month,218,70,31704
+2025/2026,Hungarian Nemzeti Bajnoksag,missing_contract_panel_month,412,58,61680
+2025/2026,English Premier League,missing_contract_panel_month,195,51,30229
+other,attackers,missing_contract_panel_month,4,1,14

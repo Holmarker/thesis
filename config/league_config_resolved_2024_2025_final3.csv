@@ -1,0 +1,4 @@
+league_name,league_id,fotmob_name,localized_name,ccode,page_url,season_start,season_end,active,match_status
+Hungarian Nemzeti Bajnoksag,212,Nemzeti Bajnokság I,Nemzeti Bajnokság I,HUN,/leagues/212/overview/nemzeti-bajnoksag-i,2024-07-01,2025-05-31,TRUE,matched
+Turkish 1.Lig,165,1. Lig,1. Lig,TUR,/leagues/165/overview/1-lig,2024-07-01,2025-05-31,TRUE,matched
+Belgian Challenger Pro League,264,First Division B,First Division B,BEL,/leagues/264/overview/first-division-b,2024-07-01,2025-05-31,TRUE,matched

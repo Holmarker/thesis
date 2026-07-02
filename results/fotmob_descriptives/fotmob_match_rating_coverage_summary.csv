@@ -1,0 +1,3 @@
+sample_name,n_rows,n_tm_players,n_fotmob_players,n_matches,missing_rows,zero_rows,invalid_rating_rows,positive_rows,positive_players,positive_share,min_match_date,max_match_date
+match_level_all_comps,275463,8258,8258,19194,0,95293,95293,180170,7474,0.6540624330672359,2025-03-09,2026-03-24
+match_level_source_league,189644,7871,7871,9770,0,57683,57683,131961,6911,0.6958353546645293,2025-03-22,2026-03-24

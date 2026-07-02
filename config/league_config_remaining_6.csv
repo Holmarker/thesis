@@ -1,0 +1,7 @@
+"league_name","league_id","fotmob_name","localized_name","ccode","page_url","season_start","season_end","active","match_status"
+"Belgian Pro League",40,"First Division A","First Division A","BEL","/leagues/40/overview/first-division","2025-07-01","2026-05-31",TRUE,"matched"
+"Greek Super League 1",135,"Super League 1","Super League 1","GRE","/leagues/135/overview/super-league-1","2025-07-01","2026-05-31",TRUE,"matched"
+"Danish Superligaen",46,"Superligaen","Superligaen","DEN","/leagues/46/overview/superligaen","2025-07-01","2026-05-31",TRUE,"matched"
+"Austrian Bundesliga",38,"Bundesliga","Bundesliga","AUT","/leagues/38/overview/bundesliga","2025-07-01","2026-05-31",TRUE,"matched"
+"Argentine Primera Division",112,"Liga Profesional","Liga Profesional","ARG","/leagues/112/overview/liga-profesional","2025-01-01","2025-12-31",TRUE,"matched"
+"Romanian Liga 1",189,"Liga I","Liga I","ROU","/leagues/189/overview/liga-i","2025-07-01","2026-05-31",TRUE,"matched"

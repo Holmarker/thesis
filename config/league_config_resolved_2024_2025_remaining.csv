@@ -1,0 +1,9 @@
+league_name,league_id,fotmob_name,localized_name,ccode,page_url,season_start,season_end,active,match_status
+Polish Ekstraklasa,196,Ekstraklasa,Ekstraklasa,POL,/leagues/196/overview/ekstraklasa,2024-07-01,2025-05-31,TRUE,matched
+Swedish Allsvenskan,67,Allsvenskan,Allsvenskan,SWE,/leagues/67/overview/allsvenskan,2024-01-02,2024-11-30,TRUE,matched
+English League One,108,League One,League One,ENG,/leagues/108/overview/league-one,2024-07-01,2025-05-31,TRUE,matched
+Brazilian Serie B,8814,Serie B,Serie B,BRA,/leagues/8814/overview/serie-b,2024-01-02,2024-12-31,TRUE,matched
+Bulgarian Parva Liga,270,First Professional League,First Professional League,BUL,/leagues/270/overview/first-professional-league,2024-07-01,2025-05-31,TRUE,matched
+Hungarian Nemzeti Bajnoksag,212,Nemzeti Bajnokság I,Nemzeti Bajnokság I,HUN,/leagues/212/overview/nemzeti-bajnoksag-i,2024-07-01,2025-05-31,TRUE,matched
+Turkish 1.Lig,165,1. Lig,1. Lig,TUR,/leagues/165/overview/1-lig,2024-07-01,2025-05-31,TRUE,matched
+Belgian Challenger Pro League,264,First Division B,First Division B,BEL,/leagues/264/overview/first-division-b,2024-07-01,2025-05-31,TRUE,matched

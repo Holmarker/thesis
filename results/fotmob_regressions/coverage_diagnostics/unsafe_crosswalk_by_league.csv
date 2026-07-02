@@ -1,0 +1,77 @@
+source_league_name,review_flag,has_tm_conflict,has_fotmob_conflict,rows,unique_tm_players,unique_fotmob_players
+Brazilian Serie A,ambiguous_top_match,FALSE,TRUE,228,228,81
+Brazilian Serie B,ambiguous_top_match,FALSE,TRUE,192,192,66
+Portuguese Primeira Liga,ambiguous_top_match,FALSE,TRUE,55,55,27
+Brazilian Serie A,auto_keep_candidate,FALSE,TRUE,45,45,45
+Turkish 1.Lig,ambiguous_top_match,FALSE,TRUE,38,38,13
+Serbian Super Liga,ambiguous_top_match,FALSE,TRUE,30,30,16
+Brazilian Serie A,many_candidates,FALSE,TRUE,28,28,21
+Turkish Super Lig,ambiguous_top_match,FALSE,TRUE,28,28,9
+Ukrainian Premier Liga,ambiguous_top_match,FALSE,TRUE,28,28,8
+Portuguese Primeira Liga,auto_keep_candidate,FALSE,TRUE,17,17,17
+Portuguese Primeira Liga,many_candidates,FALSE,TRUE,14,14,9
+Saudi Pro League,ambiguous_top_match,FALSE,TRUE,14,14,7
+Brazilian Serie B,auto_keep_candidate,FALSE,TRUE,13,13,13
+Italian Serie A,ambiguous_top_match,FALSE,TRUE,12,12,5
+Brazilian Serie B,many_candidates,FALSE,TRUE,11,11,4
+Brazilian Serie A,needs_manual_team_check,FALSE,TRUE,8,8,7
+French Ligue 1,ambiguous_top_match,FALSE,TRUE,7,7,3
+Saudi Pro League,auto_keep_candidate,FALSE,TRUE,7,7,7
+French Ligue 1,auto_keep_candidate,FALSE,TRUE,6,6,6
+Italian Serie B,ambiguous_top_match,FALSE,TRUE,6,6,3
+Polish Ekstraklasa,ambiguous_top_match,FALSE,TRUE,6,6,4
+Bulgarian Parva Liga,ambiguous_top_match,FALSE,TRUE,5,5,2
+English Championship,ambiguous_top_match,FALSE,TRUE,5,5,3
+English Championship,auto_keep_candidate,FALSE,TRUE,5,5,5
+Swedish Allsvenskan,ambiguous_top_match,FALSE,TRUE,5,5,3
+English Championship,needs_manual_team_check,FALSE,TRUE,4,4,4
+English League One,ambiguous_top_match,FALSE,TRUE,4,4,2
+English Premier League,auto_keep_candidate,FALSE,TRUE,4,4,4
+French Ligue 1,many_candidates,FALSE,TRUE,4,4,3
+Hungarian Nemzeti Bajnoksag,ambiguous_top_match,FALSE,TRUE,4,4,2
+Spanish LaLiga 2,ambiguous_top_match,FALSE,TRUE,4,4,2
+Brazilian Serie B,needs_manual_team_check,FALSE,TRUE,3,3,3
+English Premier League,ambiguous_top_match,FALSE,TRUE,3,3,3
+German Bundesliga,auto_keep_candidate,FALSE,TRUE,3,3,3
+Italian Serie A,auto_keep_candidate,FALSE,TRUE,3,3,3
+Portuguese Primeira Liga,needs_manual_team_check,FALSE,TRUE,3,3,3
+Spanish LaLiga,ambiguous_top_match,FALSE,TRUE,3,3,3
+Spanish LaLiga,auto_keep_candidate,FALSE,TRUE,3,3,3
+Turkish Super Lig,auto_keep_candidate,FALSE,TRUE,3,3,3
+Belgian Challenger Pro League,ambiguous_top_match,FALSE,TRUE,2,2,1
+Croatian 1.HNL,review,FALSE,TRUE,2,2,2
+English Championship,many_candidates,FALSE,TRUE,2,2,2
+English Premier League,many_candidates,FALSE,TRUE,2,2,2
+German 2. Bundesliga,ambiguous_top_match,FALSE,TRUE,2,2,1
+German 2. Bundesliga,auto_keep_candidate,FALSE,TRUE,2,2,2
+German 2. Bundesliga,needs_manual_team_check,FALSE,TRUE,2,2,2
+German Bundesliga,ambiguous_top_match,FALSE,TRUE,2,2,1
+German Bundesliga,needs_manual_team_check,FALSE,TRUE,2,2,2
+Italian Serie A,many_candidates,FALSE,TRUE,2,2,2
+Polish Ekstraklasa,auto_keep_candidate,FALSE,TRUE,2,2,2
+Saudi Pro League,needs_manual_team_check,FALSE,TRUE,2,2,2
+Scottish Premiership,ambiguous_top_match,FALSE,TRUE,2,2,1
+Scottish Premiership,needs_manual_team_check,FALSE,TRUE,2,2,1
+Serbian Super Liga,many_candidates,FALSE,TRUE,2,2,2
+Turkish 1.Lig,auto_keep_candidate,FALSE,TRUE,2,2,2
+Ukrainian Premier Liga,auto_keep_candidate,FALSE,TRUE,2,2,2
+Ukrainian Premier Liga,many_candidates,FALSE,TRUE,2,2,2
+Brazilian Serie A,review,FALSE,TRUE,1,1,1
+Brazilian Serie B,review,FALSE,TRUE,1,1,1
+Bulgarian Parva Liga,auto_keep_candidate,FALSE,TRUE,1,1,1
+Bulgarian Parva Liga,many_candidates,FALSE,TRUE,1,1,1
+Croatian 1.HNL,ambiguous_top_match,FALSE,TRUE,1,1,1
+Croatian 1.HNL,needs_manual_team_check,FALSE,TRUE,1,1,1
+Czech First League,ambiguous_top_match,FALSE,TRUE,1,1,1
+Czech First League,auto_keep_candidate,FALSE,TRUE,1,1,1
+English Premier League,needs_manual_team_check,FALSE,TRUE,1,1,1
+Hungarian Nemzeti Bajnoksag,many_candidates,FALSE,TRUE,1,1,1
+Italian Serie B,auto_keep_candidate,FALSE,TRUE,1,1,1
+Italian Serie B,many_candidates,FALSE,TRUE,1,1,1
+Portuguese Primeira Liga,review,FALSE,TRUE,1,1,1
+Serbian Super Liga,needs_manual_team_check,FALSE,TRUE,1,1,1
+Swedish Allsvenskan,auto_keep_candidate,FALSE,TRUE,1,1,1
+Swedish Allsvenskan,needs_manual_team_check,FALSE,TRUE,1,1,1
+Swedish Allsvenskan,review,FALSE,TRUE,1,1,1
+Turkish 1.Lig,many_candidates,FALSE,TRUE,1,1,1
+Turkish 1.Lig,needs_manual_team_check,FALSE,TRUE,1,1,1

@@ -1,0 +1,5 @@
+sample_name,rating_variable,n_rows,n_players,missing_rows,zero_rows,positive_rows,positive_players,positive_share
+all_comps_strict,fotmob_mean_rating,37511,5250,0,2765,34746,5078,0.9262882887686279
+all_comps_strict,fotmob_minutes_weighted_rating,37511,5250,0,2765,34746,5078,0.9262882887686279
+source_league_strict,fotmob_mean_rating,29642,4747,0,1942,27700,4552,0.9344848525740503
+source_league_strict,fotmob_minutes_weighted_rating,29642,4747,0,1942,27700,4552,0.9344848525740503

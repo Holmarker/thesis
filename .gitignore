@@ -1,0 +1,11 @@
+# Large data files (kept locally / in OneDrive, not in git)
+data/
+*.RData
+tmp/
+
+# R session state
+.Rhistory
+.Rproj.user/
+
+# OS
+.DS_Store
