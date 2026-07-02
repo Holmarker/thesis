@@ -63,6 +63,10 @@ A short cameo is near-guaranteed a rating in [5.5, 7.5]: not enough events accum
 
 Two corrected outcomes were built and re-tested (`run_fotmob_sub_adjusted_ratings.R`, `../fotmob_regressions/fotmob_sub_adjusted_rating_results.csv`): a monthly rating from >=60-minute appearances only, and match ratings z-scored within minutes-bin x league-season before aggregation. Both show the familiar signature - small positives under naive player+month FE (p ~ 0.02) that vanish under spell FE and are near-exact zeros within club-month (-0.006 / -0.005, p ~ 0.85). Correcting the shrinkage sharpens the null rather than revealing an effect. (The shrinkage itself cannot be "undone": a 10-minute cameo contains little information; one can only exclude, rescale, or down-weight it.)
 
+## Skewness
+
+The standardized monthly mean rating is left-skewed (skewness -1.22), driven by low-minute months. Z-scoring is linear and does not change shape; it is used for comparability, not normality. FE-OLS does not require a normal outcome, and a percentile-rank transform within league x month (`run_fotmob_rank_outcome_check.R`) - immune to skew, outliers, and shrinkage alike - reproduces the same pattern as all other outcomes: weighted-rating rank null in every specification, mean-rating rank showing only the familiar minutes-channel flicker within club-month. Distributional shape does not drive any conclusion.
+
 ## Consequences for the thesis design
 
 1. **Minutes-weighted rating** is preferred over the plain mean (correlation with monthly minutes 0.20 vs 0.37), and the mechanical gradient is flat above ~270 minutes/month - motivating the regulars restriction.

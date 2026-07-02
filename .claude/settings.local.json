@@ -57,7 +57,9 @@
       "Bash(git commit -q -m 'Rating measurement diagnostics and club-month FE within-teammates spec *)",
       "Bash(Rscript scripts/04_analysis/run_fotmob_rating_anatomy.R)",
       "Bash(git commit -q -m 'Add consolidated rating anatomy: script, tables, and RATING_ANATOMY.md *)",
-      "Bash(git commit -q -m 'Add sub-shrinkage-corrected rating outcomes; null sharpens *)"
+      "Bash(git commit -q -m 'Add sub-shrinkage-corrected rating outcomes; null sharpens *)",
+      "Bash(cp /private/tmp/claude-501/-Users-magnu-Library-CloudStorage-OneDrive-Personligt-Desktop-AU-Speciale-RSpeciale/231667e9-d6f2-494c-9366-6194bceccbb6/scratchpad/rank_check.R scripts/04_analysis/run_fotmob_rank_outcome_check.R)",
+      "Bash(git commit -q -m 'Add rank-outcome skewness check; shape does not drive conclusions *)"
     ]
   }
 }
