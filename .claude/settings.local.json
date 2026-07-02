@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(FOTMOB_COOKIE_FILE=data/historical/fotmob_cookie.txt Rscript scripts/01_scraping/scrape_historical_fotmob_match_ratings.R \"2024/2025\" /private/tmp/claude-501/-Users-magnu-Library-CloudStorage-OneDrive-Personligt-Desktop-AU-Speciale-RSpeciale/231667e9-d6f2-494c-9366-6194bceccbb6/scratchpad/pilot_config.csv 1 10)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_panel_regressions.R)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Add league-season and league-month standardized rating outcomes to panel regressions *)",
+      "Bash(git push *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_heterogeneity.R)",
+      "Bash(grep -v 'NOTE\\\\|Advarsel\\\\|pakke\\\\|maskerede\\\\|date, intersect\\\\|^$\\\\|Vedhaefter')",
+      "Bash(git commit -q -m 'Add heterogeneity splits: age, position, starter role, league tier *)",
+      "Bash(Rscript scripts/02_crosswalk/recover_crosswalk_matches.R)",
+      "Bash(grep -v 'pakke\\\\|maskerede\\\\|Vedhaefter\\\\|date, intersect\\\\|^$\\\\|Advarsel\\\\|intersect, setdiff')",
+      "Bash(git commit -q -m 'Add crosswalk recovery via age+nationality uniqueness rule *)"
+    ]
+  }
+}
