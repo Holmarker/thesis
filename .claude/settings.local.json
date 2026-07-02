@@ -14,7 +14,16 @@
       "Bash(grep -v 'pakke\\\\|maskerede\\\\|Vedhaefter\\\\|date, intersect\\\\|^$\\\\|Advarsel\\\\|intersect, setdiff')",
       "Bash(git commit -q -m 'Add crosswalk recovery via age+nationality uniqueness rule *)",
       "Bash(git commit -q -m 'Add club alias table \\(learned pairs + city translations + league assignment\\) *)",
-      "Bash(tail -3 data/historical/logs/scrape_2024_2025_resume.log)"
+      "Bash(tail -3 data/historical/logs/scrape_2024_2025_resume.log)",
+      "Bash(Rscript scripts/03_build/integrate_historical_fotmob_ratings.R)",
+      "Bash(grep -viE 'pakke|maskerede|vedhaefter|date, intersect|^$|advarsel|intersect, setdiff|warning')",
+      "Bash(FOTMOB_HISTORICAL_SEASON_SLUG=2024-2025 Rscript scripts/03_build/integrate_historical_fotmob_ratings.R)",
+      "Bash(python3)",
+      "Bash(FOTMOB_HISTORICAL_SEASON_SLUG=2023-2024 Rscript scripts/03_build/integrate_historical_fotmob_ratings.R)",
+      "Bash(FOTMOB_HISTORICAL_SEASON_SLUG=2022-2023 Rscript scripts/03_build/integrate_historical_fotmob_ratings.R)",
+      "Bash(Rscript scripts/03_build/augment_fotmob_panels_from_existing.R)",
+      "Bash(grep -viE 'pakke|maskerede|vedhaefter|date, intersect|^$|advarsel|intersect')",
+      "Bash(git commit -q -m 'Rebuild master/panels with 2024/25 top-5 ratings and recovered crosswalk; rerun regressions *)"
     ]
   }
 }

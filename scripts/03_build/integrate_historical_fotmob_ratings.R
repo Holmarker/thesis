@@ -25,6 +25,8 @@ if (length(target_files) == 0) {
 
 safe_write_csv <- function(df, path) {
   tmp_path <- paste0(path, ".tmp")
+  df <- df %>%
+    mutate(across(where(is.character), ~ iconv(.x, from = "", to = "UTF-8", sub = "")))
   utils::write.csv(df, tmp_path, row.names = FALSE, na = "", fileEncoding = "UTF-8")
 
   if (file.exists(path)) {
@@ -159,7 +161,22 @@ to_master_monthly <- function(monthly, crosswalk) {
 
 merge_monthly <- function(path, additions) {
   existing <- read_csv(path, show_col_types = FALSE) %>%
-    mutate(Month = as.Date(Month))
+    mutate(
+      Month = as.Date(Month),
+      across(
+        c(
+          source_league_id, tm_player_id, fotmob_player_id,
+          matches, appearances, starts_proxy, minutes, goals, assists,
+          yellow_cards, red_cards, top_ratings, player_of_match_awards
+        ),
+        ~ suppressWarnings(as.integer(.x))
+      ),
+      across(
+        c(mean_rating, minutes_weighted_rating, crosswalk_candidate_score),
+        ~ suppressWarnings(as.numeric(.x))
+      )
+    ) %>%
+    filter(!is.na(Month), !is.na(source_league_id), !is.na(fotmob_player_id))
 
   bind_rows(existing, additions) %>%
     arrange(Month, tm_player_id, source_league_id, monthly_scope) %>%
