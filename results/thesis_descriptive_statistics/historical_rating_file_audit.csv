@@ -55,11 +55,12 @@ historical_checkpoints,data/historical/checkpoints/ratings/55_italian-serie-a_20
 historical_checkpoints,data/historical/checkpoints/ratings/55_italian-serie-a_ratings.csv,4454,2025-03-21,2025-05-31
 historical_checkpoints,data/historical/checkpoints/ratings/57_dutch-eredivisie_ratings.csv,3420,2025-03-22,2025-05-31
 historical_checkpoints,data/historical/checkpoints/ratings/59_norwegian-eliteserien_ratings.csv,0,,
+historical_checkpoints,data/historical/checkpoints/ratings/61_portuguese-primeira-liga_2024-2025_ratings.csv,3350,2024-08-09,2024-11-02
 historical_checkpoints,data/historical/checkpoints/ratings/61_portuguese-primeira-liga_ratings.csv,3179,2025-03-23,2025-05-31
 historical_checkpoints,data/historical/checkpoints/ratings/64_scottish-premiership_ratings.csv,2310,2025-03-22,2025-05-31
 historical_checkpoints,data/historical/checkpoints/ratings/67_swedish-allsvenskan_ratings.csv,0,,
 historical_checkpoints,data/historical/checkpoints/ratings/69_swiss-super-league_ratings.csv,2197,2024-08-02,2025-05-31
-historical_checkpoints,data/historical/checkpoints/ratings/71_turkish-super-lig_2024-2025_ratings.csv,5154,2024-08-09,2024-12-01
+historical_checkpoints,data/historical/checkpoints/ratings/71_turkish-super-lig_2024-2025_ratings.csv,14268,2024-08-09,2025-06-01
 historical_checkpoints,data/historical/checkpoints/ratings/71_turkish-super-lig_ratings.csv,3196,2025-03-22,2025-05-31
 historical_checkpoints,data/historical/checkpoints/ratings/86_italian-serie-b_ratings.csv,3154,2025-03-23,2025-05-31
 historical_checkpoints,data/historical/checkpoints/ratings/87_spanish-laliga_2022-2023_ratings.csv,16723,2022-08-12,2023-06-04
