@@ -1,2 +1,2 @@
 source_folder,files,observations,players,matches,source_leagues,first_match_date,last_match_date,positive_rating_observations,zero_rating_observations,mean_rating,sd_rating,mean_minutes,panel_matched_observations,panel_matched_positive_ratings
-data/historical/checkpoints/ratings,36,86666,11323,5456,31,2024-08-02,2025-05-31,51157,35509,6.870678499521084,0.7985178347735891,70.67392536700744,36810,25185
+data/historical/checkpoints/ratings,53,305969,13599,10489,31,2022-08-05,2025-05-31,197722,32624,6.852511910662449,0.7943427948264411,69.50187932839935,164405,116361

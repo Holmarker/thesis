@@ -23,7 +23,14 @@
       "Bash(FOTMOB_HISTORICAL_SEASON_SLUG=2022-2023 Rscript scripts/03_build/integrate_historical_fotmob_ratings.R)",
       "Bash(Rscript scripts/03_build/augment_fotmob_panels_from_existing.R)",
       "Bash(grep -viE 'pakke|maskerede|vedhaefter|date, intersect|^$|advarsel|intersect')",
-      "Bash(git commit -q -m 'Rebuild master/panels with 2024/25 top-5 ratings and recovered crosswalk; rerun regressions *)"
+      "Bash(git commit -q -m 'Rebuild master/panels with 2024/25 top-5 ratings and recovered crosswalk; rerun regressions *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_rdd.R)",
+      "Bash(Rscript scripts/04_analysis/run_thesis_descriptive_statistics.R)",
+      "Bash(ls -la \"/Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Database/Data_Overview/\" 2>&1 | head -5)",
+      "Read(//Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Database/Data_Overview/**)",
+      "Read(//Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Database/Data_Overview/Arkiv/**)",
+      "Read(//Users/magnu/Off The Pitch Dropbox/**)",
+      "Bash(git commit -q -m 'Update regression SUMMARY/MEMORY for rebuilt panel; refresh RDD and diagnostics outputs *)"
     ]
   }
 }
