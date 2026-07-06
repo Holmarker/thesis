@@ -36,7 +36,7 @@ Crosswalk status: 9,639 merge-safe pairs. Of 15,515 rated FotMob players, ~8,600
 Preferred outcome: `z_mean_rating_league_season` (league-season standardized mean rating), all-comps strict sample.
 
 - `bosman_fe` (pooled)
-  - No pooled Bosman effect: `+0.031`, `p = 0.19` (all-comps); `+0.002`, `p = 0.95` (source-league).
+  - No pooled Bosman effect: `+0.041`, `p = 0.06` (all-comps); `+0.004`, `p = 0.87` (source-league).
 - **Bosman x age (heterogeneity) — suggestive only, fails season-stability audit**
   - Pooled: `u23`: `+0.198`, `p = 0.011`; `23_28`: `+0.128`, `p = 0.0004`; `29_plus`: `-0.040`, `p = 0.25`.
   - Audit (`run_fotmob_robustness_audit_bosman.R`): no single season is individually significant for u23, and the estimate declines monotonically as coverage improves (2023/24: `+0.26`; 2024/25: `+0.18`; 2025/26 — the best-measured season: `+0.06`, `p = 0.61`). The minutes-weighted version is `p = 0.056`. Only 533 u23 Bosman rows / 219 players drive the pooled result.
@@ -53,9 +53,9 @@ Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` 
 
 `run_fotmob_spell_fe_regressions.R` re-estimates the Bosman and expiry-bin models under four FE structures (`fotmob_spell_fe_results.csv`): the baseline `player + Month`, `player + league x Month` (absorbs league-time composition), `player-contract-spell + Month` (within-spell identification: expiry approaches deterministically with time), and `spell + league x Month`. Identification is real: 2,082 of 5,412 players have multiple observed contract spells (7,901 spells).
 
-- Bosman (all-comps, z league-season): `+0.031` (player+month), `+0.041` (player+league-month), `-0.077` (spell+month, `p = 0.004`), `-0.038` (spell+league-month, `p = 0.16`). The sign is not even stable across FE structures — no defensible Bosman effect.
+- Bosman (all-comps, z league-season, 2026-07-04 data): `+0.041` (player+month, `p = 0.06`), `+0.047` (player+league-month, `p = 0.03`), `-0.020` (spell+month, `p = 0.39`), `-0.011` (spell+league-month, `p = 0.63`). The sign remains unstable across FE structures and all spell-based estimates are null — no defensible Bosman effect.
 - `48+` expiry bin: `-0.09` to `-0.11` and significant under player FE, but insignificant and sign-unstable under spell FE — confirming the earlier suspicion that the 48+ result reflects sorting across contracts, not within-contract behavior.
-- Minimum detectable effect (80% power, 5% two-sided) for the Bosman coefficient is ~0.07 SD in all specifications: the null is informative — effects larger than ~0.07 SD of within-league-season rating are ruled out with good power.
+- Minimum detectable effect (80% power, 5% two-sided) for the Bosman coefficient is ~0.06 SD in all specifications: the null is informative — effects larger than ~0.07 SD of within-league-season rating are ruled out with good power.
 
 ## Additional Robustness (two-way clustering, position standardization, Lee bounds)
 
