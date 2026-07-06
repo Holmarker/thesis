@@ -1,0 +1,243 @@
+league,ClubID,Club,fin_club,wage_tercile,wage_rank,n_clubs,sim
+Brazilian Serie A,537,Botafogo de Futebol e Regatas,Botafogo,high_wage,7,22,1
+Brazilian Serie A,978,Clube de Regatas Vasco da Gama,Vasco Da Gama,mid_wage,11,22,1
+Brazilian Serie A,8793,Red Bull Bragantino,Bragantino,high_wage,6,22,1
+Brazilian Serie A,330,Clube Atlético Mineiro,America Mineiro,low_wage,15,22,0.5
+Brazilian Serie A,679,Club Athletico Paranaense,Athletico Paranaense,mid_wage,13,22,1
+Brazilian Serie A,15172,Atlético Clube Goianiense,Atletico Goianiense,low_wage,21,22,0.5
+Brazilian Serie A,199,Sport Club Corinthians Paulista,Corinthians,high_wage,3,22,1
+Brazilian Serie A,776,Coritiba Foot Ball Club,Coritiba,low_wage,17,22,1
+Brazilian Serie A,614,CR Flamengo,Flamengo,high_wage,1,22,1
+Brazilian Serie A,2462,Fluminense Football Club,Fluminense,high_wage,5,22,1
+Brazilian Serie A,10870,Fortaleza Esporte Clube,Fortaleza,mid_wage,14,22,1
+Brazilian Serie A,6600,Sport Club Internacional,Internacional,mid_wage,8,22,1
+Brazilian Serie A,10492,Esporte Clube Juventude,Juventude,low_wage,19,22,1
+Brazilian Serie A,1023,Sociedade Esportiva Palmeiras,Palmeiras,high_wage,2,22,1
+Brazilian Serie A,221,Santos FC,Santos,mid_wage,10,22,1
+Brazilian Serie A,585,São Paulo Futebol Clube,Sao Paulo,high_wage,4,22,0.5
+Brazilian Serie B,978,Clube de Regatas Vasco da Gama,Vasco Da Gama,low_wage,8,10,1
+Brazilian Serie B,330,Clube Atlético Mineiro,America Mineiro,mid_wage,4,10,0.5
+Brazilian Serie B,15172,Atlético Clube Goianiense,Atletico Goianiense,low_wage,9,10,0.5
+Brazilian Serie B,776,Coritiba Foot Ball Club,Coritiba,high_wage,3,10,1
+Brazilian Serie B,10492,Esporte Clube Juventude,Juventude,low_wage,10,10,1
+Brazilian Serie B,221,Santos FC,Santos,high_wage,1,10,1
+Dutch Eredivisie,610,Ajax Amsterdam,Ajax,high_wage,1,12,1
+Dutch Eredivisie,1090,AZ Alkmaar,AZ Alkmaar,high_wage,4,12,1
+Dutch Eredivisie,234,Feyenoord Rotterdam,Feyenoord,high_wage,3,12,1
+Dutch Eredivisie,202,FC Groningen,Groningen,mid_wage,8,12,1
+Dutch Eredivisie,306,SC Heerenveen,Heerenveen,low_wage,9,12,1
+Dutch Eredivisie,1304,Heracles Almelo,Heracles,low_wage,11,12,1
+Dutch Eredivisie,383,PSV Eindhoven,PSV Eindhoven,high_wage,2,12,1
+Dutch Eredivisie,317,FC Twente Enschede,Twente,mid_wage,6,12,1
+Dutch Eredivisie,200,FC Utrecht,Utrecht,mid_wage,5,12,1
+Dutch Eredivisie,499,Vitesse Arnhem,Vitesse,mid_wage,7,12,1
+Dutch Eredivisie,403,Willem II Tilburg,Willem II,low_wage,12,12,1
+Dutch Eredivisie,468,Sparta Rotterdam,Sparta Rotterdam,low_wage,10,12,1
+English Championship,1132,Burnley FC,Burnley,high_wage,7,36,1
+English Championship,399,Leeds United,Leeds United,high_wage,3,36,1
+English Championship,1003,Leicester City,Leicester,high_wage,1,36,1
+English Championship,1123,Norwich City,Norwich City,high_wage,8,36,1
+English Championship,180,Southampton FC,Southampton,high_wage,4,36,1
+English Championship,1010,Watford FC,Watford,high_wage,12,36,1
+English Championship,337,Birmingham City,Birmingham City,mid_wage,15,36,1
+English Championship,164,Blackburn Rovers,Blackburn Rovers,mid_wage,23,36,1
+English Championship,1181,Blackpool FC,Blackpool,low_wage,34,36,1
+English Championship,989,AFC Bournemouth,Bournemouth,high_wage,5,36,1
+English Championship,698,Bristol City,Bristol City,mid_wage,13,36,1
+English Championship,990,Coventry City,Coventry,low_wage,32,36,1
+English Championship,22,Derby County,Derby County,mid_wage,16,36,1
+English Championship,1110,Huddersfield Town,Huddersfield Town,low_wage,30,36,1
+English Championship,3008,Hull City,Hull City,mid_wage,21,36,1
+English Championship,1031,Luton Town,Luton Town,low_wage,26,36,1
+English Championship,641,Middlesbrough FC,Middlesbrough,mid_wage,17,36,1
+English Championship,1028,Millwall FC,Millwall,low_wage,27,36,1
+English Championship,1072,Peterborough United,Peterborough,low_wage,36,36,1
+English Championship,466,Preston North End,Preston North End,low_wage,25,36,1
+English Championship,124,Rangers FC,Queens Park Rangers,mid_wage,22,36,1
+English Championship,1032,Reading FC,Reading,mid_wage,24,36,1
+English Championship,350,Sheffield United,Sheffield United,high_wage,9,36,1
+English Championship,512,Stoke City,Stoke City,mid_wage,14,36,1
+English Championship,2288,Swansea City,Swansea City,mid_wage,19,36,1
+English Championship,984,West Bromwich Albion,West Brom,high_wage,11,36,0.5
+English Championship,677,Ipswich Town,Ipswich Town,high_wage,10,36,1
+English Championship,2262,Plymouth Argyle,Plymouth,low_wage,31,36,1
+English Championship,1194,Rotherham United,Rotherham,low_wage,35,36,1
+English Championship,1035,Sheffield Wednesday,Sheffield Wednesday,low_wage,29,36,1
+English Championship,289,Sunderland AFC,Sunderland,mid_wage,18,36,1
+English Championship,1071,Wigan Athletic,Wigan Athletic,low_wage,28,36,1
+English League One,349,Barnsley FC,Barnsley,mid_wage,9,23,1
+English League One,1181,Blackpool FC,Blackpool,mid_wage,11,23,1
+English League One,22,Derby County,Derby County,high_wage,1,23,1
+English League One,1032,Reading FC,Reading,high_wage,5,23,1
+English League One,355,Bolton Wanderers,Bolton,high_wage,8,23,1
+English League One,2963,Burton Albion,Burton Albion,low_wage,20,23,1
+English League One,1042,Crewe Alexandra,Crewe,low_wage,23,23,1
+English League One,677,Ipswich Town,Ipswich Town,high_wage,2,23,1
+English League One,337,Birmingham City,Lincoln City,low_wage,17,23,0.5
+English League One,991,Milton Keynes Dons,Milton Keynes Dons,low_wage,19,23,1
+English League One,988,Oxford United,Oxford,mid_wage,10,23,1
+English League One,2262,Plymouth Argyle,Plymouth,mid_wage,14,23,1
+English League One,1020,Portsmouth FC,Portsmouth,mid_wage,12,23,1
+English League One,1194,Rotherham United,Rotherham,low_wage,16,23,1
+English League One,1035,Sheffield Wednesday,Sheffield Wednesday,high_wage,4,23,1
+English League One,289,Sunderland AFC,Sunderland,high_wage,3,23,1
+English League One,1071,Wigan Athletic,Wigan Athletic,high_wage,6,23,1
+English League One,164,Blackburn Rovers,Bristol Rovers,mid_wage,13,23,0.5
+English Premier League,11,Arsenal FC,Arsenal,high_wage,5,25,1
+English Premier League,405,Aston Villa,Aston Villa,high_wage,7,25,1
+English Premier League,1148,Brentford FC,Brentford,low_wage,21,25,1
+English Premier League,1237,Brighton & Hove Albion,Brighton,mid_wage,14,25,1
+English Premier League,1132,Burnley FC,Burnley,low_wage,22,25,1
+English Premier League,631,Chelsea FC,Chelsea,high_wage,3,25,1
+English Premier League,873,Crystal Palace,Crystal Palace,low_wage,17,25,1
+English Premier League,29,Everton FC,Everton,mid_wage,10,25,1
+English Premier League,399,Leeds United,Leeds United,mid_wage,16,25,1
+English Premier League,1003,Leicester City,Leicester,high_wage,8,25,1
+English Premier League,31,Liverpool FC,Liverpool,high_wage,2,25,1
+English Premier League,281,Manchester City,Manchester City,high_wage,1,25,1
+English Premier League,985,Manchester United,Manchester United,high_wage,4,25,1
+English Premier League,762,Newcastle United,Newcastle,mid_wage,9,25,1
+English Premier League,1123,Norwich City,Norwich City,low_wage,18,25,1
+English Premier League,180,Southampton FC,Southampton,low_wage,19,25,1
+English Premier League,148,Tottenham Hotspur,Tottenham,high_wage,6,25,1
+English Premier League,379,West Ham United,West Ham,mid_wage,13,25,1
+English Premier League,989,AFC Bournemouth,Bournemouth,low_wage,20,25,1
+English Premier League,931,Fulham FC,Fulham,mid_wage,12,25,1
+English Premier League,677,Ipswich Town,Luton Town,low_wage,25,25,0.5
+English Premier League,703,Nottingham Forest,Nottingham Forest,mid_wage,11,25,1
+English Premier League,350,Sheffield United,Sheffield United,low_wage,24,25,1
+French Ligue 1,1420,Angers SCO,Angers,low_wage,20,24,1
+French Ligue 1,3524,Clermont Foot 63,Clermont,low_wage,23,24,1
+French Ligue 1,826,RC Lens,Lens,high_wage,8,24,1
+French Ligue 1,1082,LOSC Lille,Lille,high_wage,7,24,1
+French Ligue 1,1158,FC Lorient,Lorient,mid_wage,15,24,1
+French Ligue 1,1041,Olympique Lyon,Lyon,high_wage,2,24,1
+French Ligue 1,244,Olympique Marseille,Marseille,high_wage,3,24,1
+French Ligue 1,347,FC Metz,Metz,low_wage,19,24,1
+French Ligue 1,162,AS Monaco,Monaco,high_wage,4,24,1
+French Ligue 1,969,Montpellier HSC,Montpellier,mid_wage,11,24,1
+French Ligue 1,995,FC Nantes,Nantes,mid_wage,10,24,1
+French Ligue 1,417,OGC Nice,Nice,high_wage,6,24,1
+French Ligue 1,583,Paris Saint-Germain,Paris Saint-Germain,high_wage,1,24,1
+French Ligue 1,257,FC St. Gallen 1879,St. Etienne,mid_wage,14,24,0.5
+French Ligue 1,16674,Stade Brest 29 B,Brest,low_wage,18,24,1
+French Ligue 1,1421,Stade Reims,Reims,mid_wage,13,24,1
+French Ligue 1,667,RC Strasbourg Alsace,Strasbourg,mid_wage,12,24,1
+French Ligue 1,290,AJ Auxerre,Auxerre,low_wage,22,24,1
+French Ligue 1,738,Le Havre AC,Le Havre,low_wage,21,24,1
+French Ligue 1,415,FC Toulouse,Toulouse,low_wage,17,24,1
+French Ligue 2,347,FC Metz,Metz,high_wage,5,20,1
+French Ligue 2,618,AS Saint-Étienne,St. Etienne,high_wage,2,20,0.5
+French Ligue 2,1095,ESTAC Troyes,Troyes,high_wage,4,20,1
+French Ligue 2,1416,Amiens SC,Amiens,mid_wage,13,20,1
+French Ligue 2,290,AJ Auxerre,Auxerre,high_wage,7,20,1
+French Ligue 2,1159,AS Nancy-Lorraine,Nancy,low_wage,16,20,1
+French Ligue 2,1162,SM Caen,Caen,mid_wage,12,20,1
+French Ligue 2,855,EA Guingamp,Guingamp,low_wage,15,20,1
+French Ligue 2,738,Le Havre AC,Le Havre,mid_wage,10,20,1
+French Ligue 2,6326,Paris Saint-Germain U19,Paris FC,mid_wage,9,20,1
+French Ligue 2,415,FC Toulouse,Toulouse,high_wage,3,20,1
+French Ligue 2,1423,Valenciennes FC,Valenciennes,low_wage,14,20,1
+German 2. Bundesliga,10,Arminia Bielefeld,Bielefeld,low_wage,7,9,1
+German 2. Bundesliga,44,Hertha BSC,Hertha Berlin,high_wage,2,9,0.5
+German 2. Bundesliga,33,FC Schalke 04,FC Schalke 04,high_wage,1,9,1
+German 2. Bundesliga,38,Fortuna Düsseldorf,Fortuna Dusseldorf,mid_wage,5,9,0.5
+German 2. Bundesliga,127,SC Paderborn 07,SC Paderborn,low_wage,9,9,1
+German 2. Bundesliga,65,SpVgg Greuther Fürth,Greuther Furth,low_wage,8,9,0.5
+German 2. Bundesliga,41,Hamburger SV,Hamburger SV,mid_wage,4,9,1
+German Bundesliga,89,1.FC Union Berlin,Union Berlin,mid_wage,13,21,1
+German Bundesliga,15,Bayer 04 Leverkusen,Bayer Leverkusen,high_wage,4,21,1
+German Bundesliga,27,Bayern Munich,Bayern Munich,high_wage,1,21,1
+German Bundesliga,16,Borussia Dortmund,Borussia Dortmund,high_wage,2,21,1
+German Bundesliga,24,Eintracht Frankfurt,Eintracht Frankfurt,high_wage,7,21,1
+German Bundesliga,167,FC Augsburg,Augsburg,low_wage,17,21,1
+German Bundesliga,44,Hertha BSC,Hertha Berlin,mid_wage,9,21,0.5
+German Bundesliga,39,1.FSV Mainz 05,Mainz 05,low_wage,16,21,1
+German Bundesliga,23826,RB Leipzig,RB Leipzig,high_wage,3,21,1
+German Bundesliga,60,SC Freiburg,Freiburg,mid_wage,11,21,1
+German Bundesliga,533,TSG 1899 Hoffenheim,Hoffenheim,mid_wage,10,21,1
+German Bundesliga,79,VfB Stuttgart,VfB Stuttgart,high_wage,6,21,1
+German Bundesliga,82,VfL Wolfsburg,Wolfsburg,high_wage,5,21,1
+German Bundesliga,33,FC Schalke 04,FC Schalke 04,mid_wage,12,21,1
+German Bundesliga,86,SV Werder Bremen,Werder Bremen,low_wage,15,21,1
+German Bundesliga,80,VfL Bochum,Bochum,low_wage,19,21,1
+German Bundesliga,2036,1.FC Heidenheim 1846,FC Heidenheim,low_wage,18,21,1
+Italian Serie A,5,AC Milan,AC Milan,high_wage,4,20,1
+Italian Serie A,12,AS Roma,AS Roma,high_wage,3,20,1
+Italian Serie A,800,Atalanta BC,Atalanta,high_wage,7,20,1
+Italian Serie A,1025,Bologna FC 1909,Bologna,mid_wage,10,20,1
+Italian Serie A,1390,Cagliari Calcio,Cagliari,low_wage,15,20,1
+Italian Serie A,430,ACF Fiorentina,Fiorentina,mid_wage,8,20,1
+Italian Serie A,252,Genoa CFC,Genoa,mid_wage,13,20,1
+Italian Serie A,506,Juventus FC,Juventus,high_wage,1,20,1
+Italian Serie A,398,SS Lazio,Lazio,high_wage,6,20,1
+Italian Serie A,6195,SSC Napoli,Napoli,high_wage,5,20,1
+Italian Serie A,6574,US Sassuolo,Sassuolo,mid_wage,11,20,1
+Italian Serie A,3522,Spezia Calcio,Spezia,low_wage,19,20,1
+Italian Serie A,416,Torino FC,Torino,mid_wage,12,20,1
+Italian Serie A,410,Udinese Calcio,Udinese,low_wage,18,20,1
+Italian Serie A,276,Hellas Verona,Verona,low_wage,16,20,1
+Italian Serie A,1005,US Lecce,Lecce,low_wage,20,20,1
+Italian Serie A,380,US Salernitana 1919,Salernitana,low_wage,14,20,1
+Italian Serie A,2919,AC Monza,Monza,mid_wage,9,20,1
+Italian Serie A,2239,US Cremonese,US Cremonese,low_wage,17,20,1
+Italian Serie B,1390,Cagliari Calcio,Cagliari,mid_wage,5,12,1
+Italian Serie B,252,Genoa CFC,Genoa,high_wage,1,12,1
+Italian Serie B,3522,Spezia Calcio,Spezia,mid_wage,8,12,1
+Italian Serie B,1005,US Lecce,Lecce,low_wage,10,12,1
+Italian Serie B,130,Parma Calcio 1913,Parma,high_wage,3,12,1
+Italian Serie B,380,US Salernitana 1919,Salernitana,high_wage,4,12,1
+Italian Serie B,2919,AC Monza,Monza,high_wage,2,12,1
+Italian Serie B,2239,US Cremonese,US Cremonese,mid_wage,6,12,1
+Italian Serie B,1047,Como 1907,Como,mid_wage,7,12,1
+Italian Serie B,4172,Pisa Sporting Club,Pisa Sporting Club,low_wage,9,12,1
+Norwegian Eliteserien,1100,SK Brann,Brann,mid_wage,4,9,1
+Norwegian Eliteserien,687,Molde FK,Molde,high_wage,2,9,1
+Norwegian Eliteserien,195,Rosenborg BK,Rosenborg,high_wage,3,9,1
+Portuguese Primeira Liga,720,FC Porto,FC Porto,mid_wage,2,4,1
+Portuguese Primeira Liga,294,SL Benfica,Benfica,high_wage,1,4,1
+Portuguese Primeira Liga,1075,SC Braga,Braga,low_wage,4,4,1
+Portuguese Primeira Liga,336,Sporting CP,Sporting CP,low_wage,3,4,1
+Scottish Premiership,370,Aberdeen FC,Aberdeen,high_wage,4,11,1
+Scottish Premiership,371,Celtic FC,Celtic,high_wage,1,11,1
+Scottish Premiership,511,Dundee FC,Dundee United,mid_wage,6,11,1
+Scottish Premiership,903,Hibernian FC,Hibernian,mid_wage,5,11,1
+Scottish Premiership,987,Motherwell FC,Motherwell,mid_wage,7,11,1
+Scottish Premiership,124,Rangers FC,Rangers,high_wage,2,11,1
+Scottish Premiership,465,St. Mirren FC,St. Mirren,low_wage,9,11,1
+Scottish Premiership,2553,Kilmarnock FC,Kilmarnock,low_wage,8,11,1
+Spanish LaLiga,621,Athletic Bilbao,Athletic Club,high_wage,6,22,1
+Spanish LaLiga,13,Atlético de Madrid,Atletico Madrid,high_wage,3,22,0.5
+Spanish LaLiga,940,Celta de Vigo,Celta Vigo,mid_wage,11,22,1
+Spanish LaLiga,1531,Elche CF,Elche,low_wage,21,22,1
+Spanish LaLiga,714,RCD Espanyol Barcelona,Espanyol,mid_wage,10,22,1
+Spanish LaLiga,131,FC Barcelona,FC Barcelona,high_wage,1,22,1
+Spanish LaLiga,3709,Getafe CF,Getafe,mid_wage,14,22,1
+Spanish LaLiga,16795,Granada CF,Granada,low_wage,17,22,1
+Spanish LaLiga,3368,Levante UD,Levante,mid_wage,13,22,1
+Spanish LaLiga,237,RCD Mallorca,RCD Mallorca,low_wage,15,22,1
+Spanish LaLiga,331,CA Osasuna,Osasuna,low_wage,16,22,1
+Spanish LaLiga,150,Real Betis Balompié,Real Betis,high_wage,7,22,1
+Spanish LaLiga,418,Real Madrid,Real Madrid,high_wage,2,22,1
+Spanish LaLiga,681,Real Sociedad,Real Sociedad,mid_wage,8,22,1
+Spanish LaLiga,368,Sevilla FC,Sevilla,high_wage,4,22,1
+Spanish LaLiga,1049,Valencia CF,Valencia,mid_wage,9,22,1
+Spanish LaLiga,1050,Villarreal CF,Villarreal,high_wage,5,22,1
+Spanish LaLiga,366,Real Valladolid CF,Valladolid,mid_wage,12,22,1
+Spanish LaLiga,12321,Girona FC,Girona,low_wage,18,22,1
+Spanish LaLiga,367,Rayo Vallecano,Rayo Vallecano,low_wage,22,22,1
+Spanish LaLiga 2,1531,Elche CF,Elche,low_wage,8,10,1
+Spanish LaLiga 2,714,RCD Espanyol Barcelona,Espanyol,high_wage,1,10,1
+Spanish LaLiga 2,16795,Granada CF,Granada,high_wage,2,10,1
+Spanish LaLiga 2,3368,Levante UD,Levante,mid_wage,4,10,1
+Spanish LaLiga 2,1533,SD Eibar,Eibar,low_wage,9,10,1
+Spanish LaLiga 2,366,Real Valladolid CF,Valladolid,high_wage,3,10,1
+Spanish LaLiga 2,12321,Girona FC,Girona,low_wage,7,10,1
+Swedish Allsvenskan,272,AIK,AIK,mid_wage,5,9,1
+Swedish Allsvenskan,1059,Hammarby IF,Hammarby IF,high_wage,2,9,1
+Swedish Allsvenskan,801,IFK Göteborg,IFK Goteborg,low_wage,8,9,0.5
+Swedish Allsvenskan,3654,Kalmar FF,Kalmar FF,low_wage,9,9,1
+Turkish Super Lig,36,Fenerbahce,Fenerbahce,mid_wage,2,4,1
+Turkish Super Lig,449,Trabzonspor,Trabzonspor,low_wage,4,4,1
+Turkish Super Lig,141,Galatasaray,Galatasaray,high_wage,1,4,1
+Turkish Super Lig,114,Besiktas JK,Besiktas,low_wage,3,4,1

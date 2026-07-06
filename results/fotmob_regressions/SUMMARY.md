@@ -74,6 +74,15 @@ Full measurement diagnostics are consolidated in `../fotmob_descriptives/RATING_
 - Playing: `-2.4pp` (`p = 0.0002`); minutes: `-5.3` (`p = 0.04`) — the extensive-margin effect survives the within-teammates comparison.
 - Mean rating: marginal `-0.064` (`p = 0.04`), but this is the mechanical minutes channel: the minutes-weighted rating is null (`-0.017`, `p = 0.51`) and both are null among regulars with 270+ minutes (`p = 0.20` / `p = 0.38`), where the minutes-rating gradient is flat.
 
+## Club Financial Heterogeneity (wages, wages-to-revenue)
+
+`run_fotmob_wage_heterogeneity.R` matches OTP club financials (`data/all_clubs_financial_data.xlsx`; 2022-2025 wage averages) to panel clubs by name within league (match table: `club_wage_match_table.csv`; terciles are league-relative and league-specific, so promoted/relegated clubs are classified relative to the league they play in). Results: `fotmob_wage_heterogeneity_results.csv`, `fotmob_wtr_heterogeneity_results.csv`, joint tests in `fotmob_wage_interaction_tests.csv`.
+
+- Wage-level terciles: benching point estimates concentrate at high-wage clubs (`-4.9pp`, `p = 0.009`) but the joint interaction is null (`p = 0.77`) — no defensible wage-level heterogeneity.
+- Wages-to-revenue terciles: significant interaction for playing (`p = 0.028`) with a monotone gradient — financially relaxed clubs bench Bosman-window players most (`-4.8pp`, `p = 0.016`), high-pressure clubs not at all. Consistent with squad-depth slack enabling disengagement.
+- Rating interactions are the familiar mean-rating/minutes artifact; minutes-weighted ratings are null in every financial cell.
+- Caveats: only ~200 clubs (big-league skewed) carry financials; an earlier U-shape by wage level vanished when terciles were correctly assigned per club x league — treat all financial splits as descriptive.
+
 ## Selection Into Playing (Extensive Margin)
 
 `run_fotmob_selection_margin.R` estimates whether contract status predicts playing itself, on the FULL panels (152,817 player-months) with always-observed Transfermarkt outcomes (`fotmob_selection_margin_results.csv`).

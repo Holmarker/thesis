@@ -66,7 +66,13 @@
       "Bash(awk '{print $2, $9}')",
       "Bash(kill 80830 80832 80833)",
       "Bash(git commit -q -m 'Add scraping runbook for running scrapes on another machine *)",
-      "Bash(git commit -q -m 'Merge full 2024/25 multi-league scrape; rerun entire analysis suite *)"
+      "Bash(git commit -q -m 'Merge full 2024/25 multi-league scrape; rerun entire analysis suite *)",
+      "Bash(Rscript -e ' *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_wage_heterogeneity.R)",
+      "Bash(grep -vE 'advarsel|pakke|NOTE|Vedhaefter|maskerede|date, intersect|^$|intersect|filter, lag')",
+      "Bash(grep -vE 'advarsel|pakke|NOTE|Vedhaefter|maskerede|date, intersect|^$|intersect|filter, lag|Advarsel')",
+      "Bash(grep -vE 'advarsel|pakke|NOTE|Vedhaefter|maskerede|date, intersect|^$|intersect|filter, lag|Advarsel|many-to-many|Detected|Row|silence')",
+      "Bash(git commit -q -m 'Club financial heterogeneity: wages and wages-to-revenue splits *)"
     ]
   }
 }
