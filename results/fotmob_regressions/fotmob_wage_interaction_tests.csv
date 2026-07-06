@@ -1,5 +1,5 @@
 test,outcome_name,joint_p,n_inter_terms,nobs
-bosman_x_wage_tercile,played,0.7654219164175782,2,41711
-bosman_x_wage_tercile,z_mean,0.005671617896202765,2,37263
-bosman_x_wtr_tercile,played,0.027501306398588266,2,41711
-bosman_x_wtr_tercile,z_mean,0.12317942888767779,2,37263
+bosman_x_wage_tercile,played,0.9727784228500864,2,37878
+bosman_x_wage_tercile,z_mean,0.009119166485718144,2,33903
+bosman_x_wtr_tercile,played,0.2950062875595847,2,37878
+bosman_x_wtr_tercile,z_mean,0.055015438543627275,2,33903

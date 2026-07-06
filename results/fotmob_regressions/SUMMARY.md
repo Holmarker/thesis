@@ -76,13 +76,12 @@ Full measurement diagnostics are consolidated in `../fotmob_descriptives/RATING_
 
 ## Club Financial Heterogeneity (wages, wages-to-revenue)
 
-`run_fotmob_wage_heterogeneity.R` matches OTP club financials (`data/all_clubs_financial_data.xlsx`; 2022-2025 wage averages) to panel clubs by name within league (match table: `club_wage_match_table.csv`; terciles are league-relative and league-specific, so promoted/relegated clubs are classified relative to the league they play in). Results: `fotmob_wage_heterogeneity_results.csv`, `fotmob_wtr_heterogeneity_results.csv`, joint tests in `fotmob_wage_interaction_tests.csv`.
+`run_fotmob_wage_heterogeneity.R` matches OTP club financials (`data/all_clubs_financial_data.xlsx`, updated 2026-07-06 with FY2025 for 254 clubs) to panel clubs by name within league (`club_wage_match_table.csv`). Financial variables are assigned **season-lagged**: each season uses the financial year ending at its start (2022/23 -> FY2022, ..., 2025/26 -> FY2025) — strictly backward-looking, no future information. Terciles are league-relative and league-specific.
 
-- Wage-level terciles: benching point estimates concentrate at high-wage clubs (`-4.9pp`, `p = 0.009`) but the joint interaction is null (`p = 0.77`) — no defensible wage-level heterogeneity.
-- Wages-to-revenue terciles: significant interaction for playing (`p = 0.028`) with a monotone gradient — financially relaxed clubs bench Bosman-window players most (`-4.8pp`, `p = 0.016`), high-pressure clubs not at all. Consistent with squad-depth slack enabling disengagement.
-- Rating interactions are the familiar mean-rating/minutes artifact; minutes-weighted ratings are null in every financial cell.
-- Global (cross-league) EUR wage quintiles (`fotmob_wage_quintile_results.csv`; approximate 2022-25 FX): the benching effect is clear in the top-20% quintile (`-5.4pp`, `p = 0.0007`, where most covered observations sit) and undetectable below, but cells below the top are thin (n = 1.4k-12k) and the joint interaction is null (`p = 0.93`) — the data cannot establish global wage-level differences.
-- Caveats: only ~200 clubs (big-league skewed) carry financials; an earlier U-shape by wage level vanished when terciles were correctly assigned per club x league — treat all financial splits as descriptive.
+- Benching near expiry is confirmed within the financially documented subsample (high-wage cell `-4.4pp`, `p = 0.02`; low-financial-pressure cell `-4.8pp`, `p = 0.02`).
+- But no financial split is formally distinguishable: joint interaction tests are `p = 0.97` (wage terciles x playing) and `p = 0.30` (wages-to-revenue x playing). An earlier significant wages-to-revenue gradient (`p = 0.028`) was obtained under improper time-averaged assignment and did not survive proper lagging — recorded here deliberately as a robustness lesson.
+- Rating outcomes: null in essentially all financial cells (isolated `p ~ 0.03` singletons consistent with multiple testing).
+- Coverage caveat: ~270 clubs, big-league skewed; global EUR quintile analysis is underpowered under season-specific assignment.
 
 ## Selection Into Playing (Extensive Margin)
 

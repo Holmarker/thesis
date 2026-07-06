@@ -46,22 +46,31 @@ token_sim <- function(a, b) {
 }
 
 # ---- club wage ranks within league ----
-fin <- read.xlsx(fin_path, sheet = 1) %>%
+# Season-lagged design: each panel season uses the financial year ending
+# just before the season starts (season 2022/23 -> FY2022, ... 2025/26 ->
+# FY2025). Strictly backward-looking: no future financial information.
+fin_yearly <- read.xlsx(fin_path, sheet = 1) %>%
   filter(account_name == "Wages", !is.na(value), year >= 2022,
          !grepl("^League", club_name)) %>%
   mutate(value = abs(value)) %>%
   filter(value > 0) %>%
-  group_by(league, club_id, club_name) %>%
-  summarise(mean_wage_local = mean(value), n_years = n(), .groups = "drop") %>%
-  group_by(league) %>%
+  group_by(league, year, club_id, club_name) %>%
+  summarise(wage_local = mean(value), .groups = "drop") %>%
+  group_by(league, year) %>%
   mutate(
-    wage_rank = rank(-mean_wage_local),
+    wage_rank = rank(-wage_local),
     n_clubs = n(),
-    wage_tercile = cut(percent_rank(mean_wage_local),
+    wage_tercile = cut(percent_rank(wage_local),
                        breaks = c(-Inf, 1 / 3, 2 / 3, Inf),
                        labels = c("low_wage", "mid_wage", "high_wage"))
   ) %>%
-  ungroup()
+  ungroup() %>%
+  mutate(season = paste0(year, "/", year + 1))
+
+# club-level (any-year) table used only for name matching
+fin <- fin_yearly %>%
+  group_by(league, club_id, club_name) %>%
+  summarise(mean_wage_local = mean(wage_local), n_years = n(), .groups = "drop")
 
 # ---- match panel clubs to financial clubs within league ----
 panel_clubs <- read_csv(panel_path, show_col_types = FALSE) %>%
@@ -80,7 +89,7 @@ matches <- panel_clubs %>%
   group_by(league, club_id) %>%
   slice_max(sim, n = 1, with_ties = FALSE) %>%
   ungroup() %>%
-  select(league, ClubID, Club, fin_club = club_name, wage_tercile, wage_rank, n_clubs, sim)
+  select(league, ClubID, Club, fin_club = club_name, sim)
 
 write_csv(matches, file.path(results_dir, "club_wage_match_table.csv"), na = "")
 message("matched clubs: ", nrow(matches), " of ", nrow(panel_clubs),
@@ -108,8 +117,11 @@ prep <- function(path) {
            Minutes_tm = as.numeric(Minutes_tm),
            played = coalesce(Minutes_tm, 0) > 0,
            season = football_season(Month)) %>%
-    left_join(matches %>% select(league, ClubID, wage_tercile),
+    left_join(matches %>% select(league, ClubID, fin_club),
               by = c("ClubID", "fotmob_source_league" = "league")) %>%
+    left_join(fin_yearly %>% select(league, season, club_name, wage_tercile),
+              by = c("fotmob_source_league" = "league", "season",
+                     "fin_club" = "club_name")) %>%
     group_by(fotmob_source_league, season) %>%
     mutate(z_mean = standardize_within(fotmob_mean_rating),
            z_weighted = standardize_within(fotmob_minutes_weighted_rating)) %>%
@@ -163,25 +175,24 @@ message("Saved to ", file.path(results_dir, "fotmob_wage_heterogeneity_results.c
 
 # ---- formal interaction tests and wages-to-revenue split ----
 
-wtr <- read.xlsx(fin_path, sheet = 1) %>%
+wtr_yearly <- read.xlsx(fin_path, sheet = 1) %>%
   filter(account_name == "Wages-to-revenue", !is.na(value), year >= 2022,
          !grepl("^League", club_name)) %>%
   mutate(value = abs(value)) %>%
-  group_by(league, club_id, club_name) %>%
-  summarise(mean_wtr = mean(value), .groups = "drop") %>%
-  group_by(league) %>%
-  mutate(wtr_tercile = cut(percent_rank(mean_wtr),
+  group_by(league, year, club_name) %>%
+  summarise(wtr = mean(value), .groups = "drop") %>%
+  group_by(league, year) %>%
+  mutate(wtr_tercile = cut(percent_rank(wtr),
                            breaks = c(-Inf, 1 / 3, 2 / 3, Inf),
                            labels = c("low_pressure", "mid_pressure", "high_pressure"))) %>%
   ungroup() %>%
-  select(league, club_name, wtr_tercile)
-
-matches_wtr <- matches %>%
-  left_join(wtr, by = c("league", "fin_club" = "club_name"))
+  mutate(season = paste0(year, "/", year + 1)) %>%
+  select(league, season, club_name, wtr_tercile)
 
 add_wtr <- function(df) {
-  df %>% left_join(matches_wtr %>% select(league, ClubID, wtr_tercile),
-                   by = c("ClubID", "fotmob_source_league" = "league"))
+  df %>% left_join(wtr_yearly,
+                   by = c("fotmob_source_league" = "league", "season",
+                          "fin_club" = "club_name"))
 }
 strict <- add_wtr(strict)
 full <- add_wtr(full)
@@ -241,19 +252,20 @@ fin_eur <- read.xlsx(fin_path, sheet = 1) %>%
          !grepl("^League", club_name)) %>%
   mutate(value = abs(value), fx_rate = fx[local_currency]) %>%
   filter(!is.na(fx_rate), value > 0) %>%
-  group_by(league, club_id, club_name) %>%
+  group_by(league, year, club_name) %>%
   summarise(wage_eur = mean(value * fx_rate), .groups = "drop") %>%
+  group_by(year) %>%
   mutate(wage_quintile = cut(percent_rank(wage_eur),
                              breaks = c(-Inf, .2, .4, .6, .8, Inf),
-                             labels = c("q1_bottom20", "q2", "q3", "q4", "q5_top20")))
-
-matches_q <- matches %>%
-  left_join(fin_eur %>% select(league, club_name, wage_eur, wage_quintile),
-            by = c("league", "fin_club" = "club_name"))
+                             labels = c("q1_bottom20", "q2", "q3", "q4", "q5_top20"))) %>%
+  ungroup() %>%
+  mutate(season = paste0(year, "/", year + 1)) %>%
+  select(league, season, club_name, wage_quintile)
 
 add_q <- function(df) {
-  df %>% left_join(matches_q %>% select(league, ClubID, wage_quintile),
-                   by = c("ClubID", "fotmob_source_league" = "league"))
+  df %>% left_join(fin_eur,
+                   by = c("fotmob_source_league" = "league", "season",
+                          "fin_club" = "club_name"))
 }
 strict <- add_q(strict)
 full <- add_q(full)
