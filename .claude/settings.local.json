@@ -74,7 +74,9 @@
       "Bash(grep -vE 'advarsel|pakke|NOTE|Vedhaefter|maskerede|date, intersect|^$|intersect|filter, lag|Advarsel|many-to-many|Detected|Row|silence')",
       "Bash(git commit -q -m 'Club financial heterogeneity: wages and wages-to-revenue splits *)",
       "Bash(git commit -q -m 'Add global EUR wage quintiles to financial heterogeneity *)",
-      "Bash(git commit -q -m 'Season-lagged financial assignment; wages-to-revenue gradient does not survive *)"
+      "Bash(git commit -q -m 'Season-lagged financial assignment; wages-to-revenue gradient does not survive *)",
+      "Bash(cp /private/tmp/claude-501/-Users-magnu-Library-CloudStorage-OneDrive-Personligt-Desktop-AU-Speciale-RSpeciale/231667e9-d6f2-494c-9366-6194bceccbb6/scratchpad/wage_cont.R scripts/04_analysis/run_fotmob_wage_continuous_tests.R)",
+      "Bash(git commit -q -m 'Pre-declared continuous wage interaction tests *)"
     ]
   }
 }

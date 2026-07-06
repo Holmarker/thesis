@@ -82,6 +82,7 @@ Full measurement diagnostics are consolidated in `../fotmob_descriptives/RATING_
 - But no financial split is formally distinguishable: joint interaction tests are `p = 0.97` (wage terciles x playing) and `p = 0.30` (wages-to-revenue x playing). An earlier significant wages-to-revenue gradient (`p = 0.028`) was obtained under improper time-averaged assignment and did not survive proper lagging — recorded here deliberately as a robustness lesson.
 - Rating outcomes: null in essentially all financial cells (isolated `p ~ 0.03` singletons consistent with multiple testing).
 - Coverage caveat: ~270 clubs, big-league skewed; global EUR quintile analysis is underpowered under season-specific assignment.
+- Continuous pre-declared tests (`run_fotmob_wage_continuous_tests.R`): Bosman x wage percentile is null (`p = 0.55`, closing the wage-level question); Bosman x wages-to-revenue percentile is `+0.070`, `p = 0.051` — the Bosman benching is `-7.0pp` at the most financially relaxed clubs and shrinks toward zero as wage-to-revenue pressure rises. Season-lagged, higher-powered, same direction as the tercile gradient: report as suggestive evidence for a squad-slack mechanism, not an established difference (one of two declared tests; Bonferroni-adjusted it is `p ~ 0.10`).
 
 ## Selection Into Playing (Extensive Margin)
 
