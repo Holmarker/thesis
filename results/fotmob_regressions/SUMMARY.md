@@ -81,6 +81,7 @@ Full measurement diagnostics are consolidated in `../fotmob_descriptives/RATING_
 - Wage-level terciles: benching point estimates concentrate at high-wage clubs (`-4.9pp`, `p = 0.009`) but the joint interaction is null (`p = 0.77`) — no defensible wage-level heterogeneity.
 - Wages-to-revenue terciles: significant interaction for playing (`p = 0.028`) with a monotone gradient — financially relaxed clubs bench Bosman-window players most (`-4.8pp`, `p = 0.016`), high-pressure clubs not at all. Consistent with squad-depth slack enabling disengagement.
 - Rating interactions are the familiar mean-rating/minutes artifact; minutes-weighted ratings are null in every financial cell.
+- Global (cross-league) EUR wage quintiles (`fotmob_wage_quintile_results.csv`; approximate 2022-25 FX): the benching effect is clear in the top-20% quintile (`-5.4pp`, `p = 0.0007`, where most covered observations sit) and undetectable below, but cells below the top are thin (n = 1.4k-12k) and the joint interaction is null (`p = 0.93`) — the data cannot establish global wage-level differences.
 - Caveats: only ~200 clubs (big-league skewed) carry financials; an earlier U-shape by wage level vanished when terciles were correctly assigned per club x league — treat all financial splits as descriptive.
 
 ## Selection Into Playing (Extensive Margin)

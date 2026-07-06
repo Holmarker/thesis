@@ -1,0 +1,3 @@
+test,outcome_name,joint_p,n_inter_terms,nobs
+bosman_x_wage_quintile,played,0.9322799640349104,4,41711
+bosman_x_wage_quintile,z_weighted,0.19808640626790075,4,37263

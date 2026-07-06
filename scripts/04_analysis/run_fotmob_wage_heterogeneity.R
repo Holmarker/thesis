@@ -229,3 +229,54 @@ for (tc in c("low_pressure", "mid_pressure", "high_pressure")) {
 wtr_out <- bind_rows(wtr_results)
 write_csv(wtr_out, file.path(results_dir, "fotmob_wtr_heterogeneity_results.csv"), na = "")
 print(as.data.frame(wtr_out), digits = 3)
+
+# ---- global (cross-league) wage quintiles in EUR ----
+# Approximate average 2022-2025 FX rates to EUR; adequate for quintile
+# bucketing (a bucket misassignment would require a quintile-sized FX error).
+fx <- c("&#8364;'m" = 1, "&#163;'m" = 1.16, "BRL'm" = 0.18,
+        "DKK'm" = 0.134, "SEK'm" = 0.088, "NOK'm" = 0.087, "TRY'm" = 0.032)
+
+fin_eur <- read.xlsx(fin_path, sheet = 1) %>%
+  filter(account_name == "Wages", !is.na(value), year >= 2022,
+         !grepl("^League", club_name)) %>%
+  mutate(value = abs(value), fx_rate = fx[local_currency]) %>%
+  filter(!is.na(fx_rate), value > 0) %>%
+  group_by(league, club_id, club_name) %>%
+  summarise(wage_eur = mean(value * fx_rate), .groups = "drop") %>%
+  mutate(wage_quintile = cut(percent_rank(wage_eur),
+                             breaks = c(-Inf, .2, .4, .6, .8, Inf),
+                             labels = c("q1_bottom20", "q2", "q3", "q4", "q5_top20")))
+
+matches_q <- matches %>%
+  left_join(fin_eur %>% select(league, club_name, wage_eur, wage_quintile),
+            by = c("league", "fin_club" = "club_name"))
+
+add_q <- function(df) {
+  df %>% left_join(matches_q %>% select(league, ClubID, wage_quintile),
+                   by = c("ClubID", "fotmob_source_league" = "league"))
+}
+strict <- add_q(strict)
+full <- add_q(full)
+
+q_results <- list()
+for (q in levels(fin_eur$wage_quintile)) {
+  for (spec in list(list(d = full %>% filter(wage_quintile == q), oc = "played", pn = "full"),
+                    list(d = strict %>% filter(wage_quintile == q), oc = "z_weighted", pn = "strict"))) {
+    m <- tryCatch(
+      feols(as.formula(paste0(spec$oc, " ~ Bosman | player_spell + league_month")),
+            data = spec$d, cluster = ~player_id),
+      error = function(e) NULL
+    )
+    if (!is.null(m)) q_results[[length(q_results) + 1]] <- tidy_row(m, spec$oc, q, spec$pn)
+  }
+}
+q_out <- bind_rows(q_results)
+write_csv(q_out, file.path(results_dir, "fotmob_wage_quintile_results.csv"), na = "")
+print(as.data.frame(q_out), digits = 3)
+
+qtest <- bind_rows(
+  interaction_test(full, "played", "wage_quintile", "bosman_x_wage_quintile"),
+  interaction_test(strict, "z_weighted", "wage_quintile", "bosman_x_wage_quintile")
+)
+write_csv(qtest, file.path(results_dir, "fotmob_wage_quintile_interaction.csv"), na = "")
+print(as.data.frame(qtest))
