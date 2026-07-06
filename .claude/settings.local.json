@@ -83,7 +83,8 @@
       "Bash(sed -i '' 's/else 10000L/else 100000L/; s/cohort < 10000/cohort < 100000/g' scripts/04_analysis/run_fotmob_renewal_sunab.R)",
       "Bash(git rm *)",
       "Bash(rm -f scripts/04_analysis/run_fotmob_renewal_sunab.R results/fotmob_regressions/fotmob_renewal_sunab_dynamic.csv)",
-      "Bash(git commit -q -m 'Remove broken Sun-Abraham draft \\(abandoned\\) *)"
+      "Bash(git commit -q -m 'Remove broken Sun-Abraham draft \\(abandoned\\) *)",
+      "Bash(git commit -q -m 'Restore full strict panel; win/event controls as supplement, not filter *)"
     ]
   }
 }

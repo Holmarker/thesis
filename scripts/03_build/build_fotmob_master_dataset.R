@@ -3,12 +3,24 @@ library(readr)
 library(stringr)
 library(tibble)
 
-crosswalk_path <- "RSpeciale/data/fotmob_transfermarkt_crosswalk_confirmed.csv"
-ratings_clean_path <- "RSpeciale/data/fotmob_ratings_clean.csv"
-monthly_all_path <- "RSpeciale/data/fotmob_ratings_monthly_all_comps.csv"
-monthly_league_path <- "RSpeciale/data/fotmob_ratings_monthly_source_league.csv"
-historical_root <- "RSpeciale/data/historical"
-master_dir <- "RSpeciale/data/master"
+resolve_path <- function(...) {
+  rel_path <- file.path(...)
+  candidates <- c(rel_path, file.path("RSpeciale", rel_path))
+  existing <- candidates[file.exists(candidates) | dir.exists(candidates)]
+
+  if (length(existing) > 0) {
+    return(existing[[1]])
+  }
+
+  candidates[[1]]
+}
+
+crosswalk_path <- resolve_path("data", "fotmob_transfermarkt_crosswalk_confirmed.csv")
+ratings_clean_path <- resolve_path("data", "fotmob_ratings_clean.csv")
+monthly_all_path <- resolve_path("data", "fotmob_ratings_monthly_all_comps.csv")
+monthly_league_path <- resolve_path("data", "fotmob_ratings_monthly_source_league.csv")
+historical_root <- resolve_path("data", "historical")
+master_dir <- resolve_path("data", "master")
 
 match_out <- file.path(master_dir, "fotmob_master_match_ratings.csv")
 monthly_all_out <- file.path(master_dir, "fotmob_master_monthly_all_comps.csv")
@@ -134,6 +146,12 @@ load_monthly_ratings <- function(path, crosswalk, monthly_scope) {
       assists = as.integer(assists),
       yellow_cards = as.integer(yellow_cards),
       red_cards = as.integer(red_cards),
+      result_matches = as.integer(result_matches),
+      wins = as.integer(wins),
+      draws = as.integer(draws),
+      losses = as.integer(losses),
+      win_share = as.numeric(win_share),
+      result_points_per_match = as.numeric(result_points_per_match),
       mean_rating = as.numeric(mean_rating),
       minutes_weighted_rating = as.numeric(minutes_weighted_rating),
       top_ratings = as.integer(top_ratings),

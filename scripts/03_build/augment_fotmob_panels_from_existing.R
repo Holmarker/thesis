@@ -9,6 +9,8 @@ path_in <- function(...) {
   file.path(project_root, ...)
 }
 
+crosswalk_path <- path_in("data", "fotmob_transfermarkt_crosswalk_confirmed.csv")
+
 make_expiry_bin <- function(days_to_expiry) {
   cut(
     days_to_expiry,
@@ -90,12 +92,33 @@ read_panel <- function(path) {
 }
 
 read_monthly_master <- function(path) {
-  read_csv(path, show_col_types = FALSE) %>%
-    mutate(
+  monthly <- read_csv(path, show_col_types = FALSE) %>%
+    mutate(fotmob_player_id = as.integer(fotmob_player_id), Month = as.Date(Month))
+
+  if ("tm_player_id" %in% names(monthly)) {
+    return(monthly %>%
+      mutate(
+        tm_player_id = as.integer(tm_player_id),
+        fotmob_player_id = as.integer(fotmob_player_id),
+        Month = as.Date(Month)
+      ))
+  }
+
+  crosswalk <- read_csv(crosswalk_path, show_col_types = FALSE) %>%
+    filter(approved, merge_safe) %>%
+    transmute(
       tm_player_id = as.integer(tm_player_id),
       fotmob_player_id = as.integer(fotmob_player_id),
-      Month = as.Date(Month)
+      fotmob_position_group = position_group,
+      fotmob_squad_role = squad_role,
+      source_league_id = as.integer(source_league_id),
+      source_league_name,
+      crosswalk_match_method = match_method,
+      crosswalk_candidate_score = as.numeric(candidate_score)
     )
+
+  monthly %>%
+    inner_join(crosswalk, by = c("fotmob_player_id", "source_league_id", "source_league_name"))
 }
 
 fotmob_cols <- c(
@@ -113,6 +136,12 @@ fotmob_cols <- c(
   "fotmob_assists",
   "fotmob_yellow_cards",
   "fotmob_red_cards",
+  "fotmob_result_matches",
+  "fotmob_wins",
+  "fotmob_draws",
+  "fotmob_losses",
+  "fotmob_win_share",
+  "fotmob_result_points_per_match",
   "fotmob_mean_rating",
   "fotmob_minutes_weighted_rating",
   "fotmob_top_ratings",
@@ -143,6 +172,12 @@ monthly_to_panel_cols <- function(monthly_master) {
       fotmob_assists = assists,
       fotmob_yellow_cards = yellow_cards,
       fotmob_red_cards = red_cards,
+      fotmob_result_matches = result_matches,
+      fotmob_wins = wins,
+      fotmob_draws = draws,
+      fotmob_losses = losses,
+      fotmob_win_share = win_share,
+      fotmob_result_points_per_match = result_points_per_match,
       fotmob_mean_rating = mean_rating,
       fotmob_minutes_weighted_rating = minutes_weighted_rating,
       fotmob_top_ratings = top_ratings,
@@ -212,11 +247,32 @@ augment_panel <- function(panel, monthly_master) {
     arrange(player_id, Month)
 }
 
-write_augmented_panel <- function(panel_path, strict_path, monthly_path) {
+win_cols <- c("result_matches", "wins", "draws", "losses",
+              "win_share", "result_points_per_match")
+
+read_win_supplement <- function(live_monthly_path) {
+  read_csv(live_monthly_path, show_col_types = FALSE) %>%
+    mutate(fotmob_player_id = as.integer(fotmob_player_id),
+           Month = as.Date(Month)) %>%
+    filter(!is.na(fotmob_player_id), !is.na(Month)) %>%
+    group_by(fotmob_player_id, Month) %>%
+    slice_max(coalesce(result_matches, 0L), n = 1, with_ties = FALSE) %>%
+    ungroup() %>%
+    select(fotmob_player_id, Month, all_of(win_cols))
+}
+
+write_augmented_panel <- function(panel_path, strict_path, master_path,
+                                  live_monthly_path) {
   panel <- read_panel(panel_path)
-  monthly_master <- read_monthly_master(monthly_path)
+  monthly_master <- read_monthly_master(master_path)
+  # master monthly lacks match-result columns; join them from the
+  # fixtures-linked live monthly aggregates where available
+  monthly_master <- monthly_master %>%
+    select(-any_of(win_cols)) %>%
+    left_join(read_win_supplement(live_monthly_path),
+              by = c("fotmob_player_id", "Month"))
   augmented <- augment_panel(panel, monthly_master)
-  augmented <- augmented %>% select(all_of(names(panel)))
+  augmented <- augmented %>% select(any_of(unique(c(names(panel), fotmob_cols))))
 
   strict <- augmented %>%
     filter(
@@ -241,12 +297,14 @@ results <- bind_rows(
   write_augmented_panel(
     path_in("data", "panel", "fotmob_analysis_panel_all_comps.csv"),
     path_in("data", "panel", "fotmob_analysis_panel_all_comps_strict.csv"),
-    path_in("data", "master", "fotmob_master_monthly_all_comps.csv")
+    path_in("data", "master", "fotmob_master_monthly_all_comps.csv"),
+    path_in("data", "fotmob_ratings_monthly_all_comps.csv")
   ),
   write_augmented_panel(
     path_in("data", "panel", "fotmob_analysis_panel_source_league.csv"),
     path_in("data", "panel", "fotmob_analysis_panel_source_league_strict.csv"),
-    path_in("data", "master", "fotmob_master_monthly_source_league.csv")
+    path_in("data", "master", "fotmob_master_monthly_source_league.csv"),
+    path_in("data", "fotmob_ratings_monthly_source_league.csv")
   )
 )
 

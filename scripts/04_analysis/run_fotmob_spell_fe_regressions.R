@@ -48,6 +48,10 @@ load_panel <- function(path) {
       Bosman = as.logical(Bosman),
       player_id = as.integer(player_id),
       DaysToExpiry = as.numeric(DaysToExpiry),
+      fotmob_goals = as.numeric(fotmob_goals),
+      fotmob_assists = as.numeric(fotmob_assists),
+      fotmob_minutes = as.numeric(fotmob_minutes),
+      fotmob_win_share = as.numeric(fotmob_win_share),
       season = football_season(Month)
     ) %>%
     group_by(fotmob_source_league, season) %>%
@@ -71,6 +75,15 @@ load_panel <- function(path) {
 }
 
 outcome_vars <- c("z_mean_rating_league_season", "z_weighted_rating_league_season")
+rating_control_rhs <- "fotmob_goals + fotmob_assists + fotmob_win_share"
+win_control_rhs <- "fotmob_win_share"
+
+control_specs <- tribble(
+  ~control_set, ~suffix, ~rhs,
+  "none", "", "",
+  "win", "_win_control", win_control_rhs,
+  "events", "_event_controls", rating_control_rhs
+)
 
 specs <- tribble(
   ~spec_name, ~fe,
@@ -97,6 +110,14 @@ tidy_model <- function(model, model_name, sample_name, outcome_name, spec_name) 
            estimate, std_error, t_value, p_value, nobs, mde_80pct)
 }
 
+fit_rating_model <- function(formula, df, weight_by_minutes) {
+  if (weight_by_minutes) {
+    feols(formula, data = df, cluster = ~player_id, weights = ~fotmob_minutes)
+  } else {
+    feols(formula, data = df, cluster = ~player_id)
+  }
+}
+
 run_specs <- function(df, sample_name) {
   results <- list()
   expiry_df <- df %>% filter(!is.na(expiry_bin_6m))
@@ -105,22 +126,35 @@ run_specs <- function(df, sample_name) {
     fe <- specs$fe[i]
     sn <- specs$spec_name[i]
     for (outcome in outcome_vars) {
-      results[[length(results) + 1]] <- tryCatch(
-        tidy_model(
-          feols(as.formula(paste0(outcome, " ~ Bosman | ", fe)),
-                data = df, cluster = ~player_id),
-          "bosman", sample_name, outcome, sn
-        ),
-        error = function(e) NULL
-      )
-      results[[length(results) + 1]] <- tryCatch(
-        tidy_model(
-          feols(as.formula(paste0(outcome, ' ~ i(expiry_bin_6m, ref = "24:30") | ', fe)),
-                data = expiry_df, cluster = ~player_id),
-          "expiry_bin_6m", sample_name, outcome, sn
-        ),
-        error = function(e) NULL
-      )
+      for (j in seq_len(nrow(control_specs))) {
+        controls <- if (nzchar(control_specs$rhs[j])) paste0(" + ", control_specs$rhs[j]) else ""
+        suffix <- control_specs$suffix[j]
+        for (weight_by_minutes in c(FALSE, TRUE)) {
+          weight_suffix <- if_else(weight_by_minutes, "_minute_weighted", "")
+          results[[length(results) + 1]] <- tryCatch(
+            tidy_model(
+              fit_rating_model(
+                as.formula(paste0(outcome, " ~ Bosman", controls, " | ", fe)),
+                df,
+                weight_by_minutes
+              ),
+              paste0("bosman", suffix, weight_suffix), sample_name, outcome, sn
+            ),
+            error = function(e) NULL
+          )
+          results[[length(results) + 1]] <- tryCatch(
+            tidy_model(
+              fit_rating_model(
+                as.formula(paste0(outcome, ' ~ i(expiry_bin_6m, ref = "24:30")', controls, ' | ', fe)),
+                expiry_df,
+                weight_by_minutes
+              ),
+              paste0("expiry_bin_6m", suffix, weight_suffix), sample_name, outcome, sn
+            ),
+            error = function(e) NULL
+          )
+        }
+      }
     }
   }
   bind_rows(results)

@@ -6,6 +6,7 @@ library(tibble)
 
 ratings_checkpoint_dir <- "data/checkpoints/ratings"
 historical_ratings_checkpoint_dir <- "data/historical/checkpoints/ratings"
+historical_fixture_dir <- "data/historical/match_fixtures"
 clean_row_out <- "data/fotmob_ratings_clean.csv"
 monthly_all_out <- "data/fotmob_ratings_monthly_all_comps.csv"
 monthly_league_out <- "data/fotmob_ratings_monthly_source_league.csv"
@@ -49,6 +50,10 @@ decode_fotmob_text <- function(x) {
   )
 }
 
+parse_fotmob_date <- function(x) {
+  suppressWarnings(as.Date(ymd(x)))
+}
+
 coerce_ratings <- function(df) {
   df %>%
     ensure_columns(list(
@@ -69,7 +74,7 @@ coerce_ratings <- function(df) {
       opponent_team_id = as.integer(opponent_team_id),
       opponent_team_name = decode_fotmob_text(as.character(opponent_team_name)),
       match_id = as.integer(match_id),
-      match_date = as.Date(match_date),
+      match_date = parse_fotmob_date(match_date),
       match_page_url = as.character(match_page_url),
       league_id = as.integer(league_id),
       league_name = decode_fotmob_text(as.character(league_name)),
@@ -118,6 +123,59 @@ list_rating_files <- function(path) {
   )
 }
 
+list_fixture_files <- function(path) {
+  if (!dir.exists(path)) {
+    return(character())
+  }
+
+  list.files(
+    path,
+    pattern = "_fixtures\\.csv$",
+    full.names = TRUE,
+    recursive = TRUE
+  )
+}
+
+parse_fixture_results <- function(path) {
+  read_ratings_csv(path) %>%
+    ensure_columns(list(
+      match_id = NA_character_,
+      home_team_id = NA_character_,
+      away_team_id = NA_character_,
+      score = NA_character_
+    )) %>%
+    transmute(
+      match_id = as.integer(match_id),
+      home_team_id = as.integer(home_team_id),
+      away_team_id = as.integer(away_team_id),
+      score = as.character(score)
+    ) %>%
+    mutate(
+      score_parts = str_match(score, "^\\s*([0-9]+)\\s*-\\s*([0-9]+)\\s*$"),
+      home_score = as.integer(score_parts[, 2]),
+      away_score = as.integer(score_parts[, 3])
+    ) %>%
+    select(-score_parts) %>%
+    filter(!is.na(match_id), !is.na(home_score), !is.na(away_score))
+}
+
+load_fixture_results <- function() {
+  fixture_files <- list_fixture_files(historical_fixture_dir)
+
+  if (length(fixture_files) == 0) {
+    return(tibble(
+      match_id = integer(),
+      home_team_id = integer(),
+      away_team_id = integer(),
+      home_score = integer(),
+      away_score = integer()
+    ))
+  }
+
+  bind_rows(lapply(fixture_files, parse_fixture_results)) %>%
+    distinct(match_id, .keep_all = TRUE)
+}
+
 weighted_mean_safe <- function(x, w) {
   keep <- !is.na(x) & !is.na(w) & w > 0
   if (!any(keep)) {
@@ -141,6 +199,16 @@ summarise_monthly <- function(df) {
       assists = sum(assists, na.rm = TRUE),
       yellow_cards = sum(yellow_cards, na.rm = TRUE),
       red_cards = sum(red_cards, na.rm = TRUE),
+      result_matches = sum(!is.na(team_win)),
+      wins = sum(coalesce(team_win, FALSE), na.rm = TRUE),
+      draws = sum(coalesce(team_draw, FALSE), na.rm = TRUE),
+      losses = sum(coalesce(team_loss, FALSE), na.rm = TRUE),
+      win_share = if_else(result_matches > 0, wins / result_matches, NA_real_),
+      result_points_per_match = if_else(
+        result_matches > 0,
+        (wins * 3 + draws) / result_matches,
+        NA_real_
+      ),
       mean_rating = mean(rating, na.rm = TRUE),
       mean_rating = if_else(is.nan(mean_rating), NA_real_, mean_rating),
       minutes_weighted_rating = weighted_mean_safe(rating, minutes_played),
@@ -181,6 +249,9 @@ if (length(rating_files) == 0) {
 
 message("Reading ratings checkpoints: ", length(rating_files))
 
+fixture_results <- load_fixture_results()
+message("Loaded fixture results for matches: ", nrow(fixture_results))
+
 ratings_raw <- bind_rows(lapply(seq_along(rating_files), function(i) {
   path <- rating_files[[i]]
   message("Reading checkpoint ", i, "/", length(rating_files), ": ", basename(path))
@@ -201,6 +272,23 @@ ratings_raw <- bind_rows(lapply(seq_along(rating_files), function(i) {
     is_source_league_match = league_id == source_league_id,
     has_minutes = coalesce(minutes_played, 0L) > 0L,
     has_valid_rating = !is.na(rating) & rating > 0
+  ) %>%
+  left_join(fixture_results, by = "match_id") %>%
+  mutate(
+    team_score = case_when(
+      fotmob_team_id == home_team_id ~ home_score,
+      fotmob_team_id == away_team_id ~ away_score,
+      TRUE ~ NA_integer_
+    ),
+    opponent_score = case_when(
+      fotmob_team_id == home_team_id ~ away_score,
+      fotmob_team_id == away_team_id ~ home_score,
+      TRUE ~ NA_integer_
+    ),
+    team_goal_diff = team_score - opponent_score,
+    team_win = !is.na(team_goal_diff) & team_goal_diff > 0,
+    team_draw = !is.na(team_goal_diff) & team_goal_diff == 0,
+    team_loss = !is.na(team_goal_diff) & team_goal_diff < 0
   ) %>%
   arrange(source_league_name, fotmob_player_name, match_date, match_id)
 

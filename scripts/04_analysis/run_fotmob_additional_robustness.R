@@ -42,12 +42,19 @@ panel <- read_csv(panel_path, show_col_types = FALSE) %>%
     player_id = as.integer(player_id),
     DaysToExpiry = as.numeric(DaysToExpiry),
     Minutes_tm = as.numeric(Minutes_tm),
+    fotmob_minutes = as.numeric(fotmob_minutes),
+    fotmob_goals = as.numeric(fotmob_goals),
+    fotmob_assists = as.numeric(fotmob_assists),
+    fotmob_win_share = as.numeric(fotmob_win_share),
     played = coalesce(Minutes_tm, 0) > 0,
     season = football_season(Month)
   ) %>%
   filter(!is.na(DaysToExpiry), DaysToExpiry >= 0) %>%
   group_by(fotmob_source_league, season) %>%
-  mutate(z_ls = standardize_within(fotmob_mean_rating)) %>%
+  mutate(
+    z_ls = standardize_within(fotmob_mean_rating),
+    z_weighted_ls = standardize_within(fotmob_minutes_weighted_rating)
+  ) %>%
   ungroup() %>%
   group_by(fotmob_source_league, season, fotmob_position_group) %>%
   mutate(z_lsp = standardize_within(fotmob_mean_rating)) %>%
@@ -139,3 +146,78 @@ out <- bind_rows(results)
 write_csv(out, file.path(results_dir, "fotmob_additional_robustness.csv"), na = "")
 print(as.data.frame(out))
 message("Saved to ", file.path(results_dir, "fotmob_additional_robustness.csv"))
+
+cluster_specs <- tribble(
+  ~cluster_name, ~cluster_formula,
+  "player", ~player_id,
+  "club", ~ClubID,
+  "player_club", ~player_id + ClubID
+)
+
+model_specs <- tribble(
+  ~spec_name, ~fe,
+  "player_month", "player_id + Month",
+  "spell_leaguemonth", "player_spell + league_month"
+)
+
+control_specs <- tribble(
+  ~control_name, ~rhs,
+  "none", "Bosman",
+  "win_control", "Bosman + fotmob_win_share",
+  "event_controls", "Bosman + fotmob_goals + fotmob_assists + fotmob_win_share"
+)
+
+tidy_cluster_row <- function(model, spec_name, control_name, cluster_name, weighted) {
+  ct <- as_tibble(coeftable(model), rownames = "term") %>%
+    filter(term == "BosmanTRUE")
+  names(ct) <- c("term", "estimate", "std_error", "t_value", "p_value")
+  ct %>%
+    mutate(
+      spec_name = spec_name,
+      control_name = control_name,
+      cluster_name = cluster_name,
+      minute_weighted = weighted,
+      outcome_name = "z_weighted_ls",
+      nobs = nobs(model)
+    ) %>%
+    select(spec_name, control_name, cluster_name, minute_weighted, outcome_name,
+           term, estimate, std_error, t_value, p_value, nobs)
+}
+
+fit_cluster_model <- function(fml, data, cluster_formula, weighted) {
+  if (weighted) {
+    feols(fml, data = data, cluster = cluster_formula, weights = ~fotmob_minutes)
+  } else {
+    feols(fml, data = data, cluster = cluster_formula)
+  }
+}
+
+cluster_results <- list()
+
+for (i in seq_len(nrow(model_specs))) {
+  for (j in seq_len(nrow(control_specs))) {
+    for (k in seq_len(nrow(cluster_specs))) {
+      for (weighted in c(FALSE, TRUE)) {
+        fml <- as.formula(paste0("z_weighted_ls ~ ", control_specs$rhs[j], " | ", model_specs$fe[i]))
+        model <- tryCatch(
+          fit_cluster_model(fml, panel, cluster_specs$cluster_formula[[k]], weighted),
+          error = function(e) NULL
+        )
+        if (!is.null(model)) {
+          cluster_results[[length(cluster_results) + 1]] <- tidy_cluster_row(
+            model,
+            model_specs$spec_name[i],
+            control_specs$control_name[j],
+            cluster_specs$cluster_name[k],
+            weighted
+          )
+        }
+      }
+    }
+  }
+}
+
+cluster_out <- bind_rows(cluster_results)
+write_csv(cluster_out, file.path(results_dir, "fotmob_cluster_robustness.csv"), na = "")
+print(as.data.frame(cluster_out))
+message("Saved to ", file.path(results_dir, "fotmob_cluster_robustness.csv"))

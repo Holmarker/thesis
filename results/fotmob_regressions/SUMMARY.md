@@ -84,6 +84,16 @@ Full measurement diagnostics are consolidated in `../fotmob_descriptives/RATING_
 - Coverage caveat: ~270 clubs, big-league skewed; global EUR quintile analysis is underpowered under season-specific assignment.
 - Continuous pre-declared tests (`run_fotmob_wage_continuous_tests.R`): Bosman x wage percentile is null (`p = 0.55`, closing the wage-level question); Bosman x wages-to-revenue percentile is `+0.070`, `p = 0.051` — the Bosman benching is `-7.0pp` at the most financially relaxed clubs and shrinks toward zero as wage-to-revenue pressure rises. Season-lagged, higher-powered, same direction as the tercile gradient: report as suggestive evidence for a squad-slack mechanism, not an established difference (one of two declared tests; Bonferroni-adjusted it is `p ~ 0.10`).
 
+## Scoreboard Controls (win share, goals, assists)
+
+The spell-FE script now also estimates Bosman models controlling for monthly team win share and for the player's own goals/assists (columns from fixtures-linked match data; available for ~51% of strict rows — league-months with full match-level scrapes). Key readings (z weighted, spell + league-month FE):
+
+- Full sample, no controls: `+0.030`, `p = 0.13` (the familiar null).
+- Win-covered subsample: `+0.077` uncontrolled vs `+0.082` with win-share control — the coefficient is unchanged by controlling for team results; the subsample-level positive is composition (which league-months have match-level data), not a confound revealed or removed.
+- Adding own goals/assists controls shaves the subsample estimate to `+0.033` (`p = 0.15`, minutes-weighted): any flicker runs through goal involvement, as the rating anatomy predicts.
+
+Pipeline note: an intermediate rebuild had restricted the strict panels to win-covered rows (halving them to 33k); `augment_fotmob_panels_from_existing.R` now sources ratings from the master monthly (full coverage) and joins win columns from the fixtures-linked aggregates as a supplement.
+
 ## Selection Into Playing (Extensive Margin)
 
 `run_fotmob_selection_margin.R` estimates whether contract status predicts playing itself, on the FULL panels (152,817 player-months) with always-observed Transfermarkt outcomes (`fotmob_selection_margin_results.csv`).

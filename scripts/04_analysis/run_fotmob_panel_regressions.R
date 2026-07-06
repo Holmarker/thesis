@@ -72,6 +72,10 @@ load_panel <- function(path) {
       fotmob_player_id = as.integer(fotmob_player_id),
       Age = as.numeric(Age),
       DaysToExpiry = as.numeric(DaysToExpiry),
+      fotmob_goals = as.numeric(fotmob_goals),
+      fotmob_assists = as.numeric(fotmob_assists),
+      fotmob_minutes = as.numeric(fotmob_minutes),
+      fotmob_win_share = as.numeric(fotmob_win_share),
       season = football_season(Month),
       has_positive_mean_rating = !is.na(fotmob_mean_rating) & fotmob_mean_rating > 0,
       has_positive_weighted_rating = !is.na(fotmob_minutes_weighted_rating) & fotmob_minutes_weighted_rating > 0
@@ -98,6 +102,9 @@ outcome_vars <- c(
   "z_mean_rating_league_month",
   "z_weighted_rating_league_month"
 )
+
+rating_control_rhs <- "fotmob_goals + fotmob_assists + fotmob_win_share"
+win_control_rhs <- "fotmob_win_share"
 
 make_expiry_bin_6m <- function(days_to_expiry) {
   months_to_expiry <- days_to_expiry / 30.44
@@ -195,15 +202,47 @@ regression_sample_coverage <- function(df, sample_name) {
     relocate(sample_name)
 }
 
-run_models_for_outcomes <- function(df, model_name, sample_name, rhs) {
+control_suffix <- function(control_set) {
+  case_when(
+    control_set == "win" ~ "_win_control",
+    control_set == "events" ~ "_event_controls",
+    TRUE ~ ""
+  )
+}
+
+control_rhs <- function(control_set) {
+  case_when(
+    control_set == "win" ~ win_control_rhs,
+    control_set == "events" ~ rating_control_rhs,
+    TRUE ~ ""
+  )
+}
+
+weight_suffix <- function(weight_by_minutes) {
+  if_else(weight_by_minutes, "_minute_weighted", "")
+}
+
+fit_rating_model <- function(formula, df, weight_by_minutes) {
+  if (weight_by_minutes) {
+    feols(formula, data = df, cluster = ~player_id, weights = ~fotmob_minutes)
+  } else {
+    feols(formula, data = df, cluster = ~player_id)
+  }
+}
+
+run_models_for_outcomes <- function(df, model_name, sample_name, rhs,
+                                    control_set = "none", weight_by_minutes = FALSE) {
+  controls <- control_rhs(control_set)
+  rhs_full <- if (nzchar(controls)) paste(rhs, controls, sep = " + ") else rhs
+
   lapply(outcome_vars, function(outcome) {
     tidy_fe_model(
-      feols(
-        as.formula(paste0(outcome, " ~ ", rhs, " | player_id + Month")),
-        data = df,
-        cluster = ~player_id
+      fit_rating_model(
+        as.formula(paste0(outcome, " ~ ", rhs_full, " | player_id + Month")),
+        df = df,
+        weight_by_minutes = weight_by_minutes
       ),
-      model_name,
+      paste0(model_name, control_suffix(control_set), weight_suffix(weight_by_minutes)),
       sample_name,
       outcome
     )
@@ -212,7 +251,14 @@ run_models_for_outcomes <- function(df, model_name, sample_name, rhs) {
 }
 
 run_bosman_models <- function(df, sample_name) {
-  run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman")
+  bind_rows(
+    run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman"),
+    run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman", control_set = "win"),
+    run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman", control_set = "events"),
+    run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman", weight_by_minutes = TRUE),
+    run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman", control_set = "win", weight_by_minutes = TRUE),
+    run_models_for_outcomes(df, "bosman_fe", sample_name, "Bosman", control_set = "events", weight_by_minutes = TRUE)
+  )
 }
 
 run_expiry_bin_models <- function(df, sample_name) {
@@ -220,22 +266,100 @@ run_expiry_bin_models <- function(df, sample_name) {
     mutate(expiry_bin_6m = make_expiry_bin_6m(DaysToExpiry)) %>%
     filter(!is.na(expiry_bin_6m))
 
-  run_models_for_outcomes(
-    expiry_df,
-    "expiry_bin_6m_fe",
-    sample_name,
-    'i(expiry_bin_6m, ref = "24:30")'
+  bind_rows(
+    run_models_for_outcomes(
+      expiry_df,
+      "expiry_bin_6m_fe",
+      sample_name,
+      'i(expiry_bin_6m, ref = "24:30")'
+    ),
+    run_models_for_outcomes(
+      expiry_df,
+      "expiry_bin_6m_fe",
+      sample_name,
+      'i(expiry_bin_6m, ref = "24:30")',
+      control_set = "win"
+    ),
+    run_models_for_outcomes(
+      expiry_df,
+      "expiry_bin_6m_fe",
+      sample_name,
+      'i(expiry_bin_6m, ref = "24:30")',
+      control_set = "events"
+    ),
+    run_models_for_outcomes(
+      expiry_df,
+      "expiry_bin_6m_fe",
+      sample_name,
+      'i(expiry_bin_6m, ref = "24:30")',
+      weight_by_minutes = TRUE
+    ),
+    run_models_for_outcomes(
+      expiry_df,
+      "expiry_bin_6m_fe",
+      sample_name,
+      'i(expiry_bin_6m, ref = "24:30")',
+      control_set = "win",
+      weight_by_minutes = TRUE
+    ),
+    run_models_for_outcomes(
+      expiry_df,
+      "expiry_bin_6m_fe",
+      sample_name,
+      'i(expiry_bin_6m, ref = "24:30")',
+      control_set = "events",
+      weight_by_minutes = TRUE
+    )
   )
 }
 
 run_observed_renewal_models <- function(df, sample_name) {
   renewal_df <- prepare_renewal_panel(df)
 
-  run_models_for_outcomes(
-    renewal_df,
-    "observed_renewal_status_fe",
-    sample_name,
-    "signed_new_contract + post_observed_renewal"
+  bind_rows(
+    run_models_for_outcomes(
+      renewal_df,
+      "observed_renewal_status_fe",
+      sample_name,
+      "signed_new_contract + post_observed_renewal"
+    ),
+    run_models_for_outcomes(
+      renewal_df,
+      "observed_renewal_status_fe",
+      sample_name,
+      "signed_new_contract + post_observed_renewal",
+      control_set = "win"
+    ),
+    run_models_for_outcomes(
+      renewal_df,
+      "observed_renewal_status_fe",
+      sample_name,
+      "signed_new_contract + post_observed_renewal",
+      control_set = "events"
+    ),
+    run_models_for_outcomes(
+      renewal_df,
+      "observed_renewal_status_fe",
+      sample_name,
+      "signed_new_contract + post_observed_renewal",
+      weight_by_minutes = TRUE
+    ),
+    run_models_for_outcomes(
+      renewal_df,
+      "observed_renewal_status_fe",
+      sample_name,
+      "signed_new_contract + post_observed_renewal",
+      control_set = "win",
+      weight_by_minutes = TRUE
+    ),
+    run_models_for_outcomes(
+      renewal_df,
+      "observed_renewal_status_fe",
+      sample_name,
+      "signed_new_contract + post_observed_renewal",
+      control_set = "events",
+      weight_by_minutes = TRUE
+    )
   )
 }
 

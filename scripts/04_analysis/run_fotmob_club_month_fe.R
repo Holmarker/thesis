@@ -38,6 +38,9 @@ panel <- read_csv(panel_path, show_col_types = FALSE) %>%
     DaysToExpiry = as.numeric(DaysToExpiry),
     Minutes_tm = as.numeric(Minutes_tm),
     fotmob_minutes = as.numeric(fotmob_minutes),
+    fotmob_goals = as.numeric(fotmob_goals),
+    fotmob_assists = as.numeric(fotmob_assists),
+    fotmob_win_share = as.numeric(fotmob_win_share),
     played = coalesce(Minutes_tm, 0) > 0,
     season = football_season(Month)
   ) %>%
@@ -70,20 +73,50 @@ tidy_row <- function(model, outcome, variant) {
     select(variant, outcome_name, term, estimate, std_error, t_value, p_value, nobs)
 }
 
+fit_model <- function(formula, df, weight_by_minutes) {
+  if (weight_by_minutes) {
+    feols(formula, data = df, cluster = ~ClubID, weights = ~fotmob_minutes)
+  } else {
+    feols(formula, data = df, cluster = ~ClubID)
+  }
+}
+
 results <- list()
 runs <- list(
-  list(d = quote(panel), oc = "played", v = "played, spell + club-month FE, cluster club"),
-  list(d = quote(panel), oc = "Minutes_tm", v = "minutes, spell + club-month FE, cluster club"),
-  list(d = quote(panel), oc = "z_mean", v = "z mean rating, spell + club-month FE, cluster club"),
-  list(d = quote(panel), oc = "z_weighted", v = "z weighted rating, spell + club-month FE, cluster club"),
-  list(d = quote(regular), oc = "z_mean", v = "z mean rating, regulars 270+ min, spell + club-month FE"),
-  list(d = quote(regular), oc = "z_weighted", v = "z weighted rating, regulars 270+ min, spell + club-month FE")
+  list(d = quote(panel), oc = "played", v = "played, spell + club-month FE, cluster club", controls = "none", weight = FALSE),
+  list(d = quote(panel), oc = "Minutes_tm", v = "minutes, spell + club-month FE, cluster club", controls = "none", weight = FALSE),
+  list(d = quote(panel), oc = "z_mean", v = "z mean rating, spell + club-month FE, cluster club", controls = "none", weight = FALSE),
+  list(d = quote(panel), oc = "z_weighted", v = "z weighted rating, spell + club-month FE, cluster club", controls = "none", weight = FALSE),
+  list(d = quote(panel), oc = "z_mean", v = "z mean rating, minute-weighted regression, spell + club-month FE, cluster club", controls = "none", weight = TRUE),
+  list(d = quote(panel), oc = "z_weighted", v = "z weighted rating, minute-weighted regression, spell + club-month FE, cluster club", controls = "none", weight = TRUE),
+  list(d = quote(panel), oc = "z_mean", v = "z mean rating, win control, spell + club-month FE, cluster club", controls = "win", weight = FALSE),
+  list(d = quote(panel), oc = "z_weighted", v = "z weighted rating, win control, spell + club-month FE, cluster club", controls = "win", weight = FALSE),
+  list(d = quote(panel), oc = "z_mean", v = "z mean rating, win control, minute-weighted regression, spell + club-month FE, cluster club", controls = "win", weight = TRUE),
+  list(d = quote(panel), oc = "z_weighted", v = "z weighted rating, win control, minute-weighted regression, spell + club-month FE, cluster club", controls = "win", weight = TRUE),
+  list(d = quote(panel), oc = "z_mean", v = "z mean rating, event controls, spell + club-month FE, cluster club", controls = "events", weight = FALSE),
+  list(d = quote(panel), oc = "z_weighted", v = "z weighted rating, event controls, spell + club-month FE, cluster club", controls = "events", weight = FALSE),
+  list(d = quote(panel), oc = "z_mean", v = "z mean rating, event controls, minute-weighted regression, spell + club-month FE, cluster club", controls = "events", weight = TRUE),
+  list(d = quote(panel), oc = "z_weighted", v = "z weighted rating, event controls, minute-weighted regression, spell + club-month FE, cluster club", controls = "events", weight = TRUE),
+  list(d = quote(regular), oc = "z_mean", v = "z mean rating, regulars 270+ min, spell + club-month FE", controls = "none", weight = FALSE),
+  list(d = quote(regular), oc = "z_weighted", v = "z weighted rating, regulars 270+ min, spell + club-month FE", controls = "none", weight = FALSE),
+  list(d = quote(regular), oc = "z_mean", v = "z mean rating, win control, regulars 270+ min, spell + club-month FE", controls = "win", weight = FALSE),
+  list(d = quote(regular), oc = "z_weighted", v = "z weighted rating, win control, regulars 270+ min, spell + club-month FE", controls = "win", weight = FALSE),
+  list(d = quote(regular), oc = "z_mean", v = "z mean rating, event controls, regulars 270+ min, spell + club-month FE", controls = "events", weight = FALSE),
+  list(d = quote(regular), oc = "z_weighted", v = "z weighted rating, event controls, regulars 270+ min, spell + club-month FE", controls = "events", weight = FALSE)
 )
 
 for (r in runs) {
+  rhs <- case_when(
+    r$controls == "win" ~ "Bosman + fotmob_win_share",
+    r$controls == "events" ~ "Bosman + fotmob_goals + fotmob_assists + fotmob_win_share",
+    TRUE ~ "Bosman"
+  )
   m <- tryCatch(
-    feols(as.formula(paste0(r$oc, " ~ Bosman | player_spell + club_month")),
-          data = eval(r$d), cluster = ~ClubID),
+    fit_model(
+      as.formula(paste0(r$oc, " ~ ", rhs, " | player_spell + club_month")),
+      eval(r$d),
+      r$weight
+    ),
     error = function(e) NULL
   )
   if (!is.null(m)) results[[length(results) + 1]] <- tidy_row(m, r$oc, r$v)
