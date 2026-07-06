@@ -59,7 +59,14 @@
       "Bash(git commit -q -m 'Add consolidated rating anatomy: script, tables, and RATING_ANATOMY.md *)",
       "Bash(git commit -q -m 'Add sub-shrinkage-corrected rating outcomes; null sharpens *)",
       "Bash(cp /private/tmp/claude-501/-Users-magnu-Library-CloudStorage-OneDrive-Personligt-Desktop-AU-Speciale-RSpeciale/231667e9-d6f2-494c-9366-6194bceccbb6/scratchpad/rank_check.R scripts/04_analysis/run_fotmob_rank_outcome_check.R)",
-      "Bash(git commit -q -m 'Add rank-outcome skewness check; shape does not drive conclusions *)"
+      "Bash(git commit -q -m 'Add rank-outcome skewness check; shape does not drive conclusions *)",
+      "Bash(awk '/diag 17:17/,0' data/historical/logs/scrape_2024_2025_loop.log)",
+      "Bash(awk '{NF--; sub\\(/ [0-9]+$/,\"\",$0\\); print}')",
+      "Bash(awk '{league=\"\"; for\\(i=1;i<NF;i++\\) league=league\" \"$i; tot[$NF]=league} END{}')",
+      "Bash(awk '{print $2, $9}')",
+      "Bash(kill 80830 80832 80833)",
+      "Bash(git commit -q -m 'Add scraping runbook for running scrapes on another machine *)",
+      "Bash(git commit -q -m 'Merge full 2024/25 multi-league scrape; rerun entire analysis suite *)"
     ]
   }
 }

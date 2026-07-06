@@ -23,6 +23,11 @@ if (length(target_files) == 0) {
   stop("No historical ratings files found for season slug: ", target_season_slug)
 }
 
+# skip header-only / empty checkpoint files (leagues not yet scraped)
+target_files <- target_files[vapply(target_files, function(p) {
+  length(readLines(p, n = 2L, warn = FALSE)) >= 2L
+}, logical(1))]
+
 safe_write_csv <- function(df, path) {
   tmp_path <- paste0(path, ".tmp")
   df <- df %>%

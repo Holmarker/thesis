@@ -1,6 +1,6 @@
 # FotMob Regression Summary
 
-This folder contains the current FotMob contract-expiry regressions, RDD checks, heterogeneity splits, and design diagnostics. Last full regeneration: 2026-07-02, after (a) the full-season 2024/25 top-5-league match-rating scrape, (b) the crosswalk recovery passes (~1,130 additional rated players), and (c) the addition of league-standardized outcomes.
+This folder contains the current FotMob contract-expiry regressions, RDD checks, heterogeneity splits, and design diagnostics. Last full regeneration: 2026-07-04, after (a) the full-season 2024/25 top-5-league match-rating scrape, (b) the crosswalk recovery passes (~1,130 additional rated players), and (c) the addition of league-standardized outcomes.
 
 ## Leakage Fix
 
@@ -14,17 +14,17 @@ Alongside the raw outcomes (`fotmob_mean_rating`, `fotmob_minutes_weighted_ratin
 
 ## Sample Coverage
 
-`fotmob_regression_sample_coverage.csv` after the 2024/25 rebuild:
+`fotmob_regression_sample_coverage.csv` after the 2026-07-04 merge of the full 2024/25 multi-league scrape (29 of 36 leagues; Czech, Serbian, Romanian, Hungarian, Belgian Challenger, Bulgarian, Ukrainian still pending):
 
-- `all_comps_strict` (59,306 rows total)
+- `all_comps_strict` (65,793 rows total)
   - `2022/2023`: 5,090 rows, 638 players.
   - `2023/2024`: 6,620 rows, 853 players.
-  - `2024/2025`: 14,811 rows, 3,682 players (now covers Aug 2024 - Jun 2025; previously only Mar-Jun 2025).
+  - `2024/2025`: 21,298 rows, 3,791 players.
   - `2025/2026`: 32,785 rows, 5,131 players.
-- `source_league_strict` (50,889 rows total)
+- `source_league_strict` (57,415 rows total)
   - `2022/2023`: 5,090 rows, 638 players.
   - `2023/2024`: 6,620 rows, 853 players.
-  - `2024/2025`: 11,349 rows, 2,358 players.
+  - `2024/2025`: 17,875 rows, 2,514 players.
   - `2025/2026`: 27,830 rows, 4,855 players.
 
 The old 2024/25 hole (Aug 2024 - Feb 2025) was caused by that season having been scraped through FotMob's truncated recent-matches endpoint; it has been re-scraped match-by-match for the top-5 leagues. The remaining ~31 leagues for 2024/25 are being scraped and will add further rows.
