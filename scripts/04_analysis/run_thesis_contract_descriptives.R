@@ -147,3 +147,52 @@ coverage <- panel %>%
 write_csv(coverage, file.path(out_dir, "league_season_rating_coverage.csv"))
 
 message("Saved contract descriptives to ", out_dir)
+
+# ---- 7. treatment/control composition: position and age bands ----
+# Bosman-window vs outside-window player-months: group sizes, composition
+# shares, and per-cell playing/rating summaries.
+
+comp <- panel %>%
+  mutate(
+    group = if_else(DaysToExpiry <= 180, "bosman_window", "outside_window"),
+    age_band = cut(Age, breaks = c(15, 21, 24, 27, 30, 33, 45),
+                   labels = c("<=21", "22-24", "25-27", "28-30", "31-33", "34+")),
+    position_group = if_else(
+      fotmob_position_group %in% c("keepers", "defenders", "midfielders", "attackers"),
+      fotmob_position_group, "unknown"),
+    rated = !is.na(fotmob_mean_rating) & fotmob_mean_rating > 0
+  )
+
+balance_by <- function(df, var) {
+  df %>%
+    filter(!is.na(.data[[var]])) %>%
+    group_by(group, level = .data[[var]]) %>%
+    summarise(
+      n = n(),
+      share_played = mean(played),
+      mean_minutes = mean(Minutes_tm, na.rm = TRUE),
+      share_rated = mean(rated),
+      mean_rating_raw = mean(fotmob_mean_rating[rated], na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    group_by(group) %>%
+    mutate(share_of_group = n / sum(n)) %>%
+    ungroup() %>%
+    mutate(split_var = var) %>%
+    relocate(split_var, group, level, n, share_of_group)
+}
+
+balance <- bind_rows(
+  balance_by(comp, "position_group"),
+  balance_by(comp, "age_band")
+)
+write_csv(balance, file.path(out_dir, "treatment_control_composition.csv"))
+
+# wide comparison view: share of each group in each cell, side by side
+balance_wide <- balance %>%
+  select(split_var, level, group, share_of_group, share_played, mean_rating_raw) %>%
+  tidyr::pivot_wider(names_from = group,
+                     values_from = c(share_of_group, share_played, mean_rating_raw))
+write_csv(balance_wide, file.path(out_dir, "treatment_control_composition_wide.csv"))
+
+message("Saved treatment/control composition tables.")

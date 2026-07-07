@@ -32,3 +32,12 @@ Monotone sorting: mean new-contract length falls from **3.8 years for players 21
 ## League x season rating coverage (`league_season_rating_coverage.csv`)
 
 Rated player-months by league and season: full grid for 2024/25-2025/26, top-5-only for 2022/23-2023/24. The honest map of where the intensive-margin evidence comes from.
+
+## Treatment/control composition by position and age (`treatment_control_composition*.csv`)
+
+Bosman-window vs outside-window player-months:
+
+- **Age composition differs drastically**: players 31+ make up 30.8% of the Bosman group but only 10.3% of the control group; players 24 and under are 27.9% vs 49.2%. Short remaining contracts are an old-player state - the single clearest illustration of why pooled Bosman comparisons are confounded by age/composition and why the audits and spell FE matter.
+- **Position composition differs mildly** (slightly fewer attackers, slightly more keepers in the Bosman window).
+- **The playing gap appears within every cell**: roughly 10-20pp lower playing share for the Bosman group within each position and each age band - the extensive-margin effect is not a composition artifact.
+- **Raw ratings conditional on playing are near-identical in every cell** (max gap 0.18, typically <0.05): the intensive-margin null, visible cell by cell without any regression.
