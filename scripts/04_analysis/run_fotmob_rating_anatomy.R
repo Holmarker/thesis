@@ -111,15 +111,18 @@ pos_decomp <- decomp_df %>%
     mf <- feols(rating ~ minutes_played + goals + assists + yellow_cards + red_cards + team_loo, data = d)
     mg <- feols(rating ~ goals + assists, data = d)
     ct <- coeftable(mf)
+    coef_or_na <- function(term) {
+      if (term %in% rownames(ct)) ct[term, 1] else NA_real_
+    }
     tibble(
       n = nrow(d),
       r2_full = r2(mf, "r2"),
       r2_goals_assists_only = r2(mg, "r2"),
-      coef_goal = ct["goals", 1],
-      coef_assist = ct["assists", 1],
-      coef_red = ct["red_cards", 1],
-      coef_per_90min = 90 * ct["minutes_played", 1],
-      team_passthrough = ct["team_loo", 1]
+      coef_goal = coef_or_na("goals"),
+      coef_assist = coef_or_na("assists"),
+      coef_red = coef_or_na("red_cards"),
+      coef_per_90min = 90 * coef_or_na("minutes_played"),
+      team_passthrough = coef_or_na("team_loo")
     )
   }) %>%
   ungroup()

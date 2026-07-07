@@ -84,7 +84,9 @@
       "Bash(git rm *)",
       "Bash(rm -f scripts/04_analysis/run_fotmob_renewal_sunab.R results/fotmob_regressions/fotmob_renewal_sunab_dynamic.csv)",
       "Bash(git commit -q -m 'Remove broken Sun-Abraham draft \\(abandoned\\) *)",
-      "Bash(git commit -q -m 'Restore full strict panel; win/event controls as supplement, not filter *)"
+      "Bash(git commit -q -m 'Restore full strict panel; win/event controls as supplement, not filter *)",
+      "Bash(caffeinate -is bash -c 'for i in $\\(seq 1 24\\); do *)",
+      "Bash(git commit -q -m 'Refresh descriptive statistics, rating anatomy, and fotmob descriptives on current panel *)"
     ]
   }
 }
