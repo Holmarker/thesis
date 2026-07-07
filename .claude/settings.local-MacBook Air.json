@@ -134,11 +134,7 @@
       "Bash(curl -s \"http://web.archive.org/cdx/search/cdx?url=transfermarkt.com/aaron-ramsey/profil/spieler/50057&output=json&limit=20\" --max-time 15)",
       "Bash(curl -s \"http://web.archive.org/cdx/search/cdx?url=transfermarkt.com/lionel-messi/profil/spieler/28003&output=json&limit=10&from=20220101&to=20221231\" --max-time 15)",
       "Bash(awk -F',' '{print $8}')",
-      "Bash(curl -s -H 'User-Agent: Mozilla/5.0' https://www.transfermarkt.com/adriano/transfers/spieler/34495 -o /c/Users/magnu/AppData/Local/Temp/claude/c--Users-magnu-OneDrive-Desktop-AU-Speciale-RSpeciale/b510aa18-469d-4af3-971b-1cf2e57ae590/scratchpad/tm_adriano_transfers.html --max-time 20)",
-      "PowerShell(& \"C:\\\\Program Files\\\\R\\\\R-4.3.2\\\\bin\\\\Rscript.exe\" \"C:\\\\Users\\\\magnu\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-magnu-OneDrive-Desktop-AU-Speciale-RSpeciale\\\\b510aa18-469d-4af3-971b-1cf2e57ae590\\\\scratchpad\\\\check_backfill_opportunity.R\")",
-      "PowerShell(& \"C:\\\\Program Files\\\\R\\\\R-4.3.2\\\\bin\\\\Rscript.exe\" \"C:\\\\Users\\\\magnu\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-magnu-OneDrive-Desktop-AU-Speciale-RSpeciale\\\\b510aa18-469d-4af3-971b-1cf2e57ae590\\\\scratchpad\\\\test_full_build_panel.R\")",
-      "Bash(Rscript scripts/04_analysis/run_fotmob_position_rating_models.R)",
-      "Bash(git commit -q -m 'Add position-aware rating models: per-position estimates and position-standardized outcomes *)"
+      "Bash(curl -s -H 'User-Agent: Mozilla/5.0' https://www.transfermarkt.com/adriano/transfers/spieler/34495 -o /c/Users/magnu/AppData/Local/Temp/claude/c--Users-magnu-OneDrive-Desktop-AU-Speciale-RSpeciale/b510aa18-469d-4af3-971b-1cf2e57ae590/scratchpad/tm_adriano_transfers.html --max-time 20)"
     ]
   }
 }

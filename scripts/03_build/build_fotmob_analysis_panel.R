@@ -214,6 +214,14 @@ load_master_monthly <- function(path) {
     )
 }
 
+# A contract-expiry snapshot is static absent a transfer or renewal, so a
+# player's first-ever OTP snapshot can be projected backward to fill months
+# before it, as long as (a) the gap is bounded and (b) the player's club was
+# unchanged between the candidate month and the snapshot month (checked via
+# the TM appearance history in `stats`, which runs earlier than the contract
+# snapshots for players added to tracking later than their FotMob coverage).
+BACKWARD_FILL_MAX_GAP_DAYS <- 365
+
 build_panel <- function(monthly_master, snapshots, stats, player_demo) {
   rating_months <- monthly_master %>%
     select(player_id, Month) %>%
@@ -232,12 +240,57 @@ build_panel <- function(monthly_master, snapshots, stats, player_demo) {
       MonthID = coalesce(MonthID, as.integer(format(Month, "%Y%m")))
     )
 
-  setDT(snapshots)
+  club_by_month <- stats %>%
+    select(player_id, Month, ClubID) %>%
+    distinct(player_id, Month, .keep_all = TRUE)
+
+  snapshots_keyed <- snapshots %>%
+    mutate(matched_snapshot_date = Date_scraped)
+
+  setDT(snapshots_keyed)
   setDT(stats)
-  setkey(snapshots, player_id, Date_scraped)
+  setkey(snapshots_keyed, player_id, Date_scraped)
   setkey(stats, player_id, Month)
 
-  panel <- snapshots[stats, roll = TRUE] %>%
+  forward <- as_tibble(snapshots_keyed[stats, roll = TRUE]) %>%
+    rename(month_key = Date_scraped) %>%
+    mutate(contract_date_source = if_else(!is.na(ContractExpiryDate), "observed", NA_character_))
+
+  backward <- as_tibble(snapshots_keyed[stats, roll = -Inf]) %>%
+    transmute(
+      player_id,
+      month_key = Date_scraped,
+      bf_ContractExpiryDate = ContractExpiryDate,
+      bf_LastExtensionDate = LastExtensionDate,
+      bf_matched_snapshot_date = matched_snapshot_date
+    )
+
+  panel_dt <- forward %>%
+    left_join(backward, by = c("player_id", "month_key")) %>%
+    left_join(
+      club_by_month %>% rename(club_at_candidate = ClubID),
+      by = c("player_id", "month_key" = "Month")
+    ) %>%
+    mutate(bf_matched_month = as.Date(format(bf_matched_snapshot_date, "%Y-%m-01"))) %>%
+    left_join(
+      club_by_month %>% rename(club_at_bf_snapshot = ClubID),
+      by = c("player_id", "bf_matched_month" = "Month")
+    ) %>%
+    mutate(
+      bf_gap_days = as.numeric(bf_matched_snapshot_date - month_key),
+      bf_eligible = is.na(ContractExpiryDate) &
+        !is.na(bf_ContractExpiryDate) &
+        bf_gap_days <= BACKWARD_FILL_MAX_GAP_DAYS &
+        !is.na(club_at_candidate) & !is.na(club_at_bf_snapshot) &
+        club_at_candidate == club_at_bf_snapshot,
+      ContractExpiryDate = if_else(bf_eligible, bf_ContractExpiryDate, ContractExpiryDate),
+      LastExtensionDate = if_else(bf_eligible, bf_LastExtensionDate, LastExtensionDate),
+      contract_date_source = if_else(bf_eligible, "backward_filled", contract_date_source)
+    ) %>%
+    select(-starts_with("bf_"), -club_at_candidate, -club_at_bf_snapshot) %>%
+    rename(Date_scraped = month_key)
+
+  panel <- panel_dt %>%
     mutate(
       Month = as.Date(Date_scraped),
       ContractExpiryDate = as.Date(ContractExpiryDate),
@@ -301,6 +354,12 @@ build_manifest <- function(panel_source, panel_all, panel_source_strict, panel_a
       sum(panel_all$has_fotmob_rating, na.rm = TRUE),
       sum(panel_source_strict$has_fotmob_rating, na.rm = TRUE),
       sum(panel_all_strict$has_fotmob_rating, na.rm = TRUE)
+    ),
+    rows_backward_filled = c(
+      sum(panel_source$contract_date_source == "backward_filled", na.rm = TRUE),
+      sum(panel_all$contract_date_source == "backward_filled", na.rm = TRUE),
+      sum(panel_source_strict$contract_date_source == "backward_filled", na.rm = TRUE),
+      sum(panel_all_strict$contract_date_source == "backward_filled", na.rm = TRUE)
     )
   )
 }

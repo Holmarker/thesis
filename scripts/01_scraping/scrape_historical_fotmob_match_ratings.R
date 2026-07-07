@@ -202,6 +202,9 @@ fetch_fixtures <- function(league_row, build_id, season_name) {
 
 fetch_match_details <- function(match_id, x_mas = "", cookie = "") {
   url <- sprintf("https://www.fotmob.com/api/data/matchDetails?matchId=%s", match_id)
+  tmp <- tempfile(fileext = ".json")
+  on.exit(unlink(tmp), add = TRUE)
+
   args <- c(
     "-L",
     "-s",
@@ -221,10 +224,21 @@ fetch_match_details <- function(match_id, x_mas = "", cookie = "") {
     args <- c(args, "-H", shQuote(paste0("Cookie: ", cookie)))
   }
 
-  args <- c(args, shQuote(url))
+  args <- c(args, "-o", shQuote(tmp), shQuote(url))
 
-  out <- tryCatch(system2("curl", args = args, stdout = TRUE, stderr = TRUE), error = function(e) character())
-  txt <- paste(out, collapse = "\n")
+  # Fetch to a file and re-read as raw UTF-8 bytes: capturing curl's stdout
+  # through system2(stdout = TRUE) re-encodes through R's native/console
+  # encoding, which corrupts multi-byte UTF-8 (accented names) and breaks
+  # JSON parsing for a large share of non-English-league matches.
+  tryCatch(system2("curl", args = args, stdout = FALSE, stderr = FALSE), error = function(e) NULL)
+
+  if (!file.exists(tmp) || file.info(tmp)$size == 0) {
+    return(NULL)
+  }
+
+  raw_bytes <- readBin(tmp, "raw", n = file.info(tmp)$size)
+  txt <- rawToChar(raw_bytes)
+  Encoding(txt) <- "UTF-8"
 
   if (!str_starts(str_squish(txt), "\\{")) {
     return(NULL)

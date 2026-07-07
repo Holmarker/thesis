@@ -94,6 +94,14 @@ The spell-FE script now also estimates Bosman models controlling for monthly tea
 
 Pipeline note: an intermediate rebuild had restricted the strict panels to win-covered rows (halving them to 33k); `augment_fotmob_panels_from_existing.R` now sources ratings from the master monthly (full coverage) and joins win columns from the fixtures-linked aggregates as a supplement.
 
+## Position-Aware Rating Models
+
+`run_fotmob_position_rating_models.R` (`fotmob_position_rating_results.csv`): outcomes standardized within league x season x position group (the anatomy shows the rating is a different instrument per position), run pooled through the strict specs and as fully separate per-position models.
+
+- Pooled position-standardized: zero in spell + league-month (`-0.001` / `+0.004`); marginal negatives within club-month (`~-0.035`, `p = 0.06-0.08`) - the familiar minutes-channel flicker.
+- Per position (weighted, spell + league-month): keepers `-0.045` (`p = 0.53`), defenders `-0.018` (`p = 0.53`), midfielders `+0.052` (`p = 0.07`, one marginal cell in eight tests), attackers `-0.029` (`p = 0.45`).
+- Keeper MDE is ~0.2 SD: keeper effects are undetectable with this instrument (as the anatomy predicts - keeper ratings barely measure the individual). The correct claim for keepers is "cannot be assessed," not "null."
+
 ## Selection Into Playing (Extensive Margin)
 
 `run_fotmob_selection_margin.R` estimates whether contract status predicts playing itself, on the FULL panels (152,817 player-months) with always-observed Transfermarkt outcomes (`fotmob_selection_margin_results.csv`).
