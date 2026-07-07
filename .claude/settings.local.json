@@ -86,7 +86,10 @@
       "Bash(git commit -q -m 'Remove broken Sun-Abraham draft \\(abandoned\\) *)",
       "Bash(git commit -q -m 'Restore full strict panel; win/event controls as supplement, not filter *)",
       "Bash(caffeinate -is bash -c 'for i in $\\(seq 1 24\\); do *)",
-      "Bash(git commit -q -m 'Refresh descriptive statistics, rating anatomy, and fotmob descriptives on current panel *)"
+      "Bash(git commit -q -m 'Refresh descriptive statistics, rating anatomy, and fotmob descriptives on current panel *)",
+      "Bash(Rscript scripts/04_analysis/run_thesis_contract_descriptives.R)",
+      "Bash(sort -t, -k3 -rn results/thesis_contract_descriptives/expiry_month_clustering.csv)",
+      "Bash(git commit -q -m 'Add contract-cycle descriptives: outcome funnel, raw profiles, timing, sorting, coverage map *)"
     ]
   }
 }
