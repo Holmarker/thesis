@@ -1,4 +1,12 @@
 league,ClubID,Club,fin_club,sim
+Austrian Bundesliga,170,Rapid Vienna,Rapid Wien,0.5
+Belgian Pro League,520,Cercle Brugge,Club Brugge,1
+Belgian Pro League,157,KAA Gent,Gent,1
+Belgian Pro League,1184,KRC Genk,Genk,1
+Belgian Pro League,1096,Royal Antwerp FC,Antwerp,1
+Belgian Pro League,58,RSC Anderlecht,Anderlecht,1
+Belgian Pro League,3057,Standard Liège,Standard Liege,0.5
+Belgian Pro League,3948,Union Saint-Gilloise,Union SG,0.5
 Brazilian Serie A,537,Botafogo de Futebol e Regatas,Botafogo,1
 Brazilian Serie A,978,Clube de Regatas Vasco da Gama,Vasco Da Gama,1
 Brazilian Serie A,8793,Red Bull Bragantino,Bragantino,1
@@ -21,6 +29,13 @@ Brazilian Serie B,15172,Atlético Clube Goianiense,Atletico Goianiense,0.5
 Brazilian Serie B,776,Coritiba Foot Ball Club,Coritiba,1
 Brazilian Serie B,10492,Esporte Clube Juventude,Juventude,1
 Brazilian Serie B,221,Santos FC,Santos,1
+Danish Superligaen,678,Aarhus GF,AGF - Aarhus,0.5
+Danish Superligaen,190,FC Copenhagen,FC Copenhagen,1
+Danish Superligaen,865,FC Midtjylland,FC Midtjylland,1
+Danish Superligaen,2778,FC Nordsjaelland,FC Nordsjaelland,1
+Danish Superligaen,5724,Randers FC,Randers,1
+Danish Superligaen,1177,Silkeborg IF,Silkeborg,1
+Danish Superligaen,1053,Aalborg BK,AaB - Aalborg BK,1
 Dutch Eredivisie,610,Ajax Amsterdam,Ajax,1
 Dutch Eredivisie,1090,AZ Alkmaar,AZ Alkmaar,1
 Dutch Eredivisie,234,Feyenoord Rotterdam,Feyenoord,1
@@ -42,8 +57,8 @@ English Championship,1010,Watford FC,Watford,1
 English Championship,337,Birmingham City,Birmingham City,1
 English Championship,164,Blackburn Rovers,Blackburn Rovers,1
 English Championship,1181,Blackpool FC,Blackpool,1
-English Championship,989,AFC Bournemouth,Bournemouth,1
 English Championship,698,Bristol City,Bristol City,1
+English Championship,603,Cardiff City,Cardiff City,1
 English Championship,990,Coventry City,Coventry,1
 English Championship,22,Derby County,Derby County,1
 English Championship,1110,Huddersfield Town,Huddersfield Town,1
@@ -72,20 +87,24 @@ English League One,337,Birmingham City,Birmingham City,1
 English League One,1181,Blackpool FC,Blackpool,1
 English League One,22,Derby County,Derby County,1
 English League One,1110,Huddersfield Town,Huddersfield Town,1
+English League One,1072,Peterborough United,Peterborough,1
 English League One,1032,Reading FC,Reading,1
 English League One,355,Bolton Wanderers,Bolton,1
 English League One,2963,Burton Albion,Burton Albion,1
+English League One,358,Charlton Athletic,Charlton,1
 English League One,1042,Crewe Alexandra,Crewe,1
-English League One,677,Ipswich Town,Ipswich Town,1
+English League One,26117,Ipswich Town U21,Ipswich Town,1
+English League One,1198,Lincoln City,Lincoln City,1
 English League One,991,Milton Keynes Dons,Milton Keynes Dons,1
 English League One,988,Oxford United,Oxford,1
 English League One,2262,Plymouth Argyle,Plymouth,1
 English League One,1020,Portsmouth FC,Portsmouth,1
 English League One,1194,Rotherham United,Rotherham,1
 English League One,1035,Sheffield Wednesday,Sheffield Wednesday,1
+English League One,3054,Shrewsbury Town,Shrewsbury,1
 English League One,289,Sunderland AFC,Sunderland,1
 English League One,1071,Wigan Athletic,Wigan Athletic,1
-English League One,164,Blackburn Rovers,Bristol Rovers,0.5
+English League One,2455,Bristol Rovers,Bristol Rovers,1
 English League One,1302,Northampton Town,Northampton,1
 English League One,1112,Wrexham AFC,Wrexham,1
 English Premier League,11,Arsenal FC,Arsenal,1
@@ -108,6 +127,7 @@ English Premier League,148,Tottenham Hotspur,Tottenham,1
 English Premier League,379,West Ham United,West Ham,1
 English Premier League,989,AFC Bournemouth,Bournemouth,1
 English Premier League,931,Fulham FC,Fulham,1
+English Premier League,1031,Luton Town,Luton Town,1
 English Premier League,703,Nottingham Forest,Nottingham Forest,1
 English Premier League,350,Sheffield United,Sheffield United,1
 English Premier League,677,Ipswich Town,Ipswich Town,1
@@ -128,6 +148,7 @@ French Ligue 1,257,FC St. Gallen 1879,St. Etienne,0.5
 French Ligue 1,16674,Stade Brest 29 B,Brest,1
 French Ligue 1,1421,Stade Reims,Reims,1
 French Ligue 1,667,RC Strasbourg Alsace,Strasbourg,1
+French Ligue 1,1095,ESTAC Troyes,Troyes,1
 French Ligue 1,290,AJ Auxerre,Auxerre,1
 French Ligue 1,738,Le Havre AC,Le Havre,1
 French Ligue 1,415,FC Toulouse,Toulouse,1
@@ -136,6 +157,7 @@ French Ligue 2,1158,FC Lorient,Lorient,1
 French Ligue 2,347,FC Metz,Metz,1
 French Ligue 2,618,AS Saint-Étienne,St. Etienne,0.5
 French Ligue 2,1095,ESTAC Troyes,Troyes,1
+French Ligue 2,1147,AC Ajaccio,AC Ajaccio,1
 French Ligue 2,1416,Amiens SC,Amiens,1
 French Ligue 2,290,AJ Auxerre,Auxerre,1
 French Ligue 2,1159,AS Nancy-Lorraine,Nancy,1
@@ -153,7 +175,6 @@ German 2. Bundesliga,127,SC Paderborn 07,SC Paderborn,1
 German 2. Bundesliga,65,SpVgg Greuther Fürth,Greuther Furth,0.5
 German 2. Bundesliga,42,Hannover 96,Hannover 96,1
 German 2. Bundesliga,41,Hamburger SV,Hamburger SV,1
-German 2. Bundesliga,257,FC St. Gallen 1879,St Pauli,0.5
 German 2. Bundesliga,105,SV Darmstadt 98,SV Darmstadt,1
 German 2. Bundesliga,4,1.FC Nuremberg,FC Nuremberg,1
 German 2. Bundesliga,269,Holstein Kiel,Holstein Kiel,1
@@ -202,6 +223,7 @@ Italian Serie B,1390,Cagliari Calcio,Cagliari,1
 Italian Serie B,252,Genoa CFC,Genoa,1
 Italian Serie B,6574,US Sassuolo,Sassuolo,1
 Italian Serie B,3522,Spezia Calcio,Spezia,1
+Italian Serie B,19,Brescia Calcio (- 2025),Brescia,1
 Italian Serie B,1005,US Lecce,Lecce,1
 Italian Serie B,130,Parma Calcio 1913,Parma,1
 Italian Serie B,380,US Salernitana 1919,Salernitana,1
@@ -210,8 +232,11 @@ Italian Serie B,2239,US Cremonese,US Cremonese,1
 Italian Serie B,1047,Como 1907,Como,1
 Italian Serie B,4172,Pisa Sporting Club,Pisa Sporting Club,1
 Norwegian Eliteserien,1100,SK Brann,Brann,1
+Norwegian Eliteserien,21101,Kristiansund BK,Kristiansund BK,1
 Norwegian Eliteserien,687,Molde FK,Molde,1
+Norwegian Eliteserien,1058,Odds BK,Odds Ballklubb,1
 Norwegian Eliteserien,195,Rosenborg BK,Rosenborg,1
+Norwegian Eliteserien,239,Viking FK,Viking,1
 Portuguese Primeira Liga,720,FC Porto,FC Porto,1
 Portuguese Primeira Liga,294,SL Benfica,Benfica,1
 Portuguese Primeira Liga,1075,SC Braga,Braga,1
@@ -253,6 +278,7 @@ Spanish LaLiga 2,366,Real Valladolid CF,Valladolid,1
 Spanish LaLiga 2,12321,Girona FC,Girona,1
 Swedish Allsvenskan,272,AIK,AIK,1
 Swedish Allsvenskan,1059,Hammarby IF,Hammarby IF,1
+Swedish Allsvenskan,1101,IF Elfsborg,IF Elfsborg,1
 Swedish Allsvenskan,801,IFK Göteborg,IFK Goteborg,0.5
 Swedish Allsvenskan,3654,Kalmar FF,Kalmar FF,1
 Swiss Super League,527,FC Lausanne-Sport,FC Lausanne-Sport,1

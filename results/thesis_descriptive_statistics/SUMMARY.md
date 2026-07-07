@@ -6,14 +6,14 @@ Positive FotMob rating variables are used for rating means and plots. Zero ratin
 
 ## Sample Overview
 
-- Observations: 159522
+- Observations: 162173
 - Players: 5695
 - Clubs: 1448
 - Seasons: 5
 - First month: 2022-06-01
 - Last month: 2026-06-01
-- Bosman-window observations: 15423
-- Non-Bosman observations: 144099
+- Bosman-window observations: 15983
+- Non-Bosman observations: 146190
 
 Season-level coverage is saved in `season_coverage.csv`.
 
@@ -22,10 +22,10 @@ Season-level coverage is saved in `season_coverage.csv`.
 The contract panel now covers older seasons, but FotMob rating coverage is not available for every historical season in the local files. Rating coverage by season is saved in `fotmob_rating_availability_by_season.csv`; the historical rating checkpoint audit is saved in `historical_rating_file_audit.csv`.
 
 - `2021/2022`: observations = 19, positive mean-rating rows = 0 (0.0%)
-- `2022/2023`: observations = 26447, positive mean-rating rows = 5090 (19.2%)
-- `2023/2024`: observations = 40097, positive mean-rating rows = 6620 (16.5%)
-- `2024/2025`: observations = 45589, positive mean-rating rows = 20574 (45.1%)
-- `2025/2026`: observations = 47370, positive mean-rating rows = 35738 (75.4%)
+- `2022/2023`: observations = 26464, positive mean-rating rows = 8835 (33.4%)
+- `2023/2024`: observations = 40197, positive mean-rating rows = 10657 (26.5%)
+- `2024/2025`: observations = 45717, positive mean-rating rows = 28090 (61.4%)
+- `2025/2026`: observations = 49776, positive mean-rating rows = 38050 (76.4%)
 
 The 2024/25 ratings from `data/historical/checkpoints/ratings` are also read directly and summarised in this folder:
 
@@ -40,37 +40,37 @@ The 2024/25 ratings from `data/historical/checkpoints/ratings` are also read dir
 
 Full sample summary statistics are saved in `table1_full_sample_summary_statistics.csv`.
 
-- `Age`: n = 159005, mean = 25.22, sd = 4.21, median = 25.00
+- `Age`: n = 161650, mean = 25.22, sd = 4.21, median = 25.00
 - `Assists_per90_tm`: n = 109247, mean = 0.12, sd = 0.82, median = 0.00
-- `Assists_tm`: n = 159522, mean = 0.18, sd = 0.52, median = 0.00
-- `DaysToExpiry`: n = 159522, mean = 782.08, sd = 453.55, median = 730.00
+- `Assists_tm`: n = 162173, mean = 0.18, sd = 0.51, median = 0.00
+- `DaysToExpiry`: n = 162173, mean = 779.10, sd = 453.43, median = 730.00
 - `Goals_per90_tm`: n = 109247, mean = 0.16, sd = 0.76, median = 0.00
-- `Goals_tm`: n = 159522, mean = 0.25, sd = 0.69, median = 0.00
-- `Minutes_tm`: n = 159522, mean = 156.06, sd = 163.31, median = 100.00
-- `fotmob_assists`: n = 80280, mean = 0.20, sd = 0.51, median = 0.00
-- `fotmob_goals`: n = 80280, mean = 0.29, sd = 0.71, median = 0.00
-- `fotmob_matches`: n = 80280, mean = 3.64, sd = 1.62, median = 4.00
-- `fotmob_mean_rating_clean`: n = 68022, mean = 6.08, sd = 1.61, median = 6.60
-- `fotmob_minutes`: n = 80280, mean = 192.62, sd = 150.11, median = 180.00
-- `fotmob_minutes_weighted_rating_clean`: n = 68022, mean = 6.70, sd = 0.93, median = 6.82
+- `Goals_tm`: n = 162173, mean = 0.24, sd = 0.68, median = 0.00
+- `Minutes_tm`: n = 162173, mean = 153.51, sd = 163.17, median = 93.00
+- `fotmob_assists`: n = 101668, mean = 0.19, sd = 0.50, median = 0.00
+- `fotmob_goals`: n = 101668, mean = 0.28, sd = 0.69, median = 0.00
+- `fotmob_matches`: n = 101668, mean = 3.55, sd = 1.55, median = 4.00
+- `fotmob_mean_rating_clean`: n = 85632, mean = 6.27, sd = 1.43, median = 6.67
+- `fotmob_minutes`: n = 101668, mean = 185.09, sd = 146.99, median = 175.00
+- `fotmob_minutes_weighted_rating_clean`: n = 85631, mean = 6.73, sd = 0.85, median = 6.82
 
 ## Table 2
 
 Comparison of means between player-months inside and outside the Bosman window is saved in `table2_bosman_window_mean_comparison_ttests.csv`.
 
-- `DaysToExpiry`: Bosman mean = 113.88, outside mean = 853.60, diff = -739.72, p = <0.001
-- `Age`: Bosman mean = 27.76, outside mean = 24.94, diff = 2.81, p = <0.001
-- `Minutes_tm`: Bosman mean = 135.34, outside mean = 158.28, diff = -22.93, p = <0.001
+- `DaysToExpiry`: Bosman mean = 112.76, outside mean = 851.96, diff = -739.20, p = <0.001
+- `Age`: Bosman mean = 27.75, outside mean = 24.94, diff = 2.81, p = <0.001
+- `Minutes_tm`: Bosman mean = 130.60, outside mean = 156.01, diff = -25.41, p = <0.001
 - `Goals_tm`: Bosman mean = 0.19, outside mean = 0.25, diff = -0.06, p = <0.001
-- `Assists_tm`: Bosman mean = 0.14, outside mean = 0.19, diff = -0.05, p = <0.001
+- `Assists_tm`: Bosman mean = 0.13, outside mean = 0.18, diff = -0.05, p = <0.001
 - `Goals_per90_tm`: Bosman mean = 0.14, outside mean = 0.16, diff = -0.02, p = 0.142
 - `Assists_per90_tm`: Bosman mean = 0.11, outside mean = 0.12, diff = -0.01, p = 0.443
-- `fotmob_matches`: Bosman mean = 3.46, outside mean = 3.66, diff = -0.20, p = <0.001
-- `fotmob_minutes`: Bosman mean = 171.06, outside mean = 194.90, diff = -23.84, p = <0.001
-- `fotmob_goals`: Bosman mean = 0.22, outside mean = 0.30, diff = -0.08, p = <0.001
-- `fotmob_assists`: Bosman mean = 0.15, outside mean = 0.20, diff = -0.05, p = <0.001
-- `fotmob_mean_rating_clean`: Bosman mean = 6.03, outside mean = 6.08, diff = -0.05, p = 0.020
-- `fotmob_minutes_weighted_rating_clean`: Bosman mean = 6.71, outside mean = 6.70, diff = 0.02, p = 0.124
+- `fotmob_matches`: Bosman mean = 3.46, outside mean = 3.56, diff = -0.10, p = <0.001
+- `fotmob_minutes`: Bosman mean = 168.97, outside mean = 186.78, diff = -17.81, p = <0.001
+- `fotmob_goals`: Bosman mean = 0.22, outside mean = 0.29, diff = -0.06, p = <0.001
+- `fotmob_assists`: Bosman mean = 0.15, outside mean = 0.19, diff = -0.04, p = <0.001
+- `fotmob_mean_rating_clean`: Bosman mean = 6.25, outside mean = 6.27, diff = -0.02, p = 0.200
+- `fotmob_minutes_weighted_rating_clean`: Bosman mean = 6.74, outside mean = 6.73, diff = 0.01, p = 0.260
 
 ## Table 3
 

@@ -1,4 +1,4 @@
 "sample_name","renewal_status","n_rows","n_players","observed_signing_events","mean_rating_raw","weighted_rating_raw"
-"all_comps_strict","no_observed_renewal_yet",20179,2615,0,6.81693183153632,6.86008968983965
-"all_comps_strict","post_observed_renewal",11581,1033,0,6.87458980774476,6.92405178808283
-"all_comps_strict","signing_month",1247,1051,1247,6.87205379895877,6.91577930901876
+"all_comps_strict","no_observed_renewal_yet",50389,5493,0,6.0547611816002,6.44814823558196
+"all_comps_strict","post_observed_renewal",34667,2714,0,6.10590154879463,6.61632588580297
+"all_comps_strict","signing_month",3471,2743,3471,5.85742746246679,6.41663068239993

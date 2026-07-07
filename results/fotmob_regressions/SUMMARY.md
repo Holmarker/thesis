@@ -1,6 +1,6 @@
 # FotMob Regression Summary
 
-This folder contains the current FotMob contract-expiry regressions, RDD checks, heterogeneity splits, and design diagnostics. Last full regeneration: 2026-07-04, after (a) the full-season 2024/25 top-5-league match-rating scrape, (b) the crosswalk recovery passes (~1,130 additional rated players), and (c) the addition of league-standardized outcomes.
+This folder contains the current FotMob contract-expiry regressions, RDD checks, heterogeneity splits, and design diagnostics. Last full regeneration: 2026-07-07, after (a) the full-season 2024/25 top-5-league match-rating scrape, (b) the crosswalk recovery passes (~1,130 additional rated players), and (c) the addition of league-standardized outcomes.
 
 ## Leakage Fix
 
@@ -14,18 +14,18 @@ Alongside the raw outcomes (`fotmob_mean_rating`, `fotmob_minutes_weighted_ratin
 
 ## Sample Coverage
 
-`fotmob_regression_sample_coverage.csv` after the 2026-07-04 merge of the full 2024/25 multi-league scrape (29 of 36 leagues; Czech, Serbian, Romanian, Hungarian, Belgian Challenger, Bulgarian, Ukrainian still pending):
+`fotmob_regression_sample_coverage.csv` after the 2026-07-07 crosswalk-join fix (player-ID-only join recovered all months matched players spend outside their crosswalk-recorded league; early-season coverage roughly doubled):
 
-- `all_comps_strict` (65,793 rows total)
-  - `2022/2023`: 5,090 rows, 638 players.
-  - `2023/2024`: 6,620 rows, 853 players.
-  - `2024/2025`: 21,298 rows, 3,791 players.
-  - `2025/2026`: 32,785 rows, 5,131 players.
-- `source_league_strict` (57,415 rows total)
-  - `2022/2023`: 5,090 rows, 638 players.
-  - `2023/2024`: 6,620 rows, 853 players.
-  - `2024/2025`: 17,875 rows, 2,514 players.
-  - `2025/2026`: 27,830 rows, 4,855 players.
+- `all_comps_strict` (88,527 rows total)
+  - `2022/2023`: 8,834 rows, 1,150 players.
+  - `2023/2024`: 10,657 rows, 1,434 players.
+  - `2024/2025`: 28,635 rows, 3,943 players.
+  - `2025/2026`: 40,401 rows, 5,166 players.
+- `source_league_strict` (84,657 rows total)
+  - `2022/2023`: 8,834 rows, 1,150 players.
+  - `2023/2024`: 10,657 rows, 1,434 players.
+  - `2024/2025`: 28,214 rows, 3,848 players.
+  - `2025/2026`: 36,952 rows, 5,004 players.
 
 The old 2024/25 hole (Aug 2024 - Feb 2025) was caused by that season having been scraped through FotMob's truncated recent-matches endpoint; it has been re-scraped match-by-match for the top-5 leagues. The remaining ~31 leagues for 2024/25 are being scraped and will add further rows.
 
@@ -53,7 +53,7 @@ Multiple-testing caveat: with ~11 subgroups per hypothesis, isolated `p < 0.05` 
 
 `run_fotmob_spell_fe_regressions.R` re-estimates the Bosman and expiry-bin models under four FE structures (`fotmob_spell_fe_results.csv`): the baseline `player + Month`, `player + league x Month` (absorbs league-time composition), `player-contract-spell + Month` (within-spell identification: expiry approaches deterministically with time), and `spell + league x Month`. Identification is real: 2,082 of 5,412 players have multiple observed contract spells (7,901 spells).
 
-- Bosman (all-comps, z league-season, 2026-07-04 data): `+0.041` (player+month, `p = 0.06`), `+0.047` (player+league-month, `p = 0.03`), `-0.020` (spell+month, `p = 0.39`), `-0.011` (spell+league-month, `p = 0.63`). The sign remains unstable across FE structures and all spell-based estimates are null — no defensible Bosman effect.
+- Bosman (all-comps, z weighted, 2026-07-07 data, n=85,630): `+0.027` (player+month, `p = 0.08`), `+0.020` (player+league-month, `p = 0.18`), `+0.005` (spell+month, `p = 0.76`), `+0.004` (spell+league-month, `p = 0.80`). On the recovered panel the estimates converge on a clean zero in the spell-based specs — no defensible Bosman rating effect.
 - `48+` expiry bin: `-0.09` to `-0.11` and significant under player FE, but insignificant and sign-unstable under spell FE — confirming the earlier suspicion that the 48+ result reflects sorting across contracts, not within-contract behavior.
 - Minimum detectable effect (80% power, 5% two-sided) for the Bosman coefficient is ~0.06 SD in all specifications: the null is informative — effects larger than ~0.07 SD of within-league-season rating are ruled out with good power.
 

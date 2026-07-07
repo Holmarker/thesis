@@ -89,7 +89,9 @@
       "Bash(git commit -q -m 'Refresh descriptive statistics, rating anatomy, and fotmob descriptives on current panel *)",
       "Bash(Rscript scripts/04_analysis/run_thesis_contract_descriptives.R)",
       "Bash(sort -t, -k3 -rn results/thesis_contract_descriptives/expiry_month_clustering.csv)",
-      "Bash(git commit -q -m 'Add contract-cycle descriptives: outcome funnel, raw profiles, timing, sorting, coverage map *)"
+      "Bash(git commit -q -m 'Add contract-cycle descriptives: outcome funnel, raw profiles, timing, sorting, coverage map *)",
+      "Bash(Rscript scripts/04_analysis/run_fotmob_robustness_audit_bosman.R)",
+      "Bash(git commit -q -m 'Fix crosswalk join to player-ID only; early-season coverage doubles; full suite rerun *)"
     ]
   }
 }
