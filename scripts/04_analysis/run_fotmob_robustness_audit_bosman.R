@@ -31,6 +31,7 @@ cat("u23 rows:", nrow(u23), " Bosman rows:", sum(u23$Bosman, na.rm=TRUE),
     " Bosman players:", n_distinct(u23$player_id[u23$Bosman]), "\n\n")
 
 cat("== u23 Bosman by season ==\n")
+season_rows <- list()
 for (s in sort(unique(u23$season))) {
   d <- u23 %>% filter(season == s)
   if (sum(d$Bosman, na.rm=TRUE) < 20) { cat(s, ": too few Bosman rows (", sum(d$Bosman,na.rm=TRUE), ")\n"); next }
@@ -38,8 +39,10 @@ for (s in sort(unique(u23$season))) {
   if (!is.null(m) && "BosmanTRUE" %in% rownames(coeftable(m))) {
     ct <- coeftable(m)["BosmanTRUE",]
     cat(sprintf("%s: est=%7.3f p=%.4f n=%d bosman_rows=%d\n", s, ct[1], ct[4], nobs(m), sum(d$Bosman,na.rm=TRUE)))
+    season_rows[[length(season_rows)+1]] <- data.frame(season=s, estimate=ct[1], p_value=ct[4], nobs=nobs(m), bosman_rows=sum(d$Bosman,na.rm=TRUE))
   }
 }
+readr::write_csv(dplyr::bind_rows(season_rows), "results/fotmob_regressions/fotmob_audit_bosman_u23_by_season.csv")
 
 cat("\n== u23 Bosman, alternative outcomes/specs ==\n")
 specs <- list(

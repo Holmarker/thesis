@@ -139,7 +139,10 @@
       "PowerShell(& \"C:\\\\Program Files\\\\R\\\\R-4.3.2\\\\bin\\\\Rscript.exe\" \"C:\\\\Users\\\\magnu\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-magnu-OneDrive-Desktop-AU-Speciale-RSpeciale\\\\b510aa18-469d-4af3-971b-1cf2e57ae590\\\\scratchpad\\\\test_full_build_panel.R\")",
       "Bash(Rscript scripts/04_analysis/run_fotmob_position_rating_models.R)",
       "Bash(git commit -q -m 'Add position-aware rating models: per-position estimates and position-standardized outcomes *)",
-      "Bash(git commit -q -m 'Add treatment/control composition tables by position and age band *)"
+      "Bash(git commit -q -m 'Add treatment/control composition tables by position and age band *)",
+      "Bash(cd \"/Users/magnu/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale/RSpeciale\" && find . -name '*.tex' -not -path './.git/*' 2>/dev/null | head; find ~/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale -maxdepth 2 -name '*.tex' 2>/dev/null | head -5)",
+      "Read(//Users/magnu/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale/**)",
+      "Bash(python3 scripts/05_writeup/make_latex_tables.py)"
     ]
   }
 }
