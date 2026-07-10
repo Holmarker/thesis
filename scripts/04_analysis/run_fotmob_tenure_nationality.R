@@ -196,35 +196,59 @@ curve <- panel_full %>%
   filter(n >= 200)
 write_csv(curve, file.path(desc_dir, "tenure_playing_curve.csv"))
 
+top5_leagues <- c("English Premier League", "Spanish LaLiga",
+                  "German Bundesliga", "Italian Serie A", "French Ligue 1")
+
+curve_top5 <- panel_full %>%
+  filter(fotmob_source_league %in% top5_leagues,
+         !is.na(club_tenure_years), club_tenure_years <= 4,
+         !format(Month, "%m") %in% c("06", "07")) %>%
+  mutate(tenure_bin = floor(club_tenure_years * 4) / 4) %>%
+  group_by(tenure_bin) %>%
+  summarise(
+    share_played = mean(played),
+    mean_minutes = mean(Minutes_tm, na.rm = TRUE),
+    n = n(), .groups = "drop"
+  ) %>%
+  filter(n >= 100)
+write_csv(curve_top5, file.path(desc_dir, "tenure_playing_curve_top5.csv"))
+
 # two stacked panels sharing the x axis: playing share on top, the number
 # of player-months per bin below (one axis per panel, no dual axis)
-curve_long <- bind_rows(
-  curve %>% transmute(tenure_bin, panel = "Share of player-months with any minutes",
-                      value = share_played),
-  curve %>% transmute(tenure_bin, panel = "N (player-months per bin)",
-                      value = n)
-) %>%
-  mutate(panel = factor(panel, levels = c(
-    "Share of player-months with any minutes", "N (player-months per bin)")))
+plot_tenure_curve <- function(curve, title, outfile) {
+  curve_long <- bind_rows(
+    curve %>% transmute(tenure_bin,
+                        panel = "Share of player-months with any minutes",
+                        value = share_played),
+    curve %>% transmute(tenure_bin, panel = "N (player-months per bin)",
+                        value = n)
+  ) %>%
+    mutate(panel = factor(panel, levels = c(
+      "Share of player-months with any minutes",
+      "N (player-months per bin)")))
 
-p <- ggplot(curve_long, aes(tenure_bin, value)) +
-  geom_col(data = ~filter(.x, panel == "N (player-months per bin)"),
-           fill = "#9db8c9", width = 0.2) +
-  geom_line(data = ~filter(.x, panel != "N (player-months per bin)"),
-            color = "#00798c", linewidth = 0.9) +
-  geom_point(data = ~filter(.x, panel != "N (player-months per bin)"),
-             color = "#00798c", size = 1.6) +
-  facet_grid(panel ~ ., scales = "free_y", switch = "y") +
-  scale_x_continuous(breaks = 0:4) +
-  scale_y_continuous(labels = scales::label_comma()) +
-  labs(x = "Years at current club (tracked window, truncated at 2022)",
-       y = NULL,
-       title = "Club tenure and playing time (raw)") +
-  theme_minimal(base_size = 11) +
-  theme(strip.placement = "outside",
-        strip.text.y.left = element_text(size = 9))
-ggsave(file.path(desc_dir, "tenure_playing_curve.png"), p,
-       width = 8, height = 6, dpi = 150)
+  p <- ggplot(curve_long, aes(tenure_bin, value)) +
+    geom_col(data = ~filter(.x, panel == "N (player-months per bin)"),
+             fill = "#9db8c9", width = 0.2) +
+    geom_line(data = ~filter(.x, panel != "N (player-months per bin)"),
+              color = "#00798c", linewidth = 0.9) +
+    geom_point(data = ~filter(.x, panel != "N (player-months per bin)"),
+               color = "#00798c", size = 1.6) +
+    facet_grid(panel ~ ., scales = "free_y", switch = "y") +
+    scale_x_continuous(breaks = 0:4) +
+    scale_y_continuous(labels = scales::label_comma()) +
+    labs(x = "Years at current club (tracked window, truncated at 2022)",
+         y = NULL, title = title) +
+    theme_minimal(base_size = 11) +
+    theme(strip.placement = "outside",
+          strip.text.y.left = element_text(size = 9))
+  ggsave(outfile, p, width = 8, height = 6, dpi = 150)
+}
+
+plot_tenure_curve(curve, "Club tenure and playing time (raw)",
+                  file.path(desc_dir, "tenure_playing_curve.png"))
+plot_tenure_curve(curve_top5, "Club tenure and playing time, top-5 leagues (raw)",
+                  file.path(desc_dir, "tenure_playing_curve_top5.png"))
 
 print(as.data.frame(results), digits = 3)
 message("Saved tenure/nationality results and playing-time curve.")
