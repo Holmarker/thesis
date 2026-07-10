@@ -196,16 +196,35 @@ curve <- panel_full %>%
   filter(n >= 200)
 write_csv(curve, file.path(desc_dir, "tenure_playing_curve.csv"))
 
-p <- ggplot(curve, aes(tenure_bin, share_played)) +
-  geom_line(color = "#00798c", linewidth = 0.9) +
-  geom_point(color = "#00798c", size = 1.6) +
+# two stacked panels sharing the x axis: playing share on top, the number
+# of player-months per bin below (one axis per panel, no dual axis)
+curve_long <- bind_rows(
+  curve %>% transmute(tenure_bin, panel = "Share of player-months with any minutes",
+                      value = share_played),
+  curve %>% transmute(tenure_bin, panel = "N (player-months per bin)",
+                      value = n)
+) %>%
+  mutate(panel = factor(panel, levels = c(
+    "Share of player-months with any minutes", "N (player-months per bin)")))
+
+p <- ggplot(curve_long, aes(tenure_bin, value)) +
+  geom_col(data = ~filter(.x, panel == "N (player-months per bin)"),
+           fill = "#9db8c9", width = 0.2) +
+  geom_line(data = ~filter(.x, panel != "N (player-months per bin)"),
+            color = "#00798c", linewidth = 0.9) +
+  geom_point(data = ~filter(.x, panel != "N (player-months per bin)"),
+             color = "#00798c", size = 1.6) +
+  facet_grid(panel ~ ., scales = "free_y", switch = "y") +
   scale_x_continuous(breaks = 0:4) +
+  scale_y_continuous(labels = scales::label_comma()) +
   labs(x = "Years at current club (tracked window, truncated at 2022)",
-       y = "Share of player-months with any minutes",
+       y = NULL,
        title = "Club tenure and playing time (raw)") +
-  theme_minimal(base_size = 11)
+  theme_minimal(base_size = 11) +
+  theme(strip.placement = "outside",
+        strip.text.y.left = element_text(size = 9))
 ggsave(file.path(desc_dir, "tenure_playing_curve.png"), p,
-       width = 8, height = 4.5, dpi = 150)
+       width = 8, height = 6, dpi = 150)
 
 print(as.data.frame(results), digits = 3)
 message("Saved tenure/nationality results and playing-time curve.")
