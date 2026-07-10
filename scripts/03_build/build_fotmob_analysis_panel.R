@@ -12,6 +12,8 @@ db_path <- "/Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Databa
 bios_path <- "/Users/magnu/Off The Pitch Dropbox/Off The Pitch/Player Asset Database/Data_Overview/Spiller data.xlsx"
 master_monthly_source_path <- "data/master/fotmob_master_monthly_source_league.csv"
 master_monthly_all_path <- "data/master/fotmob_master_monthly_all_comps.csv"
+live_monthly_source_path <- "data/fotmob_ratings_monthly_source_league.csv"
+live_monthly_all_path <- "data/fotmob_ratings_monthly_all_comps.csv"
 panel_dir <- "data/panel"
 
 panel_source_out <- file.path(panel_dir, "fotmob_analysis_panel_source_league.csv")
@@ -175,12 +177,32 @@ load_player_demo <- function(playerbios, relevant_player_ids) {
     )
 }
 
-load_master_monthly <- function(path) {
+# master monthly lacks match-result columns; join them from the
+# fixtures-linked live monthly aggregates where available
+win_cols <- c("result_matches", "wins", "draws", "losses",
+              "win_share", "result_points_per_match")
+
+read_win_supplement <- function(live_monthly_path) {
+  read_csv(live_monthly_path, show_col_types = FALSE) %>%
+    mutate(fotmob_player_id = as.integer(fotmob_player_id),
+           Month = as.Date(Month)) %>%
+    filter(!is.na(fotmob_player_id), !is.na(Month)) %>%
+    group_by(fotmob_player_id, Month) %>%
+    slice_max(coalesce(result_matches, 0L), n = 1, with_ties = FALSE) %>%
+    ungroup() %>%
+    select(fotmob_player_id, Month, all_of(win_cols))
+}
+
+load_master_monthly <- function(path, live_monthly_path) {
   read_csv(path, show_col_types = FALSE) %>%
     mutate(
       Month = as.Date(Month),
       tm_date_of_birth = as.Date(tm_date_of_birth)
     ) %>%
+    select(-any_of(win_cols)) %>%
+    mutate(fotmob_player_id = as.integer(fotmob_player_id)) %>%
+    left_join(read_win_supplement(live_monthly_path),
+              by = c("fotmob_player_id", "Month")) %>%
     distinct(tm_player_id, Month, .keep_all = TRUE) %>%
     transmute(
       player_id = as.integer(tm_player_id),
@@ -366,11 +388,11 @@ build_manifest <- function(panel_source, panel_all, panel_source_strict, panel_a
 
 ensure_dir(panel_dir)
 
-monthly_source_master <- load_master_monthly(master_monthly_source_path)
-monthly_all_master <- load_master_monthly(master_monthly_all_path)
+monthly_source_master <- load_master_monthly(master_monthly_source_path, live_monthly_source_path)
+monthly_all_master <- load_master_monthly(master_monthly_all_path, live_monthly_all_path)
 relevant_player_ids <- sort(unique(c(monthly_source_master$player_id, monthly_all_master$player_id)))
 
-con <- dbConnect(RSQLite::SQLite(), db_path)
+con <- dbConnect(RSQLite::SQLite(), db_path, flags = RSQLite::SQLITE_RO)
 on.exit(dbDisconnect(con), add = TRUE)
 
 playerbios <- read.xlsx(bios_path) %>%

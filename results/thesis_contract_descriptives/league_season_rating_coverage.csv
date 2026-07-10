@@ -1,36 +1,37 @@
-fotmob_source_league,2024/2025,2025/2026,2022/2023,2023/2024
-English Championship,3105,3537,0,0
-English Premier League,3038,3463,2343,2449
-Italian Serie A,2856,3207,1787,2536
-French Ligue 1,2131,2518,1681,1888
-German Bundesliga,2152,2453,1600,2145
-Dutch Eredivisie,2067,2422,0,0
-Spanish LaLiga,1862,2354,1424,1639
-Brazilian Serie A,1567,1804,0,0
-Turkish Super Lig,1776,1784,0,0
-Portuguese Primeira Liga,1194,1630,0,0
-Saudi Pro League,1140,1407,0,0
-German 2. Bundesliga,413,1342,0,0
-Swiss Super League,446,1273,0,0
-Spanish LaLiga 2,415,1265,0,0
-Polish Ekstraklasa,124,825,0,0
-Italian Serie B,713,790,0,0
-English League One,365,758,0,0
-French Ligue 2,262,681,0,0
-Scottish Premiership,313,662,0,0
-Croatian 1.HNL,135,616,0,0
-Turkish 1.Lig,45,508,0,0
-Czech First League,4,404,0,0
-Belgian Challenger Pro League,6,398,0,0
-Swedish Allsvenskan,221,369,0,0
-Brazilian Serie B,159,357,0,0
-Serbian Super Liga,2,333,0,0
-Norwegian Eliteserien,164,324,0,0
-Belgian Pro League,901,148,0,0
-Ukrainian Premier Liga,2,136,0,0
-Bulgarian Parva Liga,2,130,0,0
-Hungarian Nemzeti Bajnoksag,1,52,0,0
-Danish Superligaen,174,45,0,0
-Austrian Bundesliga,153,42,0,0
-Argentine Primera Division,120,10,0,0
-Greek Super League 1,62,3,0,0
+fotmob_source_league,2024/2025,2025/2026,2023/2024,2022/2023
+English Championship,3314,3662,3264,0
+English Premier League,3144,3534,2631,2550
+Italian Serie A,3044,3327,2795,2468
+French Ligue 1,2326,2643,2071,2139
+Dutch Eredivisie,2236,2565,1977,0
+German Bundesliga,2235,2533,2233,1875
+Spanish LaLiga,1968,2439,1778,1750
+Brazilian Serie A,2369,2191,1788,0
+Turkish Super Lig,1952,1918,1384,0
+Portuguese Primeira Liga,1368,1833,1106,0
+German 2. Bundesliga,952,1537,0,0
+Belgian Pro League,1841,1529,1658,0
+Saudi Pro League,1303,1507,761,0
+Spanish LaLiga 2,873,1380,587,0
+Swiss Super League,904,1358,0,0
+Italian Serie B,1139,1155,0,0
+Polish Ekstraklasa,438,984,0,0
+English League One,780,913,0,0
+Argentine Primera Division,1591,822,0,0
+French Ligue 2,465,746,0,0
+Scottish Premiership,509,733,0,0
+Croatian 1.HNL,410,700,0,0
+Danish Superligaen,545,624,629,0
+Austrian Bundesliga,447,623,0,0
+Turkish 1.Lig,133,622,0,0
+Brazilian Serie B,397,546,0,0
+Swedish Allsvenskan,534,545,0,0
+Belgian Challenger Pro League,9,531,0,0
+Norwegian Eliteserien,520,513,0,0
+Czech First League,8,494,0,0
+Serbian Super Liga,10,454,0,0
+Greek Super League 1,246,453,394,0
+Romanian Liga 1,0,353,0,0
+Bulgarian Parva Liga,5,139,0,0
+Ukrainian Premier Liga,3,138,0,0
+Hungarian Nemzeti Bajnoksag,5,55,0,0

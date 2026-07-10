@@ -1,81 +1,81 @@
 sample_name,rating_variable,fotmob_source_league,n_rows,n_players,mean,median,sd
-all_comps_strict,fotmob_mean_rating,English Premier League,8810,409,6.306250358539179,6.725,1.473715137980722
-all_comps_strict,fotmob_mean_rating,Italian Serie A,8103,411,6.244919287193259,6.64,1.4062091535838144
-all_comps_strict,fotmob_mean_rating,German Bundesliga,6282,341,6.43272898505683,6.76375,1.3341354160444616
-all_comps_strict,fotmob_mean_rating,Spanish LaLiga,6000,288,6.286785675925926,6.675,1.4124062510093236
-all_comps_strict,fotmob_mean_rating,English Championship,5626,494,6.022497806386449,6.6,1.618919388487532
-all_comps_strict,fotmob_mean_rating,French Ligue 1,5419,319,6.272320127300471,6.725,1.5006413155615017
-all_comps_strict,fotmob_mean_rating,Dutch Eredivisie,4060,326,6.132782241841356,6.65,1.6093343318559947
-all_comps_strict,fotmob_mean_rating,Brazilian Serie A,3152,247,6.117150763435662,6.617142857142856,1.5743756179529833
-all_comps_strict,fotmob_mean_rating,Turkish Super Lig,2985,251,5.866254327191513,6.45,1.6699566111291657
-all_comps_strict,fotmob_mean_rating,Saudi Pro League,2588,241,6.2447491628026794,6.745,1.6469879500859579
-all_comps_strict,fotmob_mean_rating,Portuguese Primeira Liga,2507,213,5.880709299675196,6.5,1.6881751689874165
-all_comps_strict,fotmob_mean_rating,German 2. Bundesliga,1476,204,5.909603174603174,6.6,1.7221942956014415
-all_comps_strict,fotmob_mean_rating,Swiss Super League,1363,168,5.722219281696539,6.33333333333333,1.7297624643114797
-all_comps_strict,fotmob_mean_rating,Spanish LaLiga 2,1340,163,5.634945451314855,6.422499999999999,1.8156842979948131
-all_comps_strict,fotmob_mean_rating,Italian Serie B,1181,147,5.715069352042256,6.43333333333333,1.801052763206403
-all_comps_strict,fotmob_mean_rating,English League One,949,132,5.585960743974443,6.2,1.7568792348302529
-all_comps_strict,fotmob_mean_rating,Polish Ekstraklasa,872,114,5.440025256662298,6.075,1.872740648068298
-all_comps_strict,fotmob_mean_rating,Scottish Premiership,822,94,5.373652772950218,5.8,1.8818568306836172
-all_comps_strict,fotmob_mean_rating,French Ligue 2,706,100,5.757850566572238,6.4,1.753640679961253
-all_comps_strict,fotmob_mean_rating,Croatian 1.HNL,610,87,5.3336014832162375,5.8,1.8031239054297559
-all_comps_strict,fotmob_minutes_weighted_rating,English Premier League,8810,409,6.816552128859037,6.91809090909091,0.845221528624517
-all_comps_strict,fotmob_minutes_weighted_rating,Italian Serie A,8103,411,6.760183201029568,6.8,0.7111462481632872
-all_comps_strict,fotmob_minutes_weighted_rating,German Bundesliga,6282,341,6.833343075756611,6.9013358612904145,0.8209275635652583
-all_comps_strict,fotmob_minutes_weighted_rating,Spanish LaLiga,6000,288,6.807212593044237,6.86013280357707,0.7504750249832383
-all_comps_strict,fotmob_minutes_weighted_rating,English Championship,5626,494,6.725601031236938,6.804203975037305,0.7415978773146765
-all_comps_strict,fotmob_minutes_weighted_rating,French Ligue 1,5419,319,6.8124024561051,6.9,0.8345359749145088
-all_comps_strict,fotmob_minutes_weighted_rating,Dutch Eredivisie,4060,326,6.780264882742013,6.8657072368421055,0.7920550431338762
-all_comps_strict,fotmob_minutes_weighted_rating,Brazilian Serie A,3152,247,6.779352382100441,6.837802726543705,0.7169882586748307
-all_comps_strict,fotmob_minutes_weighted_rating,Turkish Super Lig,2985,251,6.430866385595206,6.70027855153203,1.2503585979600085
-all_comps_strict,fotmob_minutes_weighted_rating,Saudi Pro League,2588,241,6.830428085996428,6.9,0.8614756293126018
-all_comps_strict,fotmob_minutes_weighted_rating,Portuguese Primeira Liga,2507,213,6.505523853624567,6.70621118012422,1.1373509162564006
-all_comps_strict,fotmob_minutes_weighted_rating,German 2. Bundesliga,1476,204,6.669699255655113,6.8,0.9127238690572854
-all_comps_strict,fotmob_minutes_weighted_rating,Swiss Super League,1363,168,6.4414796227243905,6.66666666666667,1.1129356652701474
-all_comps_strict,fotmob_minutes_weighted_rating,Spanish LaLiga 2,1340,163,6.666474734488881,6.764102564102565,0.8078443373921698
-all_comps_strict,fotmob_minutes_weighted_rating,Italian Serie B,1181,147,6.657709937741889,6.7,0.7634500379662607
-all_comps_strict,fotmob_minutes_weighted_rating,English League One,949,132,6.536927287838469,6.66332665330661,0.9654623801610953
-all_comps_strict,fotmob_minutes_weighted_rating,Polish Ekstraklasa,872,114,6.309643511327299,6.690840194343765,1.3119486507609437
-all_comps_strict,fotmob_minutes_weighted_rating,Scottish Premiership,822,94,6.3138614935903234,6.552035830618895,1.2544922015619344
-all_comps_strict,fotmob_minutes_weighted_rating,French Ligue 2,706,100,6.675994154058511,6.77601503759399,0.8980041297519274
-all_comps_strict,fotmob_minutes_weighted_rating,Croatian 1.HNL,610,87,6.316463176058805,6.49901185770751,1.1532879976231667
-source_league_strict,fotmob_mean_rating,English Premier League,7925,388,6.552297359170798,6.81428571428571,1.235596329377565
-source_league_strict,fotmob_mean_rating,Italian Serie A,7587,399,6.385385129325227,6.7,1.3060864090770787
-source_league_strict,fotmob_mean_rating,German Bundesliga,5884,326,6.597167006571492,6.83333333333333,1.1866832648904486
-source_league_strict,fotmob_mean_rating,Spanish LaLiga,5621,286,6.4608172033446,6.75,1.2718506853375313
-source_league_strict,fotmob_mean_rating,English Championship,5012,478,6.196599969596778,6.68,1.4904807209354978
-source_league_strict,fotmob_mean_rating,French Ligue 1,4912,312,6.525355048859937,6.825,1.2659176377864416
-source_league_strict,fotmob_mean_rating,Dutch Eredivisie,3675,319,6.3520698412698415,6.76666666666667,1.4641118018697772
-source_league_strict,fotmob_mean_rating,Brazilian Serie A,2888,244,6.302975366046696,6.7,1.441569625475231
-source_league_strict,fotmob_mean_rating,Turkish Super Lig,2659,246,6.311672934687226,6.73333333333333,1.4485181108207208
-source_league_strict,fotmob_mean_rating,Saudi Pro League,2329,230,6.482295180846061,6.83333333333333,1.49075958806755
-source_league_strict,fotmob_mean_rating,Portuguese Primeira Liga,2239,210,6.283284948637785,6.7,1.454324076983155
-source_league_strict,fotmob_mean_rating,Swiss Super League,1236,167,6.18606353059023,6.7,1.570272578202016
-source_league_strict,fotmob_mean_rating,German 2. Bundesliga,1221,200,6.1855610155610155,6.75,1.5716347433533637
-source_league_strict,fotmob_mean_rating,Spanish LaLiga 2,1168,154,5.902638413242009,6.625,1.7349965969236483
-source_league_strict,fotmob_mean_rating,Italian Serie B,1017,139,5.969037786205928,6.575,1.666115724667245
-source_league_strict,fotmob_mean_rating,Polish Ekstraklasa,693,106,6.0875060125060125,6.7,1.6057978947480354
-source_league_strict,fotmob_mean_rating,English League One,687,115,6.177096243155195,6.6,1.4095159353520905
-source_league_strict,fotmob_mean_rating,Scottish Premiership,623,88,6.265958877933196,6.76666666666667,1.5968667512480688
-source_league_strict,fotmob_mean_rating,Croatian 1.HNL,563,87,5.937785671995264,6.5,1.7223875671413826
-source_league_strict,fotmob_mean_rating,French Ligue 2,557,96,6.160179533213644,6.66666666666667,1.4849872349665538
-source_league_strict,fotmob_minutes_weighted_rating,English Premier League,7925,388,6.888408340210859,6.92,0.6412583293308828
-source_league_strict,fotmob_minutes_weighted_rating,Italian Serie A,7587,399,6.8058619357441525,6.8165991902834,0.5962353155657418
-source_league_strict,fotmob_minutes_weighted_rating,German Bundesliga,5884,326,6.9151166813120986,6.92921616382524,0.6556876755267488
-source_league_strict,fotmob_minutes_weighted_rating,Spanish LaLiga,5621,286,6.851222372292967,6.86666666666667,0.6302921437788573
-source_league_strict,fotmob_minutes_weighted_rating,English Championship,5012,478,6.7763945224255195,6.83333333333333,0.6310372521937708
-source_league_strict,fotmob_minutes_weighted_rating,French Ligue 1,4912,312,6.88788752680951,6.925,0.6651870775459605
-source_league_strict,fotmob_minutes_weighted_rating,Dutch Eredivisie,3675,319,6.834557659004145,6.88333333333333,0.7066821337651573
-source_league_strict,fotmob_minutes_weighted_rating,Brazilian Serie A,2888,244,6.816151409090557,6.84743310767247,0.6453055274597371
-source_league_strict,fotmob_minutes_weighted_rating,Turkish Super Lig,2659,246,6.8302760438521455,6.86603773584906,0.6744464523788897
-source_league_strict,fotmob_minutes_weighted_rating,Saudi Pro League,2329,230,6.902861753777181,6.93208430913349,0.7552863534016749
-source_league_strict,fotmob_minutes_weighted_rating,Portuguese Primeira Liga,2239,210,6.808228651375856,6.81769230769231,0.6844361333920844
-source_league_strict,fotmob_minutes_weighted_rating,Swiss Super League,1236,167,6.799446064101482,6.85950226244344,0.7317268607092542
-source_league_strict,fotmob_minutes_weighted_rating,German 2. Bundesliga,1221,200,6.785040129692288,6.85648854961832,0.7249505688303832
-source_league_strict,fotmob_minutes_weighted_rating,Spanish LaLiga 2,1168,154,6.708249089718451,6.7914155821001945,0.7137419301733213
-source_league_strict,fotmob_minutes_weighted_rating,Italian Serie B,1017,139,6.753341131874469,6.77510204081633,0.6617671189066877
-source_league_strict,fotmob_minutes_weighted_rating,Polish Ekstraklasa,693,106,6.8416128870634525,6.9,0.6952104803558673
-source_league_strict,fotmob_minutes_weighted_rating,English League One,687,115,6.803363669498144,6.82727272727273,0.6200874975753247
-source_league_strict,fotmob_minutes_weighted_rating,Scottish Premiership,623,88,7.004645243696865,7.04216417910448,0.7012083515717705
-source_league_strict,fotmob_minutes_weighted_rating,Croatian 1.HNL,563,87,6.789212327853218,6.7992700729927,0.7085309344527263
-source_league_strict,fotmob_minutes_weighted_rating,French Ligue 2,557,96,6.772667499262417,6.80388349514563,0.7066250395222365
+all_comps_strict,fotmob_mean_rating,English Premier League,11859,751,6.389430004269749,6.7,1.316795617134014
+all_comps_strict,fotmob_mean_rating,Italian Serie A,11633,758,6.377547318861642,6.65,1.2322171607402712
+all_comps_strict,fotmob_mean_rating,English Championship,10240,841,6.372505021546379,6.68333333333333,1.2924016578538462
+all_comps_strict,fotmob_mean_rating,French Ligue 1,9179,660,6.494896704347567,6.76666666666667,1.2411887783461528
+all_comps_strict,fotmob_mean_rating,German Bundesliga,8876,618,6.519844573739066,6.73333333333333,1.1717401752256043
+all_comps_strict,fotmob_mean_rating,Spanish LaLiga,7935,503,6.376342999169843,6.66666666666667,1.2736477664393973
+all_comps_strict,fotmob_mean_rating,Dutch Eredivisie,6778,502,6.406585042453367,6.7,1.3569262825162949
+all_comps_strict,fotmob_mean_rating,Brazilian Serie A,6347,538,6.449184870492496,6.72857142857143,1.2479202558176232
+all_comps_strict,fotmob_mean_rating,Turkish Super Lig,5253,474,6.294796705737311,6.63333333333333,1.3576945282171264
+all_comps_strict,fotmob_mean_rating,Belgian Pro League,5028,431,6.85577602094935,6.85,0.5827598439215899
+all_comps_strict,fotmob_mean_rating,Portuguese Primeira Liga,4307,371,6.275413138817944,6.65,1.4137260182203173
+all_comps_strict,fotmob_mean_rating,Saudi Pro League,3571,297,6.447199408373448,6.8,1.4672814814279458
+all_comps_strict,fotmob_mean_rating,Spanish LaLiga 2,2840,263,6.2492934104627755,6.66666666666667,1.4213523001814043
+all_comps_strict,fotmob_mean_rating,German 2. Bundesliga,2489,299,6.307480724712545,6.725,1.430892438018625
+all_comps_strict,fotmob_mean_rating,Argentine Primera Division,2413,269,6.831870424091726,6.8,0.5524110583603593
+all_comps_strict,fotmob_mean_rating,Italian Serie B,2294,270,6.150673496076722,6.6,1.5005822477157196
+all_comps_strict,fotmob_mean_rating,Swiss Super League,2262,244,6.0967239624998255,6.6,1.5374299015207364
+all_comps_strict,fotmob_mean_rating,Danish Superligaen,1798,176,6.885140897293289,6.86666666666667,0.5931288526561692
+all_comps_strict,fotmob_mean_rating,English League One,1693,244,6.207160694362408,6.56666666666667,1.3826592176062764
+all_comps_strict,fotmob_mean_rating,Polish Ekstraklasa,1422,158,5.9889640680463465,6.58,1.6478308434931077
+all_comps_strict,fotmob_minutes_weighted_rating,English Premier League,11859,751,6.780287556178228,6.85035019455253,0.7937829175565888
+all_comps_strict,fotmob_minutes_weighted_rating,Italian Serie A,11633,758,6.75217674959704,6.78461538461538,0.6662296119029174
+all_comps_strict,fotmob_minutes_weighted_rating,English Championship,10240,841,6.7691381877669885,6.814606782902965,0.6639870407262303
+all_comps_strict,fotmob_minutes_weighted_rating,French Ligue 1,9179,660,6.8306168485455805,6.89180327868852,0.7445598116747231
+all_comps_strict,fotmob_minutes_weighted_rating,German Bundesliga,8876,618,6.811848871114033,6.855259725231955,0.7684854314743604
+all_comps_strict,fotmob_minutes_weighted_rating,Spanish LaLiga,7933,503,6.78453984248419,6.80942408376963,0.7040789976570215
+all_comps_strict,fotmob_minutes_weighted_rating,Dutch Eredivisie,6778,502,6.814704001815861,6.856153355651205,0.7347552032444219
+all_comps_strict,fotmob_minutes_weighted_rating,Brazilian Serie A,6346,538,6.812909223497001,6.85,0.6528822536059496
+all_comps_strict,fotmob_minutes_weighted_rating,Turkish Super Lig,5253,474,6.601718705404967,6.7593220338983,1.0383946634694734
+all_comps_strict,fotmob_minutes_weighted_rating,Belgian Pro League,5028,431,6.891153480821103,6.9,0.5979157346574162
+all_comps_strict,fotmob_minutes_weighted_rating,Portuguese Primeira Liga,4307,371,6.646959290591331,6.7852140077821,0.9748409390915311
+all_comps_strict,fotmob_minutes_weighted_rating,Saudi Pro League,3571,297,6.8715592546663595,6.91607142857143,0.8058876079815137
+all_comps_strict,fotmob_minutes_weighted_rating,Spanish LaLiga 2,2840,263,6.76628184220628,6.80934065934066,0.6653563828331874
+all_comps_strict,fotmob_minutes_weighted_rating,German 2. Bundesliga,2489,299,6.7584874482007535,6.83832335329341,0.8058990380178304
+all_comps_strict,fotmob_minutes_weighted_rating,Argentine Primera Division,2413,269,6.866530866972426,6.8643137254902,0.566383768088242
+all_comps_strict,fotmob_minutes_weighted_rating,Italian Serie B,2294,270,6.739654239540279,6.792722473604825,0.6762790103270463
+all_comps_strict,fotmob_minutes_weighted_rating,Swiss Super League,2262,244,6.58460371991488,6.7394126496583695,0.9817586802078123
+all_comps_strict,fotmob_minutes_weighted_rating,Danish Superligaen,1798,176,6.923455062921734,6.909769794170245,0.6048775559241802
+all_comps_strict,fotmob_minutes_weighted_rating,English League One,1693,244,6.695707900313982,6.7747572815534,0.8412098045894417
+all_comps_strict,fotmob_minutes_weighted_rating,Polish Ekstraklasa,1422,158,6.532629658938147,6.79100849917081,1.1492738667222637
+source_league_strict,fotmob_mean_rating,Italian Serie A,11248,746,6.477696968349926,6.7,1.1358912939938715
+source_league_strict,fotmob_mean_rating,English Premier League,10974,729,6.57671926067675,6.75,1.0957407629189768
+source_league_strict,fotmob_mean_rating,English Championship,9782,827,6.474186206930123,6.7025,1.1759174964033923
+source_league_strict,fotmob_mean_rating,French Ligue 1,8805,654,6.647872193829266,6.8,1.0449456552695975
+source_league_strict,fotmob_mean_rating,German Bundesliga,8611,605,6.634420798978054,6.775,1.0437382669694018
+source_league_strict,fotmob_mean_rating,Spanish LaLiga,7759,507,6.508162542423851,6.7,1.1397228441885763
+source_league_strict,fotmob_mean_rating,Dutch Eredivisie,6500,494,6.543133256410256,6.76666666666667,1.2198364545609273
+source_league_strict,fotmob_mean_rating,Brazilian Serie A,6103,539,6.560760129678612,6.76666666666667,1.1093697468374826
+source_league_strict,fotmob_mean_rating,Turkish Super Lig,5190,476,6.534875369299936,6.75,1.1511537208013787
+source_league_strict,fotmob_mean_rating,Belgian Pro League,5028,431,6.85577602094935,6.85,0.5827598439215899
+source_league_strict,fotmob_mean_rating,Portuguese Primeira Liga,4172,371,6.512600191754553,6.75,1.1900528620171127
+source_league_strict,fotmob_mean_rating,Saudi Pro League,3465,294,6.611308974094688,6.86666666666667,1.3168928511015086
+source_league_strict,fotmob_mean_rating,Spanish LaLiga 2,2862,264,6.36806685301654,6.7,1.3303333984612142
+source_league_strict,fotmob_mean_rating,German 2. Bundesliga,2496,303,6.430692441239317,6.76666666666667,1.3149001688257642
+source_league_strict,fotmob_mean_rating,Argentine Primera Division,2430,269,6.832837448559671,6.8,0.5537616495882232
+source_league_strict,fotmob_mean_rating,Italian Serie B,2369,269,6.252457134816781,6.66666666666667,1.4345056745185734
+source_league_strict,fotmob_mean_rating,Swiss Super League,2250,244,6.3967331216931225,6.725,1.350496585509934
+source_league_strict,fotmob_mean_rating,Danish Superligaen,1798,176,6.885140897293289,6.86666666666667,0.5931288526561692
+source_league_strict,fotmob_mean_rating,English League One,1767,250,6.456113064920365,6.7,1.1707151179026989
+source_league_strict,fotmob_mean_rating,Polish Ekstraklasa,1395,164,6.394231780167265,6.76666666666667,1.3471951844252572
+source_league_strict,fotmob_minutes_weighted_rating,Italian Serie A,11248,746,6.780443652583414,6.786664295874825,0.5869296173471542
+source_league_strict,fotmob_minutes_weighted_rating,English Premier League,10974,729,6.829928994863289,6.849354241877254,0.6367195993348885
+source_league_strict,fotmob_minutes_weighted_rating,English Championship,9782,827,6.794702880758238,6.82616367508366,0.6041269884468407
+source_league_strict,fotmob_minutes_weighted_rating,French Ligue 1,8805,654,6.873282863333769,6.9,0.63761455786336
+source_league_strict,fotmob_minutes_weighted_rating,German Bundesliga,8611,605,6.867218279840173,6.86666666666667,0.6469520930645714
+source_league_strict,fotmob_minutes_weighted_rating,Spanish LaLiga,7757,507,6.8092711216060335,6.80416666666667,0.6212149008090309
+source_league_strict,fotmob_minutes_weighted_rating,Dutch Eredivisie,6500,494,6.845576973054525,6.8642258617406195,0.6735637907152544
+source_league_strict,fotmob_minutes_weighted_rating,Brazilian Serie A,6102,539,6.833300768709052,6.85,0.6053301683031648
+source_league_strict,fotmob_minutes_weighted_rating,Turkish Super Lig,5190,476,6.82387530145499,6.835591032608695,0.6439273436268677
+source_league_strict,fotmob_minutes_weighted_rating,Belgian Pro League,5028,431,6.891153480821103,6.9,0.5979157346574162
+source_league_strict,fotmob_minutes_weighted_rating,Portuguese Primeira Liga,4172,371,6.824230830105427,6.82941176470588,0.64917364176695
+source_league_strict,fotmob_minutes_weighted_rating,Saudi Pro League,3465,294,6.918991866801778,6.93897550111359,0.7265666105493047
+source_league_strict,fotmob_minutes_weighted_rating,Spanish LaLiga 2,2862,264,6.781075051555033,6.8094868434318006,0.6166315723059245
+source_league_strict,fotmob_minutes_weighted_rating,German 2. Bundesliga,2496,303,6.812383478769029,6.854545454545455,0.668239001835129
+source_league_strict,fotmob_minutes_weighted_rating,Argentine Primera Division,2430,269,6.867408288716562,6.865161788853475,0.5675255132705481
+source_league_strict,fotmob_minutes_weighted_rating,Italian Serie B,2369,269,6.772922769822817,6.8,0.6270989904925277
+source_league_strict,fotmob_minutes_weighted_rating,Swiss Super League,2250,244,6.81154208196936,6.83333333333333,0.6791876517518162
+source_league_strict,fotmob_minutes_weighted_rating,Danish Superligaen,1798,176,6.923455062921734,6.909769794170245,0.6048775559241802
+source_league_strict,fotmob_minutes_weighted_rating,English League One,1767,250,6.798040896492693,6.82,0.6425845542282281
+source_league_strict,fotmob_minutes_weighted_rating,Polish Ekstraklasa,1395,164,6.857650788253745,6.9,0.645056076214622

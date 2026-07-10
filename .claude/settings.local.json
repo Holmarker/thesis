@@ -142,7 +142,11 @@
       "Bash(git commit -q -m 'Add treatment/control composition tables by position and age band *)",
       "Bash(cd \"/Users/magnu/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale/RSpeciale\" && find . -name '*.tex' -not -path './.git/*' 2>/dev/null | head; find ~/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale -maxdepth 2 -name '*.tex' 2>/dev/null | head -5)",
       "Read(//Users/magnu/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale/**)",
-      "Bash(python3 scripts/05_writeup/make_latex_tables.py)"
+      "Bash(python3 scripts/05_writeup/make_latex_tables.py)",
+      "Bash(set -o pipefail)",
+      "Bash(Rscript scripts/03_build/build_fotmob_analysis_panel.R)",
+      "Bash(ls \"/Users/magnu/Library/CloudStorage/OneDrive-Personligt/Desktop/AU/Speciale/\" | head -20)",
+      "Bash(awk '{print $6,$7,$8,$NF}')"
     ]
   }
 }

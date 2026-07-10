@@ -1,0 +1,9 @@
+split,level,n
+foreign,FALSE,71667
+foreign,TRUE,73498
+club_tenure,1-3y,75717
+club_tenure,3-6y,6281
+club_tenure,<1y,129857
+league_tenure,1-3y,80438
+league_tenure,3-6y,10466
+league_tenure,<1y,122798

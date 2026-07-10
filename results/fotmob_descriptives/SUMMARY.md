@@ -10,17 +10,17 @@ The core summaries and plots use valid positive rating values only. Rows with `0
 
 ## Monthly panel numeric summary
 
-- `all_comps_strict` / `fotmob_mean_rating`: n = 68022, players = 5309, mean = 6.08, median = 6.60, sd = 1.61, variance = 2.60, p10-p90 = 3.30-7.48
-- `all_comps_strict` / `fotmob_minutes_weighted_rating`: n = 68022, players = 5309, mean = 6.70, median = 6.82, sd = 0.93, variance = 0.87, p10-p90 = 5.89-7.59
-- `source_league_strict` / `fotmob_mean_rating`: n = 60636, players = 4973, mean = 6.37, median = 6.75, sd = 1.40, variance = 1.96, p10-p90 = 4.30-7.53
-- `source_league_strict` / `fotmob_minutes_weighted_rating`: n = 60636, players = 4973, mean = 6.84, median = 6.87, sd = 0.66, variance = 0.44, p10-p90 = 6.10-7.61
+- `all_comps_strict` / `fotmob_mean_rating`: n = 119955, players = 7202, mean = 6.39, median = 6.70, sd = 1.32, variance = 1.74, p10-p90 = 4.71-7.50
+- `all_comps_strict` / `fotmob_minutes_weighted_rating`: n = 119952, players = 7202, mean = 6.76, median = 6.82, sd = 0.81, variance = 0.65, p10-p90 = 6.00-7.59
+- `source_league_strict` / `fotmob_mean_rating`: n = 116292, players = 7033, mean = 6.55, median = 6.75, sd = 1.15, variance = 1.31, p10-p90 = 5.67-7.53
+- `source_league_strict` / `fotmob_minutes_weighted_rating`: n = 116289, players = 7033, mean = 6.84, median = 6.85, sd = 0.63, variance = 0.40, p10-p90 = 6.10-7.60
 
 ## Monthly panel coverage and zero-rating rows
 
-- `all_comps_strict` / `fotmob_mean_rating`: positive rows = 68022 (95.5%), zero rows = 3187, missing rows = 0
-- `all_comps_strict` / `fotmob_minutes_weighted_rating`: positive rows = 68022 (95.5%), zero rows = 3187, missing rows = 0
-- `source_league_strict` / `fotmob_mean_rating`: positive rows = 60636 (96.5%), zero rows = 2195, missing rows = 0
-- `source_league_strict` / `fotmob_minutes_weighted_rating`: positive rows = 60636 (96.5%), zero rows = 2195, missing rows = 0
+- `all_comps_strict` / `fotmob_mean_rating`: positive rows = 119955 (96.9%), zero rows = 3834, missing rows = 0
+- `all_comps_strict` / `fotmob_minutes_weighted_rating`: positive rows = 119952 (96.9%), zero rows = 3834, missing rows = 3
+- `source_league_strict` / `fotmob_mean_rating`: positive rows = 116292 (97.7%), zero rows = 2762, missing rows = 0
+- `source_league_strict` / `fotmob_minutes_weighted_rating`: positive rows = 116289 (97.7%), zero rows = 2762, missing rows = 3
 
 ## Match-level numeric summary
 
