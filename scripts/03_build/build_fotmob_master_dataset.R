@@ -49,12 +49,13 @@ load_safe_crosswalk <- function(path) {
       fotmob_team_name = fotmob_team_name,
       fotmob_position_group = position_group,
       fotmob_squad_role = squad_role,
-      source_league_name = source_league_name,
-      source_league_id = as.integer(source_league_id),
       crosswalk_match_method = match_method,
       crosswalk_candidate_score = as.numeric(candidate_score)
     ) %>%
-    distinct(tm_player_id, fotmob_player_id, .keep_all = TRUE)
+    # the crosswalk's league is metadata from the matching season, NOT an
+    # identity key - joining on it drops all months a matched player spends in
+    # another league (same fix as in integrate_historical_fotmob_ratings.R)
+    distinct(fotmob_player_id, .keep_all = TRUE)
 }
 
 load_match_ratings <- function(path, crosswalk) {
@@ -70,7 +71,7 @@ load_match_ratings <- function(path, crosswalk) {
         TRUE ~ "not_applicable"
       )
     ) %>%
-    inner_join(crosswalk, by = c("fotmob_player_id", "source_league_id", "source_league_name")) %>%
+    inner_join(crosswalk, by = "fotmob_player_id") %>%
     transmute(
       tm_player_id,
       tm_player_name,
@@ -123,7 +124,7 @@ load_monthly_ratings <- function(path, crosswalk, monthly_scope) {
     mutate(
       Month = as.Date(Month)
     ) %>%
-    inner_join(crosswalk, by = c("fotmob_player_id", "source_league_id", "source_league_name")) %>%
+    inner_join(crosswalk, by = "fotmob_player_id") %>%
     transmute(
       tm_player_id,
       tm_player_name,

@@ -1,0 +1,143 @@
+% ------------------------------------------------------------------
+% Data section subsection: data engineering, panel construction,
+% and key variables. Generated from the RSpeciale pipeline
+% (scripts/01_scraping -> 02_crosswalk -> 03_build); numbers reflect
+% the July 2026 panel build. \input{data_construction} where needed.
+% ------------------------------------------------------------------
+
+\subsection{Data engineering and panel construction}
+\label{sec:data-construction}
+
+The analysis data set is a player--month panel assembled from two
+independent sources: (i) match-level performance data from FotMob, a
+widely used football statistics provider whose per-match player
+ratings are algorithmically generated from Opta event data, and (ii)
+contract and appearance records originating from Transfermarkt,
+accessed through a proprietary player-valuation database that stores
+repeated snapshots of each player's contract status over time.
+Because the two sources share no common identifier, and because each
+covers a different slice of the player universe, most of the data
+work consists of collection, record linkage, and the temporal
+alignment of contract information --- each of which is described in
+turn.
+
+\subsubsection*{Collection}
+
+FotMob data were collected via the site's public JSON endpoints at
+the fixture level: for every league--season in scope, the full
+fixture list was retrieved and each completed match was queried for
+its player-level statistics (rating, minutes played, goals, assists,
+cards, and man-of-the-match awards) together with the match result.
+Scraping was checkpointed per league with deduplication on match
+identifiers, so that interrupted runs resume without double-counting.
+Coverage comprises 25 European leagues for the 2024/25 and 2025/26
+seasons and the five major leagues for 2022/23 and 2023/24; the
+empirical sections report all results with this coverage asymmetry in
+mind. Match-level observations are aggregated to the player--month
+level, yielding monthly appearance counts, minutes, goal
+contributions, results, and two rating aggregates (unweighted and
+minutes-weighted means). Ratings outside the interval $(0,10]$ ---
+rare artifacts of matches with extra time --- are discarded before
+aggregation.
+
+Contract information comes from the valuation database, which records
+for each tracked player a dated snapshot of the current contract
+expiry date and the date of the most recent extension, alongside a
+complete Transfermarkt appearance log (match date, club, and minutes
+played). The appearance log is central for two reasons: it defines
+playing time for the \emph{full} player universe rather than only for
+matches FotMob rated, and it provides a month-by-month club history
+against which contract information can be validated.
+
+\subsubsection*{Record linkage}
+
+FotMob and Transfermarkt identities were linked with a purpose-built
+crosswalk. Candidate pairs were generated from exact and normalized
+name matches and scored on name similarity together with club
+agreement, where club names were compared through a learned alias
+table that maps cross-language variants of the same club (e.g.\ ``FC
+K\o benhavn'' and ``FC Copenhagen'') to a common form. Pairs in which
+both the player name and the (alias-normalized) club agreed were
+accepted automatically; the residual ambiguous cases were reviewed by
+hand. The confirmed crosswalk is enforced to be unique on the FotMob
+player identifier, and the merge into the panel is performed on
+player identity alone rather than on player--league pairs, so that
+players who move between covered leagues retain their link.
+
+\subsubsection*{Temporal alignment of contract information}
+
+Contract snapshots are irregularly spaced, so each player--month is
+assigned the most recent snapshot at or before that month (a
+last-observation-carried-forward merge). This leaves a gap at the
+start of each player's history: months in which the player already
+appears in the performance data but precedes their first contract
+snapshot. Because a contract's expiry date is static in the absence
+of a renewal or a transfer, the first observed snapshot can be
+projected \emph{backwards} onto these months. To guard against
+misattribution, the backward fill is applied only when (i) the gap
+between the candidate month and the first snapshot does not exceed
+365 days, and (ii) the appearance log confirms that the player was at
+the same club in the candidate month as at the snapshot date --- a
+club change would indicate a different contract, and such months are
+left unfilled. Player--months whose contract status cannot be
+established by either method are excluded. The backward fill
+recovers 5{,}700 player--months in the estimation sample
+($\approx$5\% of it), concentrated in the opening months of the
+2024/25 season, where performance coverage begins before contract
+tracking for many players. All filled observations carry a source
+flag, and the results are robust to their exclusion.
+
+\subsubsection*{Panel structure and key variables}
+
+The resulting panel contains 217{,}619 player--month observations for
+7{,}656 players. The estimation sample used for rating outcomes ---
+the \emph{strict} panel, which requires a valid FotMob rating and
+positive rated minutes in the month --- comprises 110{,}243
+player--months for 7{,}247 players; extensive-margin outcomes are
+estimated on the full panel, since months without any appearance are
+informative there. The key variables are defined as follows.
+
+\begin{description}
+  \item[Contract horizon.] $\mathit{DaysToExpiry}_{it}$ is the
+  difference between the contract expiry date in force and the
+  observation month. The treatment indicator
+  $\mathit{Bosman}_{it}$ equals one when 183 days or fewer remain,
+  i.e.\ when the player may legally negotiate with foreign clubs
+  under the Bosman ruling; event-study specifications instead use a
+  full set of months-to-expiry indicators.
+
+  \item[Contract spells.] A new spell begins whenever a player's
+  recorded expiry date jumps by more than 90 days between consecutive
+  months, which captures renewals and transfers. Spell identifiers
+  support fixed effects at the player--contract level, so that
+  identification comes from variation \emph{within} a contract as it
+  runs down, not from comparisons across differently selected
+  contracts.
+
+  \item[Extensive margin.] $\mathit{Played}_{it}$ indicates positive
+  minutes in the Transfermarkt appearance log, and
+  $\mathit{Minutes}_{it}$ and $\mathit{Matches}_{it}$ measure monthly
+  volume. These are observed for every player--month regardless of
+  FotMob coverage.
+
+  \item[Intensive margin.] The monthly mean and minutes-weighted mean
+  of FotMob match ratings, observed only conditional on playing in a
+  rated match. Because the rating distribution differs across
+  leagues, seasons, and positions, ratings enter the regressions
+  standardized within league$\times$season (and, in position-aware
+  specifications, within league$\times$season$\times$position) cells;
+  percentile-rank and substitution-adjusted transformations are used
+  as robustness checks.
+
+  \item[Controls and auxiliary variables.] Player age, position
+  group, club identity, monthly goal contributions, and match-result
+  aggregates (win share, points per match) from the rated fixtures;
+  club-level financial variables (wage bills and wages-to-revenue,
+  assigned from the financial year ending at the start of each
+  season) support the heterogeneity analyses.
+\end{description}
+
+All processing steps are scripted and deterministic: raw scrapes are
+transformed into monthly masters, linked through the crosswalk,
+merged with contract histories, and written to versioned panel files
+from which every table and figure in this thesis is generated.

@@ -1,0 +1,285 @@
+% ============================================================
+% Empirical Strategy chapter — Contract-Year Effect in Professional Football
+% Selection-first framing; pairs with results_revised.tex.
+% Self-contained: citations are written author-year in the prose,
+% so the file compiles without a .bib. Convert to \citep/\citet later.
+% ============================================================
+
+\section{Empirical strategy}
+\label{sec:strategy}
+
+This chapter sets out how the data are used to learn about the contract-year
+question, and why the design is built the way it is. Its organising decision is to
+treat contract proximity not as a treatment that raises or lowers a player's
+effort, but as a force that governs \emph{who is observed performing}. That choice
+is not a stylistic preference; it is forced by the structure of the setting and of
+the data. A performance rating exists only for a player his club selects to field,
+and, as the analysis will show, that selection is exactly what contract proximity
+moves. The strategy therefore separates two objects throughout: the fully observed
+\emph{selection margin}---whether and how much a player is played---and the
+selectively observed \emph{performance margin}---the per-minute rating, conditional
+on appearing. The first is identified directly; the second, it will be argued, can
+at best be bounded. The chapter proceeds from the identification philosophy and the
+peculiar nature of the ``treatment'' in this setting, through the two-margin split
+and the estimating equations, to the event study that is the study's main exhibit,
+the partial-identification treatment of the performance margin, the regression
+discontinuity that is tested and rejected, and finally inference, the robustness
+protocol, and the principal threats to identification.
+
+\subsection{Identification philosophy}
+\label{sec:strategy-philosophy}
+
+Three commitments discipline everything that follows. The first is a preference for
+fully observed outcomes over selected, formula-mediated ones. Playing time is
+recorded for every player-month in the panel; a rating is recorded only when the
+player appears, and is then a composite of scoreboard events, minutes and team
+performance rather than a direct reading of individual effort. Where the two
+margins disagree, the design leans on the one that does not require a selection
+correction to interpret. The second commitment is to identify from within-contract
+time variation rather than from comparisons between players. Players who are deep
+into a contract differ from players who are not in ways that are largely
+unobservable, so the credible variation is the movement of a single player toward
+his own contract's expiry, holding his identity fixed. The third commitment is to
+audit every candidate effect to destruction---through season-by-season
+re-estimation, a full specification grid, placebo cutoffs, event-time inspection,
+and selection bounds---and to report a well-audited null in preference to a fragile
+positive. These commitments explain why the chapter accumulates identification
+strength in stages and why it treats the failure of a design as a result in its own
+right.
+
+\subsection{Contract expiry as an anticipated within-spell state}
+\label{sec:strategy-treatment}
+
+It is tempting to treat entry into the six-month Bosman window as a treatment and
+to ask for its effect. The setting does not support that reading. Crossing into the
+window is not an action any agent takes; it is a state reached mechanically as
+calendar time advances within a fixed-term contract, and every player who remains
+under contract reaches it. There is no take-up decision, no compliance margin, and
+therefore none of the apparatus---instruments, local average treatment
+effects---that a genuine take-up problem would call for. What varies is not whether
+a player is treated but \emph{when}, along a spell whose clock runs
+deterministically.
+
+This places the setting in the literature on dynamically assigned, anticipated
+contractual transitions rather than in the programme-evaluation literature on
+treatment take-up. Abbring and van den Berg (2003) formalise the object closest to
+ours: a treatment defined by the moment it is reached within a duration, identified
+from the timing of events under a no-anticipation restriction rather than from a
+binary treated-versus-control contrast. Two consequences follow for the design.
+First, the legitimate comparison group is not players who never reach expiry but
+the same player \emph{before} he reaches it. Defining ``controls'' as players who
+never enter the window would condition on survival in the contract, because
+whether and when a player reaches expiry is itself an outcome of the club's and the
+player's earlier decisions; Fredriksson and Johansson (2008) show precisely that
+such a static control definition, built on the future path of treatment, biases the
+estimated effect, and that the correct comparison is the not-yet-treated (see also
+Sianesi 2004). This is the formal justification for the within-spell design adopted
+below. Second, because the Bosman date is perfectly anticipated and cannot be
+manipulated, behaviour and allocation adjust smoothly as it approaches rather than
+jumping when it is crossed. That is an anticipation problem, and it is distinct
+from the manipulation problem that motivates the usual density diagnostics
+(McCrary 2008); it is also the reason, developed in
+Section~\ref{sec:strategy-rdd}, that a discontinuity design at the threshold is not
+merely underpowered here but mis-specified.
+
+\subsection{Two margins, two identification problems}
+\label{sec:strategy-margins}
+
+The outcome structure splits the analysis into two problems that must be kept
+separate. The extensive, or selection, margin---whether a player plays at all in a
+month, and the minutes and matches he accumulates---is observed for all 152{,}817
+player-months from the Transfermarkt playing records, independently of whether he
+appears. It is therefore identified directly: no correction is needed to interpret
+a within-player, within-spell change in playing probability as the club's
+allocation response. The intensive, or performance, margin---the monthly match
+rating---exists only when the player is selected to appear, and is missing exactly
+for the player-months in which he is not. This is a selective-observation problem
+of the classic kind. It is the same structure that arises when wages are observed
+only for those who work, so that a regression on the observed sample confounds the
+outcome equation with the equation governing who is observed (Heckman 1979; Gronau
+1974); ratings are to latent performance what observed wages are to the wage-offer
+function, and playing is the analogue of employment.
+
+What makes the performance margin especially hard here is that the selection runs
+on the outcome itself. Clubs field the players they currently judge most useful, so
+the set of appearances is selected on close correlates of the very quantity the
+rating is meant to measure---a sorting-on-outcomes structure of the Roy (1951)
+type, which is the least favourable case for recovering the latent distribution
+from the observed one. The direction of the resulting bias is signable even when
+its magnitude is not. Because expiring players who are withdrawn are the ones the
+club rates least, the players who continue to appear near expiry are positively
+selected, so any conditional rating comparison is biased \emph{upward} relative to
+a true negative effect. A conditional null on the rating is thus consistent with a
+negative, a zero, or a positive population effect; conditioning on selection cannot
+tell them apart. This is why the strategy does not attempt to point-identify the
+performance margin and instead bounds it (Section~\ref{sec:strategy-bounds}), and
+why the weight of the analysis rests on the selection margin, which it can identify.
+
+\subsection{Estimating equations and the specification ladder}
+\label{sec:strategy-ladder}
+
+The analysis climbs a ladder of specifications of increasing identification
+strength, reporting the whole ladder rather than a single preferred cell so that
+the reader can see where each candidate effect survives or dies. The base outcome
+model is a linear two-way fixed-effects regression of the form
+\[
+  y_{it} \;=\; \beta\,\mathrm{Bosman}_{it} \;+\; \alpha_i \;+\; \gamma_t \;+\; \varepsilon_{it},
+\]
+where $y_{it}$ is the outcome for player $i$ in month $t$, $\mathrm{Bosman}_{it}$
+indicates that the player's contract has six months or fewer remaining, $\alpha_i$
+is a player fixed effect, $\gamma_t$ a time fixed effect, and standard errors are
+clustered by player. The Bosman indicator is measured contemporaneously from
+contract status, using no information about the player's future path, so the
+regressor cannot leak future outcomes into the present.
+
+The ladder tightens this in four steps. The first replaces the calendar month
+fixed effect with a league-by-month fixed effect, so that a player is compared only
+to others in the same league in the same month; this absorbs the shifting league
+composition of the panel, which is the design's largest single threat. The second
+replaces the player fixed effect with a player-by-contract-spell fixed effect. This
+is the decisive step: within a single spell, time-to-expiry advances mechanically
+and cannot be a state the player has sorted into, so the comparison is of one
+player with himself along one contract. Identification here is real rather than
+nominal, because a majority of players are observed across more than one spell
+(2{,}082 of 5{,}412 players, spanning 7{,}901 spells). The third step combines
+spell fixed effects with league-by-month fixed effects, the strictest general
+specification. The fourth uses club-by-month fixed effects, comparing an expiring
+player directly with his own teammates in the same month and thereby differencing
+out anything common to the club's situation---form, injuries, managerial change.
+Alongside the single Bosman indicator, the same models are estimated with six-month
+distance-to-expiry bins, which trace the profile across the contract without
+imposing that the entire response occurs at the legal threshold.
+
+\subsection{The contract-cycle event study}
+\label{sec:strategy-eventstudy}
+
+The single Bosman indicator compresses the contract into two states; the study's
+main exhibit instead estimates the whole trajectory. Each outcome is regressed on a
+full set of months-to-expiry indicators, from twenty-four-or-more down to zero with
+eighteen months as the omitted reference, within player-by-spell and
+league-by-month fixed effects. This traces the selection rule and the conditional
+rating continuously across the contract and lets the data, rather than the
+six-month convention, say where any response occurs. It is also the natural design
+given the anticipation structure of Section~\ref{sec:strategy-treatment}: an
+anticipated, non-manipulable deadline predicts a smooth, forward-looking adjustment,
+which an event study can display and a two-state indicator cannot.
+
+Two methodological cautions attach to this design and are stated openly. First,
+every player in the panel is eventually treated in the sense that every contract
+runs toward expiry, so there is no never-treated comparison group. In staggered
+settings of this kind the conventional two-way fixed-effects estimator can place
+negative weights on some comparisons, effectively using already-treated units as
+controls when treatment effects are heterogeneous over the cycle (Goodman-Bacon
+2021; de Chaisemartin and D'Haultf\oe uille 2020; Sun and Abraham 2021). The
+within-spell event study mitigates this by reading effects off the event-time path
+relative to a fixed within-spell reference rather than off a pooled dummy, and the
+heterogeneity-robust estimators developed for anticipated, all-eventually-treated
+designs---in particular the group-time approach of Callaway and Sant'Anna (2021),
+which admits an explicit limited-anticipation window---are the formal home for this
+exhibit and the natural route for a fuller treatment of the renewal margin. Second,
+because renewal is itself selected, the event study around the first observed
+contract extension is interpreted with the same caution as the rating regressions:
+the interesting quantity is the within-player path around signing, not the level
+difference between renewed and non-renewed players.
+
+\subsection{Partial identification of the performance margin}
+\label{sec:strategy-bounds}
+
+The selective-observation problem of Section~\ref{sec:strategy-margins} means the
+conditional rating effect is not point-identified, and the strategy treats this as
+a feature to be characterised rather than a defect to be assumed away. The
+selection margin is estimated directly on the full panel, where playing is always
+observed, and delivers the object the design can identify without correction. For
+the performance margin the analysis reports bounds. Following Lee (2009), the
+group that is over-observed near expiry---the players who continue to appear---is
+trimmed by its differential observation share within league-month cells, under the
+monotonicity assumption that contract proximity moves selection in one direction,
+yielding sharp bounds on the Bosman rating gap. This is the appropriate posture for
+a Roy-type selection on the outcome, where worst-case reasoning rather than a
+point estimate is what the data support (Manski's partial-identification
+programme; Mourifi\'e, Henry and M\'eango 2018 give sharp bounds for exactly a Roy
+model with selection on potential outcomes). The result to be reported in the next
+chapter is that the identified set spans zero: given the selection into playing, the
+conditional rating cannot even sign a performance effect. Separately, the
+possibility that reaching expiry is itself a selected state---because clubs may
+already have decided not to renew, or because form or fitness has already
+declined---is the dynamic-selection analogue of the Ashenfelter dip (Heckman and
+Smith 1999); the within-spell design addresses selection \emph{into the
+trajectory}, while the bounds address selection \emph{into appearing}, and both are
+required because they are different problems.
+
+\subsection{The regression discontinuity, and why it is rejected}
+\label{sec:strategy-rdd}
+
+A regression discontinuity at 180 days to expiry was implemented as the design that
+would, in principle, offer the cleanest local comparison, estimating a local linear
+model in days-to-expiry around the Bosman cutoff with month fixed effects and
+clustering by player. It is reported, and then rejected, as a negative exhibit. The
+running variable is measured in monthly steps, so support within a narrow bandwidth
+is almost absent---of order a hundred observations against nine hundred at a
+thirty-day bandwidth---and the local-linear estimate is implausibly large and of
+the wrong sign relative to the raw gap. Placebo cutoffs at 150 and 210 days fire at
+conventional significance, confirming that the design is detecting local slope and
+composition rather than anything at the legal threshold. The correct reading of this
+failure is the one anticipated in Section~\ref{sec:strategy-treatment}: because free
+agency at six months is perfectly foreseen and cannot be manipulated, there is no
+discontinuous change in the club's selection problem at 180 days for a discontinuity
+design to exploit. The failure is thus a prediction of the identification analysis,
+not an accident of the sample, and it is precisely what motivates preferring the
+smooth event study to the discontinuity.
+
+\subsection{Inference}
+\label{sec:strategy-inference}
+
+Inference recognises that observations are clustered within players and within
+time. The baseline clusters standard errors by player; robustness specifications
+cluster two-way by player and month, and, in the teammate comparisons, by club.
+Because the heterogeneity analysis inspects roughly a dozen subgroups per
+hypothesis, isolated significant cells are expected under the null, and the analysis
+reports Benjamini-Hochberg adjusted $q$-values across subgroups within each
+model-outcome-term family; it also notes explicitly that this adjustment does not
+repair a season-stability failure, which is a different problem from multiplicity.
+Finally, every null is accompanied by a minimum detectable effect, so that an
+absence of significance is shown to be informative rather than merely uncertain:
+for the Bosman rating coefficient the minimum detectable effect at eighty per cent
+power is about 0.06--0.07 standard deviations, so effects larger than this are ruled
+out with good power.
+
+\subsection{Robustness protocol}
+\label{sec:strategy-robustness}
+
+Candidate effects are subjected to a fixed protocol designed to break them. Every
+pooled effect is re-estimated season by season, and any effect that is significant
+in the pooled data but vanishes within each season is treated as a composition
+artefact of the panel's changing league mix rather than as a behavioural response.
+The full specification grid is reported rather than a single favoured cell, so that
+sign instability across fixed-effects structures is visible. Threshold claims are
+checked against placebo cutoffs. Any dynamic claim is checked against its event-time
+path, so that a pooled coefficient must correspond to a coherent trajectory to be
+believed. And all time-varying regressors are assigned without look-ahead: contract
+status is contemporaneous, and club financial variables are lagged to the financial
+year ending before each season, strictly backward-looking; an earlier result that
+depended on improperly time-averaged financial assignment did not survive correct
+lagging and is retained only as a cautionary note.
+
+\subsection{Threats to identification}
+\label{sec:strategy-threats}
+
+Three threats deserve to be named at the outset. The first and largest is that the
+panel's league composition shifts substantially across seasons, from the top five
+leagues only in the earliest seasons to some forty leagues later; this is the
+motivation for league-by-month fixed effects and for the season-stability audit, and
+it remains the single largest caveat on any pooled estimate. The second is that part
+of the selection-margin decline may be mechanical rather than discretionary---driven
+by the timing of mid-season transfers, by injuries that run down contracts, or by
+clubs protecting the sale value of a departing player---and separating these channels
+would require transfer-event data that the panel does not contain; this is carried
+forward to the discussion as a limitation on the interpretation, though not on the
+existence, of the effect. The third is that the performance margin is only ever
+observed for the selected, so that even a well-powered conditional null is a bounded
+rather than a point statement, a limitation the strategy confronts directly rather
+than assumes away. How football's anticipated, non-manipulable deadline maps to
+other fixed-term labour markets---and to the closely analogous political
+term-limits setting, where the same discipline-versus-selection problem has been
+studied (Besley and Case 1995; List and Sturm 2006; Alt, Bueno de Mesquita and Rose
+2011)---is taken up in the discussion.

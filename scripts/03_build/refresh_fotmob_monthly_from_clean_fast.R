@@ -51,6 +51,8 @@ dt[, fotmob_player_id := as.integer(fotmob_player_id)]
 dt[, source_league_id := as.integer(source_league_id)]
 dt[, match_id := as.integer(match_id)]
 dt[, minutes_played := as.integer(minutes_played)]
+# a football match caps out at ~120 minutes; larger values are FotMob API glitches
+dt[minutes_played > 120L, minutes_played := NA_integer_]
 dt[, goals := as.integer(goals)]
 dt[, assists := as.integer(assists)]
 dt[, yellow_cards := as.integer(yellow_cards)]
@@ -60,6 +62,18 @@ dt[, is_top_rating := as.logical(is_top_rating)]
 dt[, player_of_the_match := as.logical(player_of_the_match)]
 dt[, on_bench := as.logical(on_bench)]
 dt[, is_source_league_match := as.logical(is_source_league_match)]
+
+# players scraped under two source leagues (mid-season transfers) carry the same
+# match twice; keep one row per player-match, preferring the source-league copy,
+# then rows with a rating, then the one with most minutes
+dt[, dedup_rank := frank(
+  -(fcoalesce(is_source_league_match, FALSE) * 4L +
+      (!is.na(rating)) * 2L +
+      fifelse(is.na(minutes_played), 0L, 1L)),
+  ties.method = "first"
+), by = .(fotmob_player_id, match_id)]
+dt <- dt[is.na(match_id) | dedup_rank == 1L]
+dt[, dedup_rank := NULL]
 
 monthly_all <- summarise_monthly_dt(dt)
 fwrite(monthly_all, monthly_all_out)

@@ -12,13 +12,19 @@ monthly_all_out <- "data/fotmob_ratings_monthly_all_comps.csv"
 monthly_league_out <- "data/fotmob_ratings_monthly_source_league.csv"
 
 read_ratings_csv <- function(path) {
-  as_tibble(utils::read.csv(
+  # utils::read.csv(fileEncoding = "UTF-8") silently TRUNCATES a file at the
+  # first raw non-ASCII byte, dropping every later row. readr reads all rows;
+  # iconv(sub = "byte") turns stray raw bytes into the same "<hex>" escapes the
+  # scraper uses, which decode_fotmob_text() already converts back to text.
+  readr::read_csv(
     path,
-    stringsAsFactors = FALSE,
-    colClasses = "character",
-    check.names = FALSE,
-    fileEncoding = "UTF-8"
-  ))
+    col_types = readr::cols(.default = readr::col_character()),
+    progress = FALSE
+  ) %>%
+    mutate(across(
+      everything(),
+      ~ iconv(.x, from = "UTF-8", to = "UTF-8", sub = "byte")
+    ))
 }
 
 ensure_columns <- function(df, defaults) {
@@ -33,7 +39,7 @@ ensure_columns <- function(df, defaults) {
 
 safe_write_csv <- function(df, path) {
   tmp_path <- paste0(path, ".tmp")
-  utils::write.csv(df, tmp_path, row.names = FALSE, na = "", fileEncoding = "UTF-8")
+  readr::write_csv(df, tmp_path, na = "")
 
   if (file.exists(path)) {
     file.remove(path)
@@ -43,11 +49,15 @@ safe_write_csv <- function(df, path) {
 }
 
 decode_fotmob_text <- function(x) {
-  ifelse(
+  out <- as.character(ifelse(
     is.na(x),
     NA_character_,
     utils::URLdecode(gsub("<([0-9A-Fa-f]{2})>", "%\\1", x))
-  )
+  ))
+  # decoded bytes are UTF-8; without this tag write.csv/fileEncoding mangles
+  # non-ASCII names and corrupts the CSV quoting downstream
+  Encoding(out) <- "UTF-8"
+  out
 }
 
 parse_fotmob_date <- function(x) {
@@ -81,6 +91,12 @@ coerce_ratings <- function(df) {
       stage = decode_fotmob_text(as.character(stage)),
       is_home_team = as.logical(is_home_team),
       minutes_played = as.integer(minutes_played),
+      # a match caps out at ~120 minutes; larger values are FotMob glitches
+      minutes_played = if_else(
+        !is.na(minutes_played) & minutes_played > 120L,
+        NA_integer_,
+        minutes_played
+      ),
       goals = as.integer(goals),
       assists = as.integer(assists),
       yellow_cards = as.integer(yellow_cards),
@@ -273,6 +289,17 @@ ratings_raw <- bind_rows(lapply(seq_along(rating_files), function(i) {
     has_minutes = coalesce(minutes_played, 0L) > 0L,
     has_valid_rating = !is.na(rating) & rating > 0
   ) %>%
+  # players scraped under two source leagues (mid-season transfers) carry the
+  # same match twice; keep one row per player-match, preferring the
+  # source-league copy, then rows with a rating, then the one with most minutes
+  arrange(
+    fotmob_player_id,
+    match_id,
+    desc(is_source_league_match),
+    is.na(rating),
+    desc(coalesce(minutes_played, -1L))
+  ) %>%
+  distinct(fotmob_player_id, match_id, .keep_all = TRUE) %>%
   left_join(fixture_results, by = "match_id") %>%
   mutate(
     team_score = case_when(

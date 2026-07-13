@@ -108,6 +108,9 @@ weighted_mean_safe <- function(x, w) {
 
 summarise_monthly <- function(df, monthly_scope) {
   df %>%
+    # a football match caps out at ~120 minutes; larger values are FotMob API
+    # glitches (e.g. match 4792872 reports 4926 minutes for one player)
+    mutate(minutes_played = if_else(minutes_played > 120L, NA_integer_, minutes_played)) %>%
     group_by(fotmob_player_id, Month) %>%
     summarise(
       fotmob_player_name = first(fotmob_player_name),

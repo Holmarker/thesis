@@ -14,6 +14,7 @@ REG = os.path.join(REPO, "results", "fotmob_regressions")
 DESC = os.path.join(REPO, "results", "thesis_descriptive_statistics")
 OUT = os.path.join(REPO, "results", "latex_tables")
 THESIS_TABLES = os.path.normpath(os.path.join(REPO, "..", "tables"))
+LATEX_PROJECT_TABLES = os.path.join(REPO, "text", "latex", "tables")
 os.makedirs(OUT, exist_ok=True)
 
 
@@ -52,8 +53,9 @@ def write(name, body):
     path = os.path.join(OUT, name)
     with open(path, "w") as f:
         f.write(body)
-    if os.path.isdir(THESIS_TABLES):
-        shutil.copy(path, os.path.join(THESIS_TABLES, name))
+    for dest in (THESIS_TABLES, LATEX_PROJECT_TABLES):
+        if os.path.isdir(dest):
+            shutil.copy(path, os.path.join(dest, name))
     print("wrote", name)
 
 
@@ -63,10 +65,15 @@ sv = {r["variable"]: r for r in t1}
 label_map = [
     ("Age", "Age (years)"),
     ("DaysToExpiry", "Days to expiry"),
-    ("Minutes_tm", "Minutes (month)"),
-    ("Goals_tm", "Goals (month)"),
-    ("Assists_tm", "Assists (month)"),
+    ("Minutes_tm", "Minutes (month, TM)"),
+    ("Goals_tm", "Goals (month, TM)"),
+    ("Assists_tm", "Assists (month, TM)"),
+    ("Goals_per90_tm", "Goals per 90 (TM)"),
+    ("Assists_per90_tm", "Assists per 90 (TM)"),
     ("fotmob_matches", "FotMob matches (month)"),
+    ("fotmob_minutes", "FotMob minutes (month)"),
+    ("fotmob_goals", "FotMob goals (month)"),
+    ("fotmob_assists", "FotMob assists (month)"),
     ("fotmob_mean_rating_clean", "Mean rating"),
     ("fotmob_minutes_weighted_rating_clean", "Minutes-weighted rating"),
 ]
@@ -75,7 +82,8 @@ for var, label in label_map:
     r = sv[var]
     lines.append(
         f"    {label:27s} & {grp(r['n'])} & {float(r['mean']):.2f} "
-        f"& {float(r['sd']):.2f} & {float(r['median']):.2f} \\\\"
+        f"& {float(r['sd']):.2f} & {float(r['min']):.2f} & {float(r['p25']):.2f} "
+        f"& {float(r['median']):.2f} & {float(r['p75']):.2f} & {float(r['max']):.2f} \\\\"
     )
 overview = {r["statistic"]: r["value"] for r in rows(os.path.join(DESC, "sample_overview.csv"))}
 first = overview.get("First month", "2022-06")[:7]
@@ -85,9 +93,9 @@ write("tab_summary.tex", f"""% Full-sample summary statistics (auto-generated: m
   \\centering
   \\caption{{Full-sample summary statistics.}}
   \\label{{tab:summary}}
-  \\begin{{tabular}}{{lrrrr}}
+  \\begin{{tabular}}{{lrrrrrrrr}}
     \\toprule
-    Variable & $N$ & Mean & SD & Median \\\\
+    Variable & $N$ & Mean & SD & Min & P25 & Median & P75 & Max \\\\
     \\midrule
 {chr(10).join(lines)}
     \\bottomrule
@@ -369,5 +377,32 @@ write("tab_robustness.tex", f"""% Robustness of the intensive-margin null (auto-
   around an untrimmed estimate of ${ref:+.2f}$; they span zero.\\par}}
 \\end{{table}}
 """)
+
+# ---------- numbers.tex: manuscript macros ----------
+panel_manifest = {r["dataset"]: r for r in rows(os.path.join(REPO, "data", "panel", "fotmob_analysis_panel_manifest.csv"))}
+master_manifest = {r["dataset"]: r for r in rows(os.path.join(REPO, "data", "master", "fotmob_master_manifest.csv"))}
+full = panel_manifest["panel_all_comps"]
+strict = panel_manifest["panel_all_comps_strict"]
+
+macros = [
+    ("NPanelObs", grp(full["rows"])),
+    ("NPanelPlayers", grp(full["unique_players"])),
+    ("NPanelClubs", grp(overview["Clubs"])),
+    ("NStrictObs", grp(strict["rows"])),
+    ("NStrictPlayers", grp(strict["unique_players"])),
+    ("NBackfilled", grp(full["rows_backward_filled"])),
+    ("NBackfilledStrict", grp(strict["rows_backward_filled"])),
+    ("NBosmanObs", grp(overview["Bosman-window observations"])),
+    ("NMatchRatings", grp(master_manifest["match_master"]["rows"])),
+    ("NCrosswalkPlayers", grp(master_manifest["monthly_all_comps"]["unique_tm_players"])),
+    ("FirstMonth", overview.get("First month", "")[:7]),
+    ("LastMonth", overview.get("Last month", "")[:7]),
+]
+write(
+    "numbers.tex",
+    "% Auto-generated manuscript numbers (make_latex_tables.py). \\input this once\n"
+    "% in the preamble; never hard-code these counts in the text.\n"
+    + "".join(f"\\newcommand{{\\{n}}}{{{v}}}\n" for n, v in macros),
+)
 
 print("done")

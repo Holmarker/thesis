@@ -1,0 +1,18 @@
+% ============================================================
+% Wrapper for the Results tables (mirrors all_tables.tex).
+% Requires: \usepackage{booktabs}. Compile standalone or
+% \input the individual tab_*.tex files in your thesis.
+% ============================================================
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage[margin=2.5cm]{geometry}
+\begin{document}
+\input{tables/tab_summary}
+\input{tables/tab_bosman_means}
+\input{tables/tab_composition}
+\input{tables/tab_intensive_fe}
+\input{tables/tab_heterogeneity}
+\input{tables/tab_extensive}
+\input{tables/tab_robustness}
+\input{tables/tab_rejected}
+\end{document}

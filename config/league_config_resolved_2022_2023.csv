@@ -1,0 +1,37 @@
+league_name,league_id,fotmob_name,localized_name,ccode,page_url,season_start,season_end,active,match_status
+Spanish LaLiga,87,LaLiga,LaLiga,ESP,/leagues/87/overview/laliga,2022-07-01,2023-05-31,TRUE,matched
+English Premier League,47,Premier League,Premier League,ENG,/leagues/47/overview/premier-league,2022-07-01,2023-05-31,TRUE,matched
+German Bundesliga,54,Bundesliga,Bundesliga,GER,/leagues/54/overview/bundesliga,2022-07-01,2023-05-31,TRUE,matched
+French Ligue 1,53,Ligue 1,Ligue 1,FRA,/leagues/53/overview/ligue-1,2022-07-01,2023-05-31,TRUE,matched
+Italian Serie A,55,Serie A,Serie A,ITA,/leagues/55/overview/serie,2022-07-01,2023-05-31,TRUE,matched
+Turkish Super Lig,71,Süper Lig,Süper Lig,TUR,/leagues/71/overview/super-lig,2022-07-01,2023-05-31,TRUE,matched
+Portuguese Primeira Liga,61,Liga Portugal,Liga Portugal,POR,/leagues/61/overview/liga-portugal,2022-07-01,2023-05-31,TRUE,matched
+Saudi Pro League,536,Saudi Pro League,Saudi Pro League,KSA,/leagues/536/overview/saudi-pro-league,2022-07-01,2023-05-31,TRUE,matched
+Brazilian Serie A,268,Serie A,Serie A,BRA,/leagues/268/overview/serie,2023-01-01,2023-12-31,TRUE,matched
+Belgian Pro League,40,First Division A,First Division A,BEL,/leagues/40/overview/first-division,2022-07-01,2023-05-31,TRUE,matched
+English Championship,48,Championship,Championship,ENG,/leagues/48/overview/championship,2022-07-01,2023-05-31,TRUE,matched
+Dutch Eredivisie,57,Eredivisie,Eredivisie,NED,/leagues/57/overview/eredivisie,2022-07-01,2023-05-31,TRUE,matched
+Ukrainian Premier Liga,441,Premier League,Premier League,UKR,/leagues/441/overview/premier-league,2022-07-01,2023-05-31,TRUE,matched
+Spanish LaLiga 2,140,LaLiga2,LaLiga2,ESP,/leagues/140/overview/laliga2,2022-07-01,2023-05-31,TRUE,matched
+Greek Super League 1,135,Super League 1,Super League 1,GRE,/leagues/135/overview/super-league-1,2022-07-01,2023-05-31,TRUE,matched
+Danish Superligaen,46,Superligaen,Superligaen,DEN,/leagues/46/overview/superligaen,2022-07-01,2023-05-31,TRUE,matched
+German 2. Bundesliga,146,2. Bundesliga,2. Bundesliga,GER,/leagues/146/overview/2-bundesliga,2022-07-01,2023-05-31,TRUE,matched
+Scottish Premiership,64,Premiership,Premiership,SCO,/leagues/64/overview/premiership,2022-07-01,2023-05-31,TRUE,matched
+Austrian Bundesliga,38,Bundesliga,Bundesliga,AUT,/leagues/38/overview/bundesliga,2022-07-01,2023-05-31,TRUE,matched
+French Ligue 2,110,Ligue 2,Ligue 2,FRA,/leagues/110/overview/ligue-2,2022-07-01,2023-05-31,TRUE,matched
+Argentine Primera Division,112,Liga Profesional,Liga Profesional,ARG,/leagues/112/overview/liga-profesional,2023-01-01,2023-12-31,TRUE,matched
+Swiss Super League,69,Super League,Super League,SUI,/leagues/69/overview/super-league,2022-07-01,2023-05-31,TRUE,matched
+Serbian Super Liga,182,Super Liga,Super Liga,SRB,/leagues/182/overview/super-liga,2022-07-01,2023-05-31,TRUE,matched
+Croatian 1.HNL,252,HNL,HNL,CRO,/leagues/252/overview/hnl,2022-07-01,2023-05-31,TRUE,matched
+Czech First League,122,1. Liga,1. Liga,CZE,/leagues/122/overview/1-liga,2022-07-01,2023-05-31,TRUE,matched
+Norwegian Eliteserien,59,Eliteserien,Eliteserien,NOR,/leagues/59/overview/eliteserien,2023-01-01,2023-11-30,TRUE,matched
+Italian Serie B,86,Serie B,Serie B,ITA,/leagues/86/overview/serie-b,2022-07-01,2023-05-31,TRUE,matched
+Romanian Liga 1,189,Liga I,Liga I,ROU,/leagues/189/overview/liga-i,2022-07-01,2023-05-31,TRUE,matched
+Polish Ekstraklasa,196,Ekstraklasa,Ekstraklasa,POL,/leagues/196/overview/ekstraklasa,2022-07-01,2023-05-31,TRUE,matched
+Swedish Allsvenskan,67,Allsvenskan,Allsvenskan,SWE,/leagues/67/overview/allsvenskan,2023-01-01,2023-11-30,TRUE,matched
+English League One,108,League One,League One,ENG,/leagues/108/overview/league-one,2022-07-01,2023-05-31,TRUE,matched
+Brazilian Serie B,8814,Serie B,Serie B,BRA,/leagues/8814/overview/serie-b,2023-01-01,2023-12-31,TRUE,matched
+Bulgarian Parva Liga,270,First Professional League,First Professional League,BUL,/leagues/270/overview/first-professional-league,2022-07-01,2023-05-31,TRUE,matched
+Hungarian Nemzeti Bajnoksag,212,Nemzeti Bajnokság I,Nemzeti Bajnokság I,HUN,/leagues/212/overview/nemzeti-bajnoksag-i,2022-07-01,2023-05-31,TRUE,matched
+Turkish 1.Lig,165,1. Lig,1. Lig,TUR,/leagues/165/overview/1-lig,2022-07-01,2023-05-31,TRUE,matched
+Belgian Challenger Pro League,264,First Division B,First Division B,BEL,/leagues/264/overview/first-division-b,2022-07-01,2023-05-31,TRUE,matched

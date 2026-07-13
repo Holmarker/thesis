@@ -1,5 +1,5 @@
 sample_name,rating_variable,n_rows,n_players,missing_rows,zero_rows,positive_rows,positive_players,positive_share
-all_comps_strict,fotmob_mean_rating,123789,7370,0,3834,119955,7202,0.9690279427089644
-all_comps_strict,fotmob_minutes_weighted_rating,123789,7370,3,3834,119952,7202,0.9690037079223518
-source_league_strict,fotmob_mean_rating,119054,7215,0,2762,116292,7033,0.9768004434962286
-source_league_strict,fotmob_minutes_weighted_rating,119054,7215,3,2762,116289,7033,0.9767752448468762
+all_comps_strict,fotmob_mean_rating,140462,7422,0,3834,136628,7259,0.9727043613219234
+all_comps_strict,fotmob_minutes_weighted_rating,140462,7422,4,3834,136624,7259,0.9726758838689468
+source_league_strict,fotmob_mean_rating,135727,7279,0,2762,132965,7101,0.9796503274956346
+source_league_strict,fotmob_minutes_weighted_rating,135727,7279,4,2762,132961,7101,0.9796208565723843

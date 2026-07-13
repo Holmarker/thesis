@@ -1,0 +1,69 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[a4paper, total={5.5in, 8in}]{geometry}
+\usepackage{parskip}
+
+\usepackage{natbib}
+
+\title{Background}
+\author{Magnus Holmark Andersen}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+
+
+
+
+\section{Background}
+
+\subsection{The Football Labor Market}
+
+Professional football operates as a regulated labour market in which players are employed under fixed-term contracts by clubs. Unlike traditional labour markets, where open-ended contracts are often the norm, football contracts are agreed for a fixed period. FIFA regulations specify that the minimum length of a professional contract runs from its effective date until the end of the season, while the maximum length is five years, unless national law permits otherwise \citep{fifa_rstp_2025}. Wages are fixed for the employment period, sometimes with additional bonus structures. The contract also contains terms under which early termination is permitted, but FIFA regulations emphasise contractual stability: a contract between a professional and a club may only be terminated upon expiry, by mutual agreement, or where there is just cause \citep{fifa_rstp_2025}. Recent legal developments, such as the Diarra case before the Court of Justice of the European Union in 2024, show that the relationship between contractual stability and player mobility remains contested under European law \citep{cjeu_diarra_2024}. This fixed-term structure is central to the analysis in this thesis, because it means that a player's compensation is largely locked in for the duration of the contract. The main mechanism through which a player can increase their earnings is therefore by negotiating a new contract, either with their current club or with a new one. This creates a direct link between contract expiry and the incentive to signal value to the labour market. \
+
+Wages in professional football are determined at the point of contract signing through bilateral negotiation between the player and the club. Once agreed, the wage is fixed for the contract duration and does not automatically adjust in response to subsequent performance. This is an important institutional feature that distinguishes football from labour markets where pay is reviewed annually or linked explicitly to output. Players who improve their performance significantly during the contract period do not automatically receive higher wages until they renegotiate or sign a new contract. Conversely, players whose performance declines generally retain their agreed wage until the contract expires, unless the contract is terminated under exceptional circumstances \citep{fifa_rstp_2025}. \
+
+Players in professional football are commonly represented by licensed agents, whose role is to negotiate contract terms on the player's behalf. This distinguishes the football labour market from many standard employment settings, where workers often negotiate individually and without professional representation. The presence of agents has two implications for this analysis. First, it likely reduces information asymmetries between players and clubs, since agents can provide information about market value and potential outside options. Second, agent activity is likely to become especially relevant as a contract approaches expiry, since this is the period in which the player’s bargaining position may improve, particularly once the six-month negotiation threshold is reached. This institutional feature reinforces the theoretical prediction that the final phase of a contract is a period of increased labour-market activity for a player. \
+
+The transfer market provides the primary mechanism through which players move between clubs. Player mobility is regulated through registration periods. FIFA rules specify that the first registration period must last between eight and twelve weeks, while the second occurs mid-season and lasts between four and eight weeks \citep{fifa_rstp_2025}. In general, players may only be registered by a new club during these periods, subject to limited exceptions \citep{fifa_rstp_2025}. When a player is transferred while still under contract, the purchasing club typically pays a transfer fee to the selling club as compensation for releasing the player from the existing contract. Transfer fees can therefore be understood as payments made by hiring clubs to release players from their current clubs, making the transfer system a distinctive institution in the European football labour market \citep{hoey_peeters_principe_2021}. This fee can represent a significant barrier to player mobility, since it increases the total cost of acquiring a player beyond the wage commitment alone. The existence of transfer fees is therefore directly relevant to understanding the impact of the Bosman ruling and the subsequent six-month negotiation rule. While the Bosman ruling eliminated transfer fees for out-of-contract players, FIFA regulations later formalised the rule that a player may conclude a contract with another club once their current contract has expired or is due to expire within six months \citep{fifa_rstp_2025}. The transfer market and the six-month threshold are therefore closely connected, and the latter is discussed in detail in the following subsection. \
+
+\subsection{Bosman}
+
+Prior to 1995, professional footballers were subject to a transfer system that significantly restricted their freedom of movement. Even after a player's contract had expired, their registering club retained the right to demand a transfer fee from any club wishing to sign them. This effectively meant that clubs could restrict player movement by setting transfer fees, even when the player was no longer under contract. Players were therefore unable to move freely between clubs after their contractual obligations had formally ended, a restriction that had no equivalent in most other European labour markets. The distinction between pre-Bosman and post-Bosman transfer regimes is central in the economic literature on European football transfer regulations \citep{feess_muehlheusser_2003}. \
+
+This changed fundamentally following the case of Jean-Marc Bosman, a Belgian footballer who challenged these restrictions after being denied a transfer from RFC Liège to Dunkerque FC in 1990. Bosman appealed to Article 48 of the Treaty of Rome, which guaranteed freedom of movement for workers across European Union member states. In 1995, the European Court of Justice ruled in his favour, finding that the existing transfer system unlawfully restricted player mobility and was incompatible with European labour law. \
+
+The practical consequences of the ruling were substantial. Clubs could no longer demand transfer fees for players whose contracts had expired, meaning out-of-contract players became free to negotiate with any club on a free transfer. Subsequently, FIFA formalised part of this labour-market structure in the Regulations on the Status and Transfer of Players. Article 18(3) states that a professional player is free to conclude a contract with another club if their current contract has expired or is due to expire within six months, provided that the current club is informed in writing before negotiations begin \citep{fifa_rstp_2025}. This six-month window is the institutional threshold this thesis exploits for identification purposes. Once a player enters this window, competing clubs may approach them directly and negotiate a pre-contract agreement without any transfer-fee obligation to the current club. This discrete change in negotiating status materially improves the player's outside option and, as the theoretical framework in Section 2 predicts, should generate observable changes in both bargaining behaviour and effort provision around the threshold.
+
+
+\subsection{FotMob Ratings}
+
+Measuring individual worker performance is a central challenge in labour economics, and professional football is no exception. Traditional statistics such as goals and assists capture only a narrow part of player contribution and are heavily biased toward attacking positions. This thesis therefore uses match ratings produced by FotMob, a football data and analytics platform, as the primary measure of individual player performance. FotMob ratings are based on more than 300 match-level player statistics sourced from Opta, one of the leading providers of football event data \citep{fotmob_faq, statsperform_opta}. These ratings are published at the player-match level and are available across a wide range of professional football competitions.
+
+The main advantage of FotMob ratings is that they provide a continuous and comparable measure of individual match performance. Unlike goals, assists, or clean sheets, which are sparse and position-specific outcomes, match ratings aggregate a broader set of on-ball and off-ball contributions into a single performance index. This is particularly useful for the present analysis, since the panel dataset covers players across different outfield positions. A single rating measure makes it possible to compare changes in performance over the contract cycle without restricting the sample to attackers or to players whose contributions are easily captured by traditional box-score statistics.
+
+The exact methodology underlying FotMob ratings is proprietary and not publicly disclosed. For this reason, the ratings should not be interpreted as a structural measure of player productivity or as a transparent weighting of specific actions. Instead, they are used as a composite performance proxy that summarises a large set of match events into a continuous player-level outcome. This distinction is important for the interpretation of the empirical results: the analysis identifies changes in FotMob-rated performance around contract-expiry thresholds, but it does not identify which specific match actions drive those changes.
+
+The use of FotMob ratings has several advantages for this thesis. First, their continuous scale allows for the detection of relatively small changes in performance that binary or count-based outcomes may miss. Second, because the ratings are available at match level, they can be aggregated to the monthly level used in the empirical analysis. Third, because they incorporate a wide set of match statistics, they capture defensive, creative, and possession-related contributions that are not reflected in goals and assists alone. The primary limitation is the lack of algorithmic transparency. Since the rating model is proprietary, the estimated effects should be interpreted as changes in a broad performance index rather than changes in a fully observable measure of output.
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+
+
+
+
+\end{document}
+
+

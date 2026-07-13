@@ -9,3 +9,12 @@ tmp/
 
 # OS
 .DS_Store
+text/latex/main.pdf
+text/latex/*.aux
+text/latex/*.log
+text/latex/*.bbl
+text/latex/*.blg
+text/latex/*.fls
+text/latex/*.fdb_latexmk
+text/latex/*.out
+text/latex/*.synctex.gz

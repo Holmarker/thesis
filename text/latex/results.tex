@@ -1,0 +1,289 @@
+% ============================================================
+% Results chapter — Contract-Year Effect in Professional Football
+% Drop-in for Overleaf. Requires only: \usepackage{booktabs}.
+% Self-contained; no siunitx needed.
+% ============================================================
+
+\section{Results}
+\label{sec:results}
+
+This chapter reports the empirical findings. It proceeds from the raw
+descriptive contrast between players inside and outside the Bosman window,
+through the intensive-margin analysis of match performance ratings, to the
+extensive-margin analysis of playing time, and finally to the contract-cycle
+event study that serves as the study's main exhibit. The chapter also documents
+the designs that were tested and rejected---the regression discontinuity around
+the six-month threshold and the naive contract-renewal specification---because
+their failure is itself informative about the identification problem. The
+central result can be stated at the outset: the data reveal a large, robust
+decline in the \emph{quantity} of football a player is given to play as his
+contract runs down, but no detectable change in per-minute \emph{performance}
+once selection into playing is taken seriously. The incentive channel emphasised
+in the problem statement, in other words, operates on playing time rather than
+on measured effort.
+
+\subsection{Descriptive patterns}
+\label{sec:results-descriptive}
+
+The estimation sample is a player-month panel of 152{,}817 observations
+covering 5{,}695 players and 1{,}448 clubs across major European leagues,
+spanning June 2022 to March 2026; 14{,}298 of these player-months fall inside
+the six-month Bosman window. A first, unconditional comparison of means
+(Table~\ref{tab:bosman-means}) already sketches the pattern that the remainder
+of the chapter refines. Players observed inside the Bosman window are, on
+average, 2.7 years older than those outside it, consistent with contract expiry
+being reached later in a career. They play meaningfully less---roughly nineteen
+fewer minutes per month---and register slightly fewer goals and assists.
+
+The performance-rating contrast is where interpretation must already become
+careful. The unweighted mean monthly rating is 0.14 points lower inside the
+window and the difference is statistically significant, but the minutes-weighted
+rating, which down-weights the short substitute appearances that dominate
+low-rating observations, is essentially identical across the two groups
+($+0.02$, $p = 0.124$). The raw rating gap is therefore not obviously a
+performance gap: it is confounded with playing time, with age, and with the
+composition of who is observed playing at all. Disentangling these is the task
+of the regression analysis.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Player-months inside vs.\ outside the Bosman window (unconditional means).}
+  \label{tab:bosman-means}
+  \begin{tabular}{lrrrr}
+    \toprule
+    Variable & Bosman & Non-Bosman & Diff. & $p$ \\
+    \midrule
+    Days to expiry        & 116.7 & 852.8 & $-736.1$ & ${<}0.001$ \\
+    Age (years)           & 27.63 & 24.92 & $+2.71$  & ${<}0.001$ \\
+    Minutes (month)       & 146.0 & 164.7 & $-18.7$  & ${<}0.001$ \\
+    Goals (month)         & 0.21  & 0.26  & $-0.06$  & ${<}0.001$ \\
+    Assists (month)       & 0.15  & 0.19  & $-0.04$  & ${<}0.001$ \\
+    Mean rating           & 5.79  & 5.93  & $-0.14$  & ${<}0.001$ \\
+    Minutes-wtd.\ rating  & 6.68  & 6.66  & $+0.02$  & $0.124$    \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{4pt}
+  {\footnotesize\itshape Note: strict all-competitions panel; two-sample
+  $t$-tests. Ratings use positive observations only.\par}
+\end{table}
+
+\subsection{The intensive margin: match performance}
+\label{sec:results-intensive}
+
+The intensive-margin question is whether a player, when he does take the field,
+performs better as contract expiry and the associated free-agency option
+approach. The preferred outcome is the monthly match rating standardised within
+league-season cells, which removes the cross-league scale and composition
+differences that otherwise contaminate a pooled estimate; all models are
+estimated with player and time fixed effects and standard errors clustered by
+player.
+
+Pooled across the sample, there is no Bosman performance effect. The point
+estimate on the Bosman indicator is $+0.041$ standard deviations ($p = 0.06$) in
+the all-competitions sample and a precisely estimated $+0.004$ ($p = 0.87$) when
+attention is restricted to players' own domestic-league matches. Neither is
+distinguishable from zero at conventional levels, and the sign of the marginal
+all-competitions estimate is the opposite of what a within-player decline would
+require.
+
+A career-concerns reading would predict that any effort response is concentrated
+among younger players, for whom the labour market's evaluation carries the
+highest option value. The age-interacted estimates are, at first glance,
+encouraging: the Bosman coefficient is $+0.198$ ($p = 0.011$) for players under
+23 and $+0.128$ ($p < 0.001$) for those aged 23--28, while the over-29 group
+shows nothing. These pooled positives do not survive the study's robustness
+protocol, however. Re-estimating the under-23 interaction season by season, no
+individual season is significant, and the estimate declines monotonically as
+measurement coverage improves---from $+0.26$ in 2023/24, to $+0.18$ in 2024/25,
+to $+0.06$ ($p = 0.61$) in 2025/26, the best-measured season. The pooled result
+rests on only 533 under-23 Bosman player-months from 219 players and is best
+read as a composition artefact of the panel's changing league mix rather than as
+evidence of a behavioural response.
+
+The specification grid reinforces this conclusion. When identification is
+tightened from player fixed effects to player-by-contract-spell fixed
+effects---so that the comparison is made within a single contract, along which
+time-to-expiry advances mechanically and cannot be a chosen state---the Bosman
+coefficient moves from $+0.041$ (player $+$ month) and $+0.047$ (player $+$
+league-month) to $-0.020$ (spell $+$ month) and $-0.011$ (spell $+$
+league-month), all statistically insignificant. The sign is unstable across
+fixed-effects structures and every spell-based estimate is null. This is not an
+underpowered null: the minimum detectable effect at 80\% power is approximately
+0.06--0.07 standard deviations, so effects larger than that are ruled out with
+good power. Two-way clustering by player and month, and standardisation within
+league-season-position cells, leave the picture unchanged.
+
+\subsection{What the rating measures, and why the null is credible}
+\label{sec:results-anatomy}
+
+Interpreting an absence of effect requires knowing what the outcome variable
+actually captures. A decomposition of roughly 337{,}000 rated player-matches
+is instructive. Regressing the match rating on its observable ingredients,
+minutes played alone explain 15\% of the variance, goals and assists raise this
+to 43\%, and adding the average rating of a player's teammates that day reaches
+55\%; the implied prices are about $+0.93$ rating points for a goal, $+0.77$ for
+an assist, $-1.03$ for a red card, and $+0.90$ for a full ninety minutes. In
+round terms the rating is roughly 45\% scoreboard events and minutes, 10\% the
+team's collective result, and 45\% residual. Three features of this structure
+bear directly on the analysis.
+
+First, a single match rating is mostly noise about the individual: the
+within-player match-to-match standard deviation (0.74) is more than twice the
+between-player standard deviation of career averages (0.31), so a monthly
+average of about four matches is only around 40\% signal. Second, roughly a
+third of match-level rating variance sits at the team-match level, because
+results and match dominance enter every teammate's rating simultaneously; the
+rating therefore partly measures team quality, which is why the strictest
+specifications difference out team-time variation. Third, the rating is
+effectively a different instrument in each position---explained variance ranges
+from 0.75 for attackers, whose ratings are largely restated goal involvement,
+down to 0.23 for goalkeepers, whose ratings are dominated by team
+outcomes---and minutes buy rating points mechanically even in event-free
+matches, with substitute appearances shrunk toward a common anchor near 6.2.
+
+These properties mean the intensive-margin null is a statement about a
+deliberately noisy, minutes-contaminated, team-laden measure. Correcting for the
+contamination does not overturn it: outcomes built from sixty-minute-plus
+appearances only, minutes-bin-rescaled ratings, and league-month percentile
+ranks that are immune to skew and shrinkage all reproduce the same
+signature---small positives under naive fixed effects that vanish under spell
+fixed effects and are near-exact zeros within club-month. Correcting the
+measurement sharpens the null rather than revealing a hidden effect.
+
+\subsection{The extensive margin: playing time}
+\label{sec:results-extensive}
+
+Because a rating exists only when a player plays, and playing itself responds to
+contract status, the intensive-margin regressions condition on an outcome of the
+treatment. The natural response is to analyse the fully observed extensive
+margin---whether a player plays at all, and how many minutes and matches he
+accumulates---directly on the full panel, using the always-observed
+Transfermarkt playing records. Here a single result survives every
+fixed-effects structure. Players inside the Bosman window are 4.4 to 6.6
+percentage points less likely to play in a given month, a reduction that remains
+significant under the strictest specification with contract-spell and
+league-month fixed effects ($-4.6$~pp, $p < 0.001$). The effect steepens sharply
+in the final half-year: the zero-to-six-months-to-expiry bin carries an
+18.8-percentage-point reduction in playing probability in the strictest
+specification.
+
+That the effect is a genuine within-team phenomenon, rather than a reflection of
+which clubs happen to have expiring players, is confirmed by comparing a player
+to his own teammates in the same month through club-by-month fixed effects. The
+playing-probability penalty holds ($-2.4$~pp, $p < 0.001$) and minutes fall
+($-5.3$, $p = 0.04$). The mean-rating outcome shows a marginal $-0.064$
+($p = 0.04$) in the same specification, but this is the mechanical minutes
+channel and not a performance effect: the minutes-weighted rating is null
+($-0.017$, $p = 0.51$), and both are null among regulars playing 270 or more
+minutes per month, where the minutes-rating gradient is flat.
+
+The selection structure also disciplines the interpretation of the intensive
+margin. Since expiring players are benched, the players who continue to appear
+are positively selected, which biases any conditional rating comparison upward
+relative to a true negative effect. A Lee-style bounding exercise makes the
+limit explicit: trimming the over-observed control group by its differential
+observation share within league-month cells produces bounds on the Bosman rating
+gap of roughly $[-0.31,\, +0.19]$ standard deviations around an untrimmed
+$-0.02$. The bounds comfortably span zero. Given the extensive-margin selection,
+the conditional rating data cannot even sign a performance effect---which is
+precisely why the extensive margin, and not the rating, is where the
+identifiable action lies.
+
+\subsection{The contract-cycle event study}
+\label{sec:results-eventstudy}
+
+The study's main exhibit estimates each outcome as a function of months
+remaining to contract expiry, from twenty-four-plus down to zero with eighteen
+months as the reference, within player-by-contract-spell and league-by-month
+fixed effects. The playing-time profile is unambiguous. Playing probability and
+minutes decline smoothly and monotonically beginning roughly twelve months
+before expiry, reaching about $-25$ percentage points in playing probability and
+$-70$ minutes per month in the expiry month itself. Crucially, there is no
+discontinuous jump at the six-month Bosman threshold: the decline is a smooth
+ramp through it. This is direct evidence for why a discontinuity design finds
+nothing real at the legal cutoff---the theory-consistent pattern is anticipatory
+and continuous, not discontinuous, because eligibility for free agency is
+perfectly foreseen.
+
+The standardised rating conditional on playing, by contrast, is flat across the
+entire contract cycle, with confidence intervals straddling zero at every
+horizon. The intensive-margin null is thus shown rather than merely asserted.
+Two robustness checks guard against obvious confounds. The playing-time profile
+is unchanged by quadratic age controls and is equally present for players who
+were under 24 at the start of their contract spell---a group for whom advancing
+age raises playing time---so the decline cannot be an aging artefact. And
+although 88\% of expiry-month observations fall in June, restricting the sample
+to active league-months leaves the profile essentially identical (month-zero
+coefficient $-0.261$ versus $-0.255$), because the league-month fixed effects
+already compare expiring players to same-league, same-month peers.
+
+\subsection{Rejected designs}
+\label{sec:results-rejected}
+
+Two designs anticipated in the research plan were tested and are retained as
+negative exhibits. The regression discontinuity at 180 days to expiry proves
+unusable as causal evidence. Because the running variable is measured in monthly
+steps, there is almost no support within a narrow bandwidth---120 observations
+against 906 at a thirty-day bandwidth---and the headline local-linear estimate is
+implausibly large (about $+19.3$ on a zero-to-ten scale, minutes-weighted), of
+the opposite sign to the raw means gap it is meant to capture. Placebo cutoffs
+confirm the artefact: a fake threshold at 150 days yields $+3.34$ ($p = 0.003$)
+and one at 210 days $-2.09$ ($p = 0.002$). The estimates reflect local slope
+extrapolation and composition around contract-time thresholds, not a
+discontinuity at the legal Bosman cutoff, where by construction no discontinuous
+treatment exists because eligibility is fully anticipated.
+
+The naive contract-renewal specification fails a parallel audit. A pooled dummy
+for the post-renewal period carries a significant $-0.097$ ($p < 0.001$), which
+superficially suggests players relax after securing a new deal. Within every
+individual season, however, the coefficient is insignificant with mixed signs,
+and an event study around the first observed renewal shows within-league ratings
+slightly \emph{rising} after signing (by about $+0.08$ standard deviations at
+months four to six). The raw post-renewal average is likewise higher, not lower,
+than the pre-renewal average (6.56 versus 6.17), reflecting selection---better
+players get renewed---rather than a within-player decline. The pooled negative is
+mean reversion combined with cross-season composition, and a staggered-adoption
+estimator would be the appropriate formalisation; it is flagged as an extension
+rather than presented as a finding.
+
+\subsection{Financial heterogeneity}
+\label{sec:results-financial}
+
+A final set of tests asks whether the benching of expiring players varies with
+club finances, using season-lagged wage and wage-to-revenue measures matched to
+the panel. The benching pattern is confirmed within the financially documented
+subsample---the reduction in playing probability is $-4.4$~pp ($p = 0.02$) in
+high-wage clubs and $-4.8$~pp ($p = 0.02$) in low-financial-pressure
+clubs---but no financial split is formally distinguishable, with joint
+interaction tests at $p = 0.97$ for wage terciles and $p = 0.30$ for
+wage-to-revenue terciles. A pre-declared continuous test offers a suggestive,
+and only suggestive, refinement: the interaction of the Bosman indicator with a
+club's wage-to-revenue percentile is $+0.070$ ($p = 0.051$), implying that the
+benching is deepest (around $-7$~pp) at the most financially relaxed clubs and
+shrinks as wage pressure rises. This is consistent with a squad-slack mechanism,
+but at a Bonferroni-adjusted $p$ of roughly 0.10 it is reported as an avenue
+rather than an established difference. An earlier significant wage-to-revenue
+gradient obtained under improper look-ahead assignment did not survive correct
+season-lagging and is retained only as a cautionary note on temporal assignment.
+
+\subsection{Synthesis}
+\label{sec:results-synthesis}
+
+Taken together, the results describe an incentive that acts on opportunity
+rather than on measured effort. As a contract runs down, a player is
+progressively withdrawn from play---smoothly, from about a year out, and steeply
+in the final months---and this extensive-margin decline is the one finding that
+survives every specification, every fixed-effects structure, and comparison
+against a player's own teammates. Per-minute performance, by contrast, shows no
+detectable change; and given that the rating is a noisy, minutes-driven,
+team-laden measure observed only for a positively selected set of players who
+keep appearing, a performance effect could not have been credibly signed from
+these data even had one been present. The tempting positive results---a
+career-concerns gradient among the young, a post-renewal slackening, a
+discontinuity at the legal threshold---each dissolve under season-stability,
+specification, and placebo audits. The honest headline is therefore a
+well-audited null on the effort margin paired with a robust effect on the
+playing-time margin, with the caveat, applicable throughout, that the panel's
+league composition shifts substantially across seasons and remains the single
+largest threat to any pooled estimate.
