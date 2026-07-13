@@ -1,21 +1,21 @@
 variant,outcome_name,term,estimate,std_error,t_value,p_value,nobs
-"played, spell + club-month FE, cluster club",played,BosmanTRUE,0.0012748466355927757,0.005304185309111223,0.24034730336493293,0.8100886723099916,212013
-"minutes, spell + club-month FE, cluster club",Minutes_tm,BosmanTRUE,-1.9776933195211752,2.129893627126242,-0.9285408878327773,0.35325282127101854,212013
-"z mean rating, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.01536317075442192,0.014846257319518873,-1.0348177607176081,0.30096641045629496,132290
-"z weighted rating, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.005719207062098064,0.013372233824534957,-0.42769272038936695,0.6689530219139392,132274
-"z mean rating, minute-weighted regression, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.011927630562731058,0.012610280067529433,-0.945865634930968,0.3444110930209612,132277
-"z weighted rating, minute-weighted regression, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.008208626935916945,0.011952373932399386,-0.6867779557720965,0.4923578301696454,132274
-"z mean rating, win control, spell + club-month FE, cluster club",z_mean,BosmanTRUE,0.021086457933990114,0.029923548058010792,0.7046777304987765,0.4811960006301912,50830
-"z weighted rating, win control, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,0.03043345200779945,0.026442500263497794,1.1509294395209257,0.2500717766941123,50829
-"z mean rating, win control, minute-weighted regression, spell + club-month FE, cluster club",z_mean,BosmanTRUE,0.01540205138136854,0.026121748282099774,0.589625595309904,0.5555920114316859,50830
-"z weighted rating, win control, minute-weighted regression, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,0.012977336690078974,0.025535711342457985,0.508203453431966,0.6114371716541429,50829
-"z mean rating, event controls, spell + club-month FE, cluster club",z_mean,BosmanTRUE,0.020388738380392065,0.02773319412035149,0.7351745454170447,0.462427749931673,50830
-"z weighted rating, event controls, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,0.029608607100609394,0.023479974717147283,1.2610152888702393,0.20763528188445776,50829
-"z mean rating, event controls, minute-weighted regression, spell + club-month FE, cluster club",z_mean,BosmanTRUE,0.014871581705926904,0.024370445029167683,0.6102302066346307,0.541865806181155,50830
-"z weighted rating, event controls, minute-weighted regression, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,0.012304529099166569,0.022252873478230926,0.5529411341507686,0.5804431994618464,50829
-"z mean rating, regulars 270+ min, spell + club-month FE",z_mean,BosmanTRUE,0.002224293143806532,0.018255423376532805,0.12184286816737662,0.903051029466471,47413
-"z weighted rating, regulars 270+ min, spell + club-month FE",z_weighted,BosmanTRUE,0.003738059951866814,0.018684941835880386,0.20005735017535237,0.841481533409862,47413
-"z mean rating, win control, regulars 270+ min, spell + club-month FE",z_mean,BosmanTRUE,-0.02580545222473975,0.04011478687556607,-0.6432902736037683,0.520258195080461,17622
-"z weighted rating, win control, regulars 270+ min, spell + club-month FE",z_weighted,BosmanTRUE,-0.009813502316069601,0.0450534086288099,-0.21781930856601708,0.8276369200516738,17622
-"z mean rating, event controls, regulars 270+ min, spell + club-month FE",z_mean,BosmanTRUE,-0.026865363207237952,0.03772043611845839,-0.7122230274026832,0.4765772298875077,17622
-"z weighted rating, event controls, regulars 270+ min, spell + club-month FE",z_weighted,BosmanTRUE,-0.01110336037556687,0.0405381424210748,-0.2738990913849694,0.7842474792111486,17622
+"played, spell + club-month FE, cluster club",played,BosmanTRUE,0.011455260015732166,0.005076238650540718,2.2566433149300336,0.024150806493109103,210023
+"minutes, spell + club-month FE, cluster club",Minutes_tm,BosmanTRUE,-0.022227530453565437,2.1462798952520563,-0.01035630557912628,0.9917381680118897,210023
+"z mean rating, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.009084963240787655,0.014200853352827348,-0.6397476979071026,0.5224604045534467,132686
+"z weighted rating, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.008585878443813033,0.013761212643806626,-0.6239187392890986,0.5328011379650979,132672
+"z mean rating, minute-weighted regression, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.007558059496724152,0.012755697337183857,-0.5925242107063654,0.5536127537804596,132675
+"z weighted rating, minute-weighted regression, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.005727545593189145,0.012118481967120745,-0.47262896530512927,0.6365650196779766,132672
+"z mean rating, win control, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.011212461787396356,0.013959713151734901,-0.8032014458694576,0.4220195183039628,132686
+"z weighted rating, win control, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.010689241034545643,0.013550594738269363,-0.7888392532585501,0.430363884749009,132672
+"z mean rating, win control, minute-weighted regression, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.009096876021354075,0.012537233429916346,-0.7255887889625721,0.46823428458977723,132675
+"z weighted rating, win control, minute-weighted regression, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.007220834312632376,0.011927642277181554,-0.6053865587875952,0.5450381971289324,132672
+"z mean rating, event controls, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.009181722750537708,0.011990990678312868,-0.7657184461951042,0.4439964635248135,132686
+"z weighted rating, event controls, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.008671387960033068,0.011674945131252125,-0.7427347934013864,0.45778959136721553,132672
+"z mean rating, event controls, minute-weighted regression, spell + club-month FE, cluster club",z_mean,BosmanTRUE,-0.009997570379351273,0.010970889109296141,-0.9112816910053234,0.3623324618549181,132675
+"z weighted rating, event controls, minute-weighted regression, spell + club-month FE, cluster club",z_weighted,BosmanTRUE,-0.008072758526716708,0.010603828729052795,-0.7613060087059536,0.44662591318438394,132672
+"z mean rating, regulars 270+ min, spell + club-month FE",z_mean,BosmanTRUE,0.0020954279966672726,0.020031889568948136,0.10460461003715998,0.9167129149359585,49128
+"z weighted rating, regulars 270+ min, spell + club-month FE",z_weighted,BosmanTRUE,0.003942323224481576,0.0193491434505972,0.20374665341374054,0.8385976443826474,49128
+"z mean rating, win control, regulars 270+ min, spell + club-month FE",z_mean,BosmanTRUE,8.962711636000016e-4,0.019954673368581363,0.04491535125857689,0.9641847662799201,49128
+"z weighted rating, win control, regulars 270+ min, spell + club-month FE",z_weighted,BosmanTRUE,0.002832691664420172,0.019237723731018036,0.1472467171286418,0.8829703393213262,49128
+"z mean rating, event controls, regulars 270+ min, spell + club-month FE",z_mean,BosmanTRUE,0.0025468914833333117,0.01748310400681778,0.1456773054910682,0.8842088301571057,49128
+"z weighted rating, event controls, regulars 270+ min, spell + club-month FE",z_weighted,BosmanTRUE,0.004447440997392594,0.017069828596028833,0.26054397514145267,0.794503930562012,49128

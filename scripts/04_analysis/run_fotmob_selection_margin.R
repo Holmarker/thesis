@@ -37,7 +37,13 @@ load_panel <- function(path) {
       Matches_tm = as.numeric(Matches_tm),
       fotmob_minutes = as.numeric(fotmob_minutes),
       played_tm = coalesce(Minutes_tm, 0) > 0,
-      played_fotmob = coalesce(fotmob_minutes, 0) > 0
+      played_fotmob = coalesce(fotmob_minutes, 0) > 0,
+      # combined-evidence outcomes: the TM appearance log misses months a
+      # crosswalked player spends in competitions it does not cover, coding
+      # real appearances as zeros; FotMob minutes fill those months
+      played_any = played_tm | played_fotmob,
+      minutes_any = pmax(coalesce(Minutes_tm, 0), coalesce(fotmob_minutes, 0)),
+      tm_coverage_gap = !played_tm & played_fotmob
     ) %>%
     arrange(player_id, Month) %>%
     group_by(player_id) %>%
@@ -68,6 +74,8 @@ specs <- tribble(
 
 outcomes <- tribble(
   ~outcome, ~restrict_covered,
+  "played_any", FALSE,
+  "minutes_any", FALSE,
   "played_tm", FALSE,
   "Minutes_tm", FALSE,
   "Matches_tm", FALSE,
