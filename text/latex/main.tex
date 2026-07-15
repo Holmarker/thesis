@@ -514,7 +514,7 @@ merely underpowered here but mis-specified.
 
 The outcome structure splits the analysis into two problems that must be kept
 separate. The extensive, or selection, margin---whether a player plays at all in a
-month, and the minutes and matches he accumulates---is observed for all 152{,}817
+month, and the minutes and matches he accumulates---is observed for all \NPanelObs{}
 player-months from the Transfermarkt playing records, independently of whether he
 appears. It is therefore identified directly: no correction is needed to interpret
 a within-player, within-spell change in playing probability as the club's
@@ -729,27 +729,37 @@ studied (Besley and Case 1995; List and Sturm 2006; Alt, Bueno de Mesquita and R
 \section{Results}
 \label{sec:results}
 
-This chapter reports the empirical findings. It proceeds from the raw
-descriptive contrast between players inside and outside the Bosman window,
-through the intensive-margin analysis of match performance ratings, to the
-extensive-margin analysis of playing time, and finally to the contract-cycle
-event study that serves as the study's main exhibit. The chapter also documents
-the designs that were tested and rejected---the regression discontinuity around
-the six-month threshold and the naive contract-renewal specification---because
-their failure is itself informative about the identification problem. The
-central result can be stated at the outset: the data reveal a large, robust
-decline in the \emph{quantity} of football a player is given to play as his
-contract runs down, but no detectable change in per-minute \emph{performance}
-once selection into playing is taken seriously. The incentive channel emphasised
-in the problem statement, in other words, operates on playing time rather than
-on measured effort.
+% NOTE: all estimates in this chapter await the final frozen-spec pass
+% (see text/DECISIONS.md); the architecture below is final, the numbers are not.
+
+This chapter reports the empirical findings, and it is organised as an
+audit rather than a reveal. Each candidate effect is introduced in the
+specification where it looks most impressive---which is generally where the
+prior literature found it---and is then walked up the identification ladder
+of Section~\ref{sec:strategy-ladder} until it either survives or dissolves.
+The chapter also documents the designs that were tested and rejected---the
+regression discontinuity around the six-month threshold and the naive
+contract-renewal specification---because their failure is itself informative
+about the identification problem. The central result can be stated at the
+outset. A contract-year performance premium of the size and sign reported in
+the journalist-ratings literature does appear in this data under player and
+month fixed effects; it does not survive league-by-month composition
+controls, and it does not survive comparisons within a single contract
+spell. What remains is a precisely estimated null on the performance margin,
+bounded tightly enough to exclude effects far smaller than ordinary
+month-to-month variation, together with a small decline in the probability
+of playing at all that is present in the strictest design but not uniform
+across specifications. The incentive channel emphasised in the problem
+statement, in other words, leaves no detectable trace on measured
+performance and at most a modest trace on playing time---and the chapter's
+contribution is showing how much auditing it takes to establish that.
 
 \subsection{Descriptive patterns}
 \label{sec:results-descriptive}
 
-The estimation sample is a player-month panel of 152{,}817 observations
-covering 5{,}695 players and 1{,}448 clubs across major European leagues,
-spanning June 2022 to March 2026; 14{,}298 of these player-months fall inside
+The estimation sample is a player-month panel of \NPanelObs{} observations
+covering \NPanelPlayers{} players and \NPanelClubs{} clubs,
+spanning \FirstMonth{} to \LastMonth{}; \NBosmanObs{} of these player-months fall inside
 the six-month Bosman window. A first, unconditional comparison of means
 (Table~\ref{tab:bosman-means}) already sketches the pattern that the remainder
 of the chapter refines. Players observed inside the Bosman window are, on
@@ -767,28 +777,7 @@ performance gap: it is confounded with playing time, with age, and with the
 composition of who is observed playing at all. Disentangling these is the task
 of the regression analysis.
 
-\begin{table}[htbp]
-  \centering
-  \caption{Player-months inside vs.\ outside the Bosman window (unconditional means).}
-  \label{tab:bosman-means}
-  \begin{tabular}{lrrrr}
-    \toprule
-    Variable & Bosman & Non-Bosman & Diff. & $p$ \\
-    \midrule
-    Days to expiry        & 116.7 & 852.8 & $-736.1$ & ${<}0.001$ \\
-    Age (years)           & 27.63 & 24.92 & $+2.71$  & ${<}0.001$ \\
-    Minutes (month)       & 146.0 & 164.7 & $-18.7$  & ${<}0.001$ \\
-    Goals (month)         & 0.21  & 0.26  & $-0.06$  & ${<}0.001$ \\
-    Assists (month)       & 0.15  & 0.19  & $-0.04$  & ${<}0.001$ \\
-    Mean rating           & 5.79  & 5.93  & $-0.14$  & ${<}0.001$ \\
-    Minutes-wtd.\ rating  & 6.68  & 6.66  & $+0.02$  & $0.124$    \\
-    \bottomrule
-  \end{tabular}
-
-  \vspace{4pt}
-  {\footnotesize\itshape Note: strict all-competitions panel; two-sample
-  $t$-tests. Ratings use positive observations only.\par}
-\end{table}
+\input{tables/tab_bosman_means}
 
 \subsection{The intensive margin: match performance}
 \label{sec:results-intensive}
@@ -992,26 +981,34 @@ season-lagging and is retained only as a cautionary note on temporal assignment.
 \subsection{Synthesis}
 \label{sec:results-synthesis}
 
-Taken together, the results describe an incentive that acts on opportunity
-rather than on measured effort. As a contract runs down, a player is
-progressively withdrawn from play---smoothly, from about a year out, and steeply
-in the final months---and this extensive-margin decline is the one finding that
-survives every specification, every fixed-effects structure, and comparison
-against a player's own teammates. Per-minute performance, by contrast, shows no
-detectable change; and given that the rating is a noisy, minutes-driven,
-team-laden measure observed only for a positively selected set of players who
-keep appearing, a performance effect could not have been credibly signed from
-these data even had one been present. The tempting positive results---a
-career-concerns gradient among the young, a post-renewal slackening, a
-discontinuity at the legal threshold---each dissolve under season-stability,
-specification, and placebo audits. The honest headline is therefore a
-well-audited null on the effort margin paired with a robust effect on the
-playing-time margin. After the backfill of the two earliest seasons, the rating
-regressions rest on a league set that is constant across all four seasons once
-eight never-rated leagues are excluded, and the estimates are unchanged by that
-exclusion; the remaining composition caveat applies mainly to the
-extensive-margin analyses, whose contract-side base still broadens in the later
-seasons.
+% NOTE: rewrite against final-pass numbers; the arc below is the settled one.
+Taken together, the results describe a labour market in which the contract
+cycle leaves no detectable trace on measured performance and at most a modest
+trace on opportunity. The chapter's organising finding is what the audit
+ladder does to superficially robust effects. A contract-year rating premium
+of the magnitude the journalist-ratings literature reports appears readily
+under player and month fixed effects; absorbing league-by-month composition
+removes it, and comparing months within a single contract spell removes it
+entirely. The same discipline applied to playing time leaves a small decline
+in the probability of appearing---clearest in the strictest, within-spell,
+within-league-month design---but the estimate is not uniform across
+specifications and is reported as fragile rather than robust. Every other
+tempting positive---a career-concerns gradient among the young, a
+post-renewal slackening, a discontinuity at the legal threshold---dissolves
+under season-stability, specification, and placebo audits.
+
+Three features make the null informative rather than merely disappointing.
+First, precision: the performance bound excludes effects an order of
+magnitude smaller than routine month-to-month variation in the same
+player's rating. Second, measurement: the outcome is computed by an
+algorithm that cannot know a player's contract status, so the contrast with
+the positive journalist-rating findings is evidence about the raters as much
+as the players. Third, composition: the rating regressions rest on a league
+set held constant across all four seasons, and the estimates are unchanged
+by that restriction. What the contract cycle unambiguously changes in this
+data is anticipation by clubs---the reallocation of minutes away from
+players approaching expiry---and the discussion takes up why that channel,
+rather than effort, is where the incentives bind.
 
 
 
