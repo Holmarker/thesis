@@ -28,6 +28,72 @@
 
 \section{Introduction}
 
+When a worker's pay is fixed until a known renegotiation date, economic theory
+makes a clean prediction: effort should rise as that date approaches, because
+the return to impressing the market arrives sooner, and it should fall the
+moment a new long contract is signed, because the return recedes. Professional
+football offers an unusually sharp setting to test this. Wages are locked for
+the duration of fixed-term contracts; performance is measured publicly, match
+by match; and the renegotiation date is known years in advance to the player,
+the club, and every potential employer. The Bosman ruling adds a legal edge to
+the horizon: from six months before expiry, a player may negotiate freely with
+foreign clubs, and at expiry he moves without a transfer fee. If dynamic
+incentives shape worker performance anywhere, they should be visible here.
+
+This thesis tests that prediction in a player--month panel built from two
+independently collected sources: algorithmic match ratings from FotMob,
+covering 28 leagues with constant composition over the seasons 2022/23 through
+2025/26, linked to contract histories reconstructed from repeated Transfermarkt
+snapshots --- \NStrictObs{} rated player--months for \NStrictPlayers{} players
+in the estimation sample. Two features of the design distinguish it from the
+existing contract-year literature. First, the performance measure is
+algorithmic: computed from Opta event data, it cannot condition on contract
+status, unlike the journalist ratings behind the best-known prior finding that
+performance rises in the final contract year \citep{frick2011}. Second, the
+analysis separates two margins that pooled approaches conflate: the
+\emph{intensive} margin (how well a player performs when he plays) and the
+\emph{extensive} margin (whether and how much he plays), which is governed by
+the club rather than the player and is observed for every player-month
+regardless of rating coverage.
+
+% [NUMBER: final-pass estimates below]
+The answer is largely a well-audited null, and the auditing is the point. In
+naive specifications the data happily reproduce the literature's findings: a
+contract-year performance premium appears under player and month fixed
+effects. It does not survive. Absorbing league-by-month composition removes
+it; comparing within a single contract spell, rather than across differently
+selected contracts, removes it; and the design that remains --- within-spell,
+within-league-month --- bounds any performance response near zero, with
+precision sufficient to rule out effects an order of magnitude smaller than
+normal month-to-month variation in the outcome. On the playing-time margin a
+small decline in the probability of appearing survives the stricter designs,
+consistent with clubs beginning to reallocate minutes away from players they
+expect to lose. The contrast with the journalist-rating literature is itself
+informative: an effect that appears in human ratings and vanishes in
+algorithmic ones is consistent with narrative entering the measure rather
+than effort entering the pitch.
+
+These results are disciplined by an unusual degree of attention to
+measurement. The thesis documents, in a running decisions log, every
+data-construction choice with its motivation --- including the discovery and
+repair of encoding corruption, duplicated match records, and coverage gaps
+whose combined effect had been large enough to flip signs in preliminary
+estimates. The final specification and sample restrictions were fixed before
+the corresponding estimates were run. The contribution is accordingly
+twofold: substantively, the null places a tight bound on contract-cycle
+performance effects in the world's most-watched labour market for talent;
+methodologically, the audit trail shows how easily composition, selection,
+and data artifacts masquerade as incentive effects in this class of designs
+--- and how systematically they can be dismantled.
+
+The remainder proceeds as follows. Section 2 reviews the theoretical and
+empirical literature. Section 3 describes the institutional setting.
+Section 4 details the data and panel construction. Section 5 develops the
+model and the empirical strategy, including the two-margin identification
+problem and the bounding argument for the selected performance margin.
+Section 6 reports results; Section 7 discusses mechanisms and limitations;
+Section 8 concludes.
+
 \section{Literature Review}
 
 Labour economics' main tassle is the relationship between incentive structures and worker effort. Firms are not able to perfectly observe the output of a worker, only signals of output, which can be intangible. This paper ... \\
