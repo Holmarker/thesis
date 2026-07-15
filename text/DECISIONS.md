@@ -37,22 +37,22 @@ matches the per-league scrape manifests (22/23: 46.5k monthly rows, 23/24:
   variants, TM-only outcomes, drop-gap sample.
 - **Inference:** cluster by player (cluster robustness table as check).
 
-## Sample restrictions — OPEN, decide ex ante (proposals, not yet applied)
+## Sample restrictions — DECIDED 2026-07-15, ex ante (no restricted estimates seen)
 
-The current estimation sample is essentially unrestricted. Each restriction
-below is proposed on design grounds; none has been run. Decide, log, then run
-ONCE.
+Decided by the author before any restricted-sample estimation was run. To be
+applied in ONE final estimation pass, together with the DOB-verified crosswalk
+(D8), under the frozen specification.
 
-| # | Proposed restriction | Rationale | Recommendation |
-|---|---------------------|-----------|----------------|
-| S1 | Drop 2021/22 (20 stray rows) | No rating coverage; noise | Yes |
-| S2 | Drop the 8 never-rated leagues in all seasons (rating outcomes) | Constant league composition; already standard in the excl-8 runs | Yes, as primary for rating outcomes |
-| S3 | Require ≥ 6 observed months per player | FE with 1–2 months contributes nothing but noise; standard panel practice | Yes |
-| S4 | Drop player-months after age 36 / before age 17 | Retirement/youth dynamics are different processes | Discuss |
-| S5 | Trim months-to-expiry > 48 into a 48+ bin (already done in bins); restrict spline/event-study support to ≤ 48 | Thin, heavily selected support | Yes |
-| S6 | Goalkeepers: report separately or exclude from rating outcomes | Rating algorithm treats GKs differently; position-standardized outcomes partly handle this | Discuss |
-| S7 | June/July months in extensive-margin outcomes | Off-season months mechanically have no matches; month FE absorb league-wide timing but not player-specific off-season exposure near June-30 expiries | Discuss — this interacts directly with expiry clustering and could matter; must be decided BEFORE seeing what it does |
-| S8 | Loan spells | Loans change who controls playing time; currently indistinguishable from permanent deals without transfer data | Defer (needs transfer histories) |
+| # | Restriction | Decision | Rationale |
+|---|-------------|----------|-----------|
+| S1 | Drop 2021/22 (20 stray rows) | **Yes** | No rating coverage; noise |
+| S2 | Drop the 8 never-rated leagues in all seasons | **Yes — primary for rating outcomes**; full league set retained for playing-time outcomes | Constant league composition across all four seasons |
+| S3 | Minimum panel presence | **≥ 6 observed months per player** | Player FE needs within-variation; half a season |
+| S4 | Age limits | **None** | Maximal sample; age-band heterogeneity results already locate where effects live; retirement margin kept as part of the story |
+| S5 | Months-to-expiry support | **Trim to ≤ 48 (48+ binned)** for bins/splines/event studies | Thin, heavily selected support beyond 48 |
+| S6 | Goalkeepers | **Included; by-position split reported** as measurement check | Player FE absorbs level differences; GK effort least event-visible — split shows it |
+| S7 | June/July months | **Dropped from extensive-margin analyses** (kept in rating outcomes) | Off-season carries no allocation information; removes mechanical overlap of Bosman window with matchless months near June-30 expiries |
+| S8 | Loan spells | **Deferred** | Needs transfer-event data (see open items) |
 
 ## Process rules
 
