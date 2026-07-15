@@ -61,6 +61,8 @@ standardize_within <- function(x) {
   (x - mu) / sigma
 }
 
+source(file.path("scripts", "04_analysis", "apply_sample_restrictions.R"))
+
 load_panel <- function(path) {
   read_csv(path, show_col_types = FALSE) %>%
     mutate(
@@ -365,8 +367,8 @@ run_observed_renewal_models <- function(df, sample_name) {
 
 ensure_dir(results_dir)
 
-panel_source <- load_panel(source_panel_path)
-panel_all <- load_panel(all_comps_panel_path)
+panel_source <- load_panel(source_panel_path) %>% apply_sample_restrictions(margin = "rating")
+panel_all <- load_panel(all_comps_panel_path) %>% apply_sample_restrictions(margin = "rating")
 
 all_results <- bind_rows(
   run_bosman_models(panel_source, "source_league_strict"),

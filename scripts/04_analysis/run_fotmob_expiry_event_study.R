@@ -32,6 +32,8 @@ standardize_within <- function(x) {
   (x - mu) / sigma
 }
 
+source(file.path("scripts", "04_analysis", "apply_sample_restrictions.R"))
+
 panel <- read_csv(panel_path, show_col_types = FALSE) %>%
   mutate(
     Month = as.Date(Month),
@@ -39,7 +41,11 @@ panel <- read_csv(panel_path, show_col_types = FALSE) %>%
     player_id = as.integer(player_id),
     DaysToExpiry = as.numeric(DaysToExpiry),
     Minutes_tm = as.numeric(Minutes_tm),
+    fotmob_minutes = as.numeric(fotmob_minutes),
     played_tm = coalesce(Minutes_tm, 0) > 0,
+    # combined-evidence playing outcomes (D6 in text/DECISIONS.md)
+    played_any = played_tm | coalesce(fotmob_minutes, 0) > 0,
+    minutes_any = pmax(coalesce(Minutes_tm, 0), coalesce(fotmob_minutes, 0)),
     season = football_season(Month)
   ) %>%
   filter(!is.na(DaysToExpiry), DaysToExpiry >= 0) %>%
@@ -68,11 +74,16 @@ specs <- tribble(
 )
 
 outcomes <- tribble(
-  ~outcome, ~label,
-  "played_tm", "Played at all (TM, extensive margin)",
-  "Minutes_tm", "Minutes (TM)",
-  "z_rating", "Std. rating | played (intensive margin)"
+  ~outcome, ~label, ~margin,
+  "played_any", "Played at all (TM or FotMob, extensive margin)", "playing",
+  "minutes_any", "Minutes (max of TM/FotMob)", "playing",
+  "played_tm", "Played at all (TM only, robustness)", "playing",
+  "Minutes_tm", "Minutes (TM only, robustness)", "playing",
+  "z_rating", "Std. rating | played (intensive margin)", "rating"
 )
+
+panel_rating <- apply_sample_restrictions(panel, margin = "rating")
+panel_playing <- apply_sample_restrictions(panel, margin = "playing")
 
 tidy_event <- function(model, outcome, spec_name) {
   out <- as_tibble(coeftable(model), rownames = "term")
@@ -94,7 +105,8 @@ for (i in seq_len(nrow(specs))) {
   for (j in seq_len(nrow(outcomes))) {
     oc <- outcomes$outcome[j]
     fml <- as.formula(paste0(oc, " ~ i(months_to_expiry, ref = ", ref_month, ") | ", specs$fe[i]))
-    m <- tryCatch(feols(fml, data = panel, cluster = ~player_id), error = function(e) NULL)
+    d <- if (outcomes$margin[j] == "rating") panel_rating else panel_playing
+    m <- tryCatch(feols(fml, data = d, cluster = ~player_id), error = function(e) NULL)
     if (!is.null(m)) {
       results[[length(results) + 1]] <- tidy_event(m, oc, specs$spec_name[i])
     }

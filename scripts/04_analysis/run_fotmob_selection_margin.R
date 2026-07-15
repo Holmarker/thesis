@@ -25,6 +25,8 @@ make_expiry_bin_6m <- function(days_to_expiry) {
   )
 }
 
+source(file.path("scripts", "04_analysis", "apply_sample_restrictions.R"))
+
 load_panel <- function(path) {
   read_csv(path, show_col_types = FALSE) %>%
     mutate(
@@ -128,8 +130,8 @@ run_all <- function(df, sample_name) {
   bind_rows(results)
 }
 
-panel_all <- load_panel(all_comps_panel_path)
-panel_source <- load_panel(source_panel_path)
+panel_all <- load_panel(all_comps_panel_path) %>% apply_sample_restrictions(margin = "playing")
+panel_source <- load_panel(source_panel_path) %>% apply_sample_restrictions(margin = "playing")
 
 all_results <- bind_rows(
   run_all(panel_all, "all_comps_full"),
