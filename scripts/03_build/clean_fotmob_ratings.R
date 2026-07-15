@@ -202,6 +202,10 @@ weighted_mean_safe <- function(x, w) {
 
 summarise_monthly <- function(df) {
   df %>%
+    # the month's league label must come from the matches actually played in
+    # the player's own league that month, not from an alphabetically-first
+    # roster tag on a cup/other-competition row (D7 in text/DECISIONS.md)
+    arrange(fotmob_player_id, Month, desc(is_source_league_match), match_date) %>%
     group_by(fotmob_player_id, Month) %>%
     summarise(
       fotmob_player_name = first(fotmob_player_name),

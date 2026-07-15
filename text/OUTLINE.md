@@ -1,5 +1,8 @@
 # Thesis outline & progress
 
+> Companion docs: [DECISIONS.md](DECISIONS.md) (data/spec decisions log — read
+> before changing any definition) · [LITERATURE.md](LITERATURE.md)
+
 Tracks `text/latex/main.tex`. Update the status column as you go.
 
 Status legend: `todo` · `skeleton` (headers/notes only) · `draft` (full text, unpolished) · `revised` (edited once) · `final`

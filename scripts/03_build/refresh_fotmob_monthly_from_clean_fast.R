@@ -13,6 +13,9 @@ weighted_mean_safe <- function(x, w) {
 }
 
 summarise_monthly_dt <- function(dt) {
+  # month's league label comes from actual source-league matches, not an
+  # alphabetically-first roster tag (D7 in text/DECISIONS.md)
+  setorder(dt, fotmob_player_id, Month, -is_source_league_match, match_date, na.last = TRUE)
   dt[
     ,
     .(
@@ -27,6 +30,22 @@ summarise_monthly_dt <- function(dt) {
       assists = sum(assists, na.rm = TRUE),
       yellow_cards = sum(yellow_cards, na.rm = TRUE),
       red_cards = sum(red_cards, na.rm = TRUE),
+      result_matches = sum(!is.na(team_win)),
+      wins = sum(fcoalesce(team_win, FALSE)),
+      draws = sum(fcoalesce(team_draw, FALSE)),
+      losses = sum(fcoalesce(team_loss, FALSE)),
+      win_share = {
+        rm_ <- sum(!is.na(team_win))
+        if (rm_ > 0) sum(fcoalesce(team_win, FALSE)) / rm_ else NA_real_
+      },
+      result_points_per_match = {
+        rm_ <- sum(!is.na(team_win))
+        if (rm_ > 0) {
+          (sum(fcoalesce(team_win, FALSE)) * 3 + sum(fcoalesce(team_draw, FALSE))) / rm_
+        } else {
+          NA_real_
+        }
+      },
       mean_rating = {
         v <- mean(rating, na.rm = TRUE)
         if (is.nan(v)) NA_real_ else v
@@ -62,6 +81,9 @@ dt[, is_top_rating := as.logical(is_top_rating)]
 dt[, player_of_the_match := as.logical(player_of_the_match)]
 dt[, on_bench := as.logical(on_bench)]
 dt[, is_source_league_match := as.logical(is_source_league_match)]
+dt[, team_win := as.logical(team_win)]
+dt[, team_draw := as.logical(team_draw)]
+dt[, team_loss := as.logical(team_loss)]
 
 # players scraped under two source leagues (mid-season transfers) carry the same
 # match twice; keep one row per player-match, preferring the source-league copy,
