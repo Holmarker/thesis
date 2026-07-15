@@ -65,6 +65,17 @@ worth reading before writing the section that uses it.
 | List & Sturm (2006), *QJE* | bib | How elections matter |
 | Alt, Bueno de Mesquita & Rose (2011), *J Politics* | bib | Disentangling accountability and competence |
 
+## 6. Targeted additions (2026-07-15) — each maps to a specific claim in the text
+
+| Reference | Status | Where it goes / what it protects |
+|---|---|---|
+| Lee (2009), *ReStud* — trimming bounds under sample selection | add, read | **Partial-identification subsection.** The canonical estimator for outcomes observed only conditional on treatment-affected selection — exactly the rating margin's structure. Cite at minimum; implementing a Lee bound on the rating outcome would upgrade the bounding argument from prose to estimator (candidate for final pass or future work) |
+| Prendergast (1999), *JEL* — provision of incentives in firms | add | **FotMob discussion / Frick contrast.** Umbrella citation for subjective-performance-evaluation bias; makes "narrative in the rater" a documented phenomenon, not an intuition. MacLeod (2003, *AER*) as sharper theory cite if needed |
+| Oyer (1998), *QJE* — fiscal year ends and nonlinear incentives | add | **Anticipated within-spell state subsection.** Behavior shifts around known, anticipated evaluation dates in a non-sports labor market — the timing mechanism itself |
+| Weimar & Wicker (~2017), *J Sports Econ* — effort as running distance, Bundesliga | verify, read | **FotMob discussion.** The "meters ran" example is a real measurement literature (tracking data as effort proxy); supports the event-visible-performance vs effort distinction |
+| Scully (1974), *AER* — pay and performance in MLB | add | **Background.** Founding paper of sports labor economics (reserve clause / MRP); one sentence connecting Bosman to the field's oldest question |
+| Becker — firm-specific vs general human capital | consider | **Extensive-margin mechanism.** Clubs' reallocation of minutes away from expiring players as declining firm-specific investment; grounds the employer-side channel |
+
 ## Positioning notes
 
 - **Nothing recent does what this thesis does**: a 28-league, monthly,

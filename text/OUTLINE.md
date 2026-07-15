@@ -44,6 +44,7 @@ freeze is a methodological contribution in its own right.*
 - Transfer/terminal-outcome analysis (S8, threat 2) — needs transfer histories; framed as future work
 - Spec-freeze supervisor blessing — S1–S8 decided by author 2026-07-15; supervisor sign-off still valuable before final pass
 - Parquet for 683MB clean CSV (nice-to-have)
+- Lee (2009) bound on the rating outcome — estimator upgrade for the partial-identification section; decide at final pass whether in-scope or future work
 
 ## Figures & tables plan
 
