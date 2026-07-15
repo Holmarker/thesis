@@ -25,7 +25,7 @@ freeze is a methodological contribution in its own right.*
 | 4 | Data | **revised** | Rewritten 2026-07-13: sources / cleaning+aggregation (D2–D4 documented) / linkage / temporal alignment / panel + macros / descriptives. TODO: soften "TM defines playing time for full universe" (D6 addendum); disclose TM coverage gap; add DOB-verification sentence after D8 |
 | 5 | Empirical strategy | revised | Effort model (FOC → predictions → estimand → selection expectation) added 2026-07-13; threats rewrite done. TODO: one paragraph on the flexible duration profile (spline) if adopted |
 | 6 | Results | **stale** | All numbers predate the final pass. Rewrite around the audit-ladder arc after final estimation. Subsections: descriptives / intensive (null + ladder) / what the rating measures / extensive (played_any grid, honest fragility) / event study / rejected designs / heterogeneity / synthesis |
-| 7 | Discussion | skeleton+ | FotMob subsection **drafted** (6 arguments, [NUMBER] placeholders); injury selection = rough user notes needing rewrite; mechanical-selection/transfers, term-limits external validity, limitations = stubs |
+| 7 | Discussion | skeleton+ | FotMob subsection **drafted**; NEW: "contract cycle beyond incentives" (job insecurity, crowding, Roderick — drafting notes in place); injury selection = rough notes needing rewrite w/ Roderick; mechanical-selection, term-limits, limitations = stubs |
 | 8 | Conclusion | skeleton | Header + TODO |
 | A–D | Appendix | skeleton | A descriptives · B event-study/robustness detail · C rejected RDD · D data construction. **Add E: decisions log** (promised by the Introduction) |
 
@@ -35,7 +35,7 @@ freeze is a methodological contribution in its own right.*
 2. **Final estimation pass** under frozen spec: rebuild with verified crosswalk → full chain + audit battery (restrictions already wired in). ONE run.
 3. **Fill numbers**: `% [NUMBER]` markers in Introduction + FotMob discussion; MDE calc; rating-anatomy R²; regenerate tables/numbers.tex
 4. **Rewrite Results** (§6) around the ladder arc; update synthesis
-5. **Write Discussion** subsections (mechanical selection, term limits, limitations, injury rewrite)
+5. **Write Discussion** subsections (mechanical selection, beyond-incentives/social science, term limits, limitations, injury rewrite w/ Roderick)
 6. **Lit review completion** (contract-year empirics + analogues paragraphs)
 7. **Conclusion, Abstract, polish** (\\ → blank lines, plain-text cites → \citep, standalone .tex files deleted or \input'd)
 

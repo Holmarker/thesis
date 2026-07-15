@@ -86,6 +86,28 @@ football — the post-2017 GPS literature is sports-science, not economics. "Eff
 as distance run under contract incentives" appears to be an open niche → candidate
 future-work sentence in the conclusion.
 
+## 7. Social science beyond the PA frame (added 2026-07-15)
+
+The thesis tests principal–agent theory; the discussion must situate the null
+in the broader social science of insecure work. Key move: job-insecurity
+psychology finds weak/inconsistent performance effects but strong wellbeing
+effects — independently converging on this thesis's null via another
+discipline's methods.
+
+| Reference | Status | Where it goes |
+|---|---|---|
+| Roderick, *The Work of Professional Football* (sociology/ethnography) | add, read | **Injury subsection + discussion.** Contract insecurity, playing-hurt culture, careers as short-contract sequences — the lived version of this panel |
+| Sverke, Hellgren & Näswall (2002, *J Occup Health Psych* meta-analysis); De Witte (job insecurity reviews) | add | **Discussion.** Insecurity → wellbeing/attitude damage, weak performance effects. The null found here matches their pattern |
+| Rousseau — psychological contract | consider | **Discussion.** Renewal as relational negotiation; breach around non-renewal |
+| Frey & Jegen (2001, *J Econ Surveys*) — motivation crowding | add | **Discussion.** Extrinsic contract stakes can crowd out intrinsic motivation → offsetting forces as a *mechanism for the null*, not an excuse |
+| Contract-year syndrome, *Motivation & Emotion* 2013 (SDT) | verify (already in §2) | Same crowding logic tested in NBA/MLB — bridge citation between the econ and psych strands |
+| Standing — the precariat | consider | **Background.** One sentence: footballers as an extreme, unusually well-measured case of fixed-term labour |
+
+Planned manuscript changes: new Discussion subsection "The contract cycle
+beyond incentives" (between mechanical selection and term limits); Roderick
+into the injury subsection; Standing sentence in Background; short "adjacent
+social science" paragraph closing the lit review.
+
 ## What this thesis contributes (by strand)
 
 The claim structure for the introduction/lit review — each contribution stated
