@@ -15,6 +15,10 @@ worth reading before writing the section that uses it.
 | Gibbons & Murphy (1992), *JPE* — Career concerns, theory + evidence | bib, read | **Most on-point theory**: implicit incentives strengthen as horizon shortens |
 | Lazear (2000), *AER* — Performance pay and productivity | bib | Canonical incentives-change-behavior |
 | Robust contracting with career concerns ([arXiv 2025](https://arxiv.org/pdf/2507.22852)) | verify | Modern theory reference if needed |
+| Hörner & Lambert (2021), *ReStud* — Motivational ratings | add, read | **Best modern fit**: theory of a public rating aggregating noisy signals and shaping effort — FotMob setting is an instance, not an analogy |
+| Bonatti & Hörner (2017), *ReStud* — Career concerns with exponential learning | add | Modern dynamic career concerns; the proper version of the FOC's horizon comparative static — answer to "your model is a reduced form of what?" |
+| Cisternas (2018), *ReStud* — Career concerns and the nature of skills | consider | Ability evolves with effort (learning-by-doing) — grounds the age-heterogeneity margin |
+| Edmans & Gabaix (2016), *JEL* — Executive compensation: a modern primer | consider | One-citation bridge from classic to modern dynamic contracting in the lit review's theory paragraph |
 | NBER [w30191](https://www.nber.org/system/files/working_papers/w30191/w30191.pdf) — pay + career concerns + human capital | verify | Answers "why would the young respond differently" — ties to age heterogeneity |
 
 ## 2. Contract-year effects in sports
