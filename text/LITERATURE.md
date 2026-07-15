@@ -75,6 +75,12 @@ worth reading before writing the section that uses it.
 | Weimar & Wicker (~2017), *J Sports Econ* — effort as running distance, Bundesliga | verify, read | **FotMob discussion.** The "meters ran" example is a real measurement literature (tracking data as effort proxy); supports the event-visible-performance vs effort distinction |
 | Scully (1974), *AER* — pay and performance in MLB | add | **Background.** Founding paper of sports labor economics (reserve clause / MRP); one sentence connecting Bosman to the field's oldest question |
 | Becker — firm-specific vs general human capital | consider | **Extensive-margin mechanism.** Clubs' reallocation of minutes away from expiring players as declining firm-specific investment; grounds the employer-side channel |
+| ECONtribute DP 384 (Bonn, ~2025) — [When Algorithms Rate Performance](https://ideas.repec.org/p/ajk/ajkdps/384.html) | verify | **FotMob discussion.** Recent econ evidence: with noisy-but-objective signals, algorithmic evaluators beat human raters precisely because they lack human biases — modern support for the journalist-vs-algorithm contrast |
+
+Note (2026-07-15): searched for newer tracking-data-based effort/incentive work in
+football — the post-2017 GPS literature is sports-science, not economics. "Effort
+as distance run under contract incentives" appears to be an open niche → candidate
+future-work sentence in the conclusion.
 
 ## Positioning notes
 
