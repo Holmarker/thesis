@@ -82,6 +82,56 @@ football — the post-2017 GPS literature is sports-science, not economics. "Eff
 as distance run under contract incentives" appears to be an open niche → candidate
 future-work sentence in the conclusion.
 
+## What this thesis contributes (by strand)
+
+The claim structure for the introduction/lit review — each contribution stated
+relative to the strand it extends. Keep these honest: every bullet should
+survive "compared to what, exactly?"
+
+1. **To the contract-year empirics (Lehn → Krautmann → Stiroh → AEL 2026):**
+   the largest and widest panel in this literature (28 leagues, constant
+   composition, ~150k rated player-months vs. hundreds of players in prior
+   studies), at monthly rather than seasonal frequency, with *both* margins —
+   performance and playing time — estimated in one design. Prior work conflates
+   them or observes only one. And a specification ladder that *reproduces* the
+   literature's positive finding before dismantling it — the null is not a
+   failure to find the effect, it is a diagnosis of where the effect lives
+   (composition and selection, not behavior).
+
+2. **To the football-specific work (Frick 2011; Deutscher et al.):** replaces
+   journalist ratings with an algorithmic measure that cannot condition on
+   contract status. The Frick contrast is a finding in itself: a contract-year
+   premium that exists in human ratings and vanishes in algorithmic ones on a
+   far larger panel is evidence about subjective evaluation (→ Prendergast,
+   Bonn DP), not just about football. No prior contract-cycle study has this
+   measurement-side identification.
+
+3. **To the career-concerns literature (Holmström, Gibbons–Murphy):** a test
+   of the horizon mechanism in a market where the model's assumptions hold
+   unusually literally (locked wages, public signals, known renegotiation
+   date) — and a precisely-bounded null where theory predicts a gradient.
+   The age heterogeneity (signal-to-noise weight b_t highest for the young)
+   is the model-consistent margin to emphasize if anything survives there.
+
+4. **To the selection/measurement methodology:** an explicit two-margin
+   decomposition where the selection rule (club fields whom it rates) runs on
+   the outcome itself; a signable upper-bound argument for the conditional
+   estimate (→ Lee 2009 as the formal upgrade path); and a documented,
+   ex-ante-frozen decisions log demonstrating that data artifacts alone were
+   large enough to flip signs — a caution with relevance well beyond sports.
+
+5. **To the sports-labor institution literature (Scully → Bosman studies):**
+   the first at-scale evidence on what the Bosman six-month window does to
+   *within-contract* behavior and allocation, as opposed to its effects on
+   transfer fees and wage levels.
+
+Anti-overclaim notes: (i) the extensive-margin decline is fragile across
+specs — say "at most a modest decline," never "robust effect"; (ii) the null
+is about *event-visible* performance — unobserved effort margins (running,
+pressing) remain open (tracking-data niche); (iii) mean-reversion (Krautmann)
+is handled by spell FE but should be named when interpreting the post-signing
+dip descriptives.
+
 ## Positioning notes
 
 - **Nothing recent does what this thesis does**: a 28-league, monthly,
