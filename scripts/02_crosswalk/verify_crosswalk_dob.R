@@ -74,11 +74,28 @@ cands <- read_csv(candidates_path, show_col_types = FALSE) %>%
     name_match_score = name_similarity(player_name_tm, fotmob_player_name)
   )
 
+# exact agreement (+/- 1 day, timezone artifacts) verifies a pair. Same birth
+# YEAR with a larger gap is treated as a site data-entry discrepancy for the
+# same person (kept, flagged); a different birth year marks a wrong match
+# (name-collision namesakes) and demotes the pair.
 dob_agrees <- function(tm_dob, fm_dob) {
-  !is.na(tm_dob) & !is.na(fm_dob) & abs(as.numeric(tm_dob - fm_dob)) <= 1
+  !is.na(tm_dob) & !is.na(fm_dob) &
+    (abs(as.numeric(tm_dob - fm_dob)) <= 1 |
+       format(tm_dob, "%Y") == format(fm_dob, "%Y"))
 }
 
-cw <- cw %>% left_join(dob, by = "fotmob_player_id")
+# many confirmed rows carry no TM birthdate even though the candidate pool
+# has one for the same tm_player_id; backfill before judging
+tm_dob_lookup <- cands %>%
+  filter(!is.na(date_of_birth)) %>%
+  distinct(tm_player_id, .keep_all = TRUE) %>%
+  select(tm_player_id, tm_dob_fill = date_of_birth)
+
+cw <- cw %>%
+  left_join(tm_dob_lookup, by = "tm_player_id") %>%
+  mutate(date_of_birth = coalesce(date_of_birth, tm_dob_fill)) %>%
+  select(-tm_dob_fill) %>%
+  left_join(dob, by = "fotmob_player_id")
 
 # ---- Pass 1: verify approved pairs -----------------------------------------
 cw <- cw %>%

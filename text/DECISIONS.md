@@ -29,6 +29,8 @@ matches the per-league scrape manifests (22/23: 46.5k monthly rows, 23/24:
 
 | D9b | All national-team football excluded from monthly aggregates: NT friendlies, World Cup qualifiers, continental tournaments, youth internationals (explicit 22-id list in `data/international_competition_ids.csv`, 21,562 rows incl. D9, + name-pattern fallback for future scrapes). FIFA **Club** World Cup kept (club competition). League matches untouched by construction (they carry the league's own id) | NT minutes are the national coach's allocation, not the club's; decided by author 2026-07-16 before any restricted estimation | No — definitional, quantified before estimation |
 
+| D8 | Crosswalk verified on exact date of birth against a full FotMob DOB scrape (10,532 of 10,570 ids, 99.6%) | **Executed 2026-07-16.** Rules fixed and committed before the data existed (commit 0b1ee20). Results: 9,844 of 10,564 approved pairs verified (93%); **112 wrong-namesake pairs demoted** (birth years differ — generic-name collisions, e.g. Brazilian mononyms); 111 same-year DOB discrepancies kept as verified-with-flag (site data-entry differences); 21 unsafe conflicts resolved deterministically; **292 previously unmatched players rescued** (exact DOB + name >= 85 + two-way uniqueness); 37 pairs unverifiable (no DOB on one side, retained with flag). Net merge-safe: 9,667 -> ~9,868 | No — rules pre-committed; the same-year refinement was made after inspecting mismatch *composition* (name-identical small-gap pairs), not any regression |
+
 ## Specification freeze (2026-07-13) — TO BE CONFIRMED before further estimation
 
 - **Primary FE structure:** spell + league×month — chosen because the strategy
