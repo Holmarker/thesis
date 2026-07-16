@@ -56,22 +56,27 @@ analysis separates two margins that pooled approaches conflate: the
 the club rather than the player and is observed for every player-month
 regardless of rating coverage.
 
-% [NUMBER: final-pass estimates below]
-The answer is largely a well-audited null, and the auditing is the point. In
+The answer is a well-audited reversal, and the auditing is the point. In
 naive specifications the data happily reproduce the literature's findings: a
-contract-year performance premium appears under player and month fixed
-effects. It does not survive. Absorbing league-by-month composition removes
-it; comparing within a single contract spell, rather than across differently
-selected contracts, removes it; and the design that remains --- within-spell,
-within-league-month --- bounds any performance response near zero, with
-precision sufficient to rule out effects an order of magnitude smaller than
-normal month-to-month variation in the outcome. On the playing-time margin a
-small decline in the probability of appearing survives the stricter designs,
-consistent with clubs beginning to reallocate minutes away from players they
-expect to lose. The contrast with the journalist-rating literature is itself
-informative: an effect that appears in human ratings and vanishes in
-algorithmic ones is consistent with narrative entering the measure rather
-than effort entering the pitch.
+contract-year performance premium of $+0.025$ standard deviations appears
+under player and month fixed effects ($p=0.02$), and under the literature's
+final-contract-year definition, $+0.020$ ($p<0.001$). It does not survive.
+Absorbing league-by-month composition removes it entirely; and in the
+strictest design --- within a single contract spell, within league-month ---
+the estimate is not zero but mildly \emph{negative} in every variant
+($-0.012$ to $-0.031$, the final-year definition significantly so), with
+precision sufficient to rule out premia far smaller than normal
+month-to-month variation in the outcome (a minimum detectable effect of
+$0.034$ standard deviations against a within-player standard deviation of
+$0.74$). On the playing-time margin the estimate is bounded by measurement:
+the cleanest single-source outcome shows a decline of under one percentage
+point in the probability of appearing, the combined-source outcome shows
+none, and a within-teammates comparison mildly the opposite --- reported
+throughout as a bound around zero, never as a robust effect. The contrast
+with the journalist-rating literature is itself informative: an effect that
+appears in human ratings and reverses in algorithmic ones on a far larger
+panel is consistent with narrative entering the measure rather than effort
+entering the pitch.
 
 These results are disciplined by an unusual degree of attention to
 measurement. The thesis documents, in a running decisions log, every
@@ -1047,30 +1052,33 @@ construction, so the contrast between the positive journalist-rating result
 and the null found here is itself informative: it is consistent with the
 earlier effect living partly in the eye of the rater.
 
-What the rating actually loads on can be measured. Regressing monthly
-ratings on the observable box score
-% [NUMBER: R^2 and top loadings from run_fotmob_rating_anatomy.R]
-shows that a substantial share of its variation is mechanical production
-(goals, assists, results), with the remainder reflecting the event dimensions
-only the algorithm sees. This decomposition matters for interpreting the
-controls ladder: when goal contributions and match results are absorbed, the
-coefficient on the expiry indicator isolates the part of the rating
-\emph{not} carried by countable production.
-% [NUMBER: base vs event-controls Bosman coefficients from final pass]
+What the rating actually loads on can be measured. Regressing match ratings
+on the observable box score explains $47\%$ of their variance (goals and
+assists alone account for $34\%$; adding team-day effects raises it to
+$55\%$), leaving roughly half the rating to the event dimensions only the
+algorithm sees. The decomposition is strongly position-dependent: the box
+score explains $75\%$ of attackers' ratings but only $23\%$ of
+goalkeepers' --- the quantified version of the effort-visibility asymmetry
+developed below. This matters for interpreting the controls ladder: when
+goal contributions and match results are absorbed, the coefficient on the
+expiry indicator isolates the part of the rating \emph{not} carried by
+countable production, and in the primary design that residual component is
+where the estimate is most negative ($-0.026$, $p=0.03$, against $-0.020$
+uncontrolled).
 
 Noise in the rating is a power problem, not a bias problem. Measurement
 error in a dependent variable does not attenuate the coefficient; it widens
 the confidence interval. The null on the intensive margin therefore cannot
 be attributed to a noisy outcome unless the noise destroys power, and it
-does not: the design rules out effects beyond roughly
-% [NUMBER: MDE at 80\% power from final-pass SE]
-rating points, against a within-player monthly standard deviation an order
-of magnitude larger. The genuinely dangerous error is not white noise but
-the rating's loading on \emph{team} results, since team quality could
-co-move with contract phases; the win-share-controlled specifications
-address this directly, and the estimates are insensitive to absorbing match
-results.
-% [NUMBER: win-control vs base coefficients]
+does not: at 80 percent power the primary design detects effects of $0.034$
+standard deviations, against a within-player monthly standard deviation of
+$0.74$ --- power to see anything one-twentieth the size of routine
+month-to-month variation. The genuinely dangerous error is not white noise but
+the rating's loading on \emph{team} results: $38\%$ of rating variance
+sits at the team-match level, so team quality co-moving with contract phases
+is a live threat. The win-share-controlled specifications address this
+directly; absorbing match results moves the primary estimate from $-0.020$
+to $-0.026$ --- slightly strengthening, never reversing, the conclusion.
 
 Finally, the rating measures performance where Holmstr{\"o}m's model concerns
 effort, and the gap between the two is not symmetric across positions. The
@@ -1081,8 +1089,9 @@ for attackers than for defenders or goalkeepers. The by-position estimates
 should therefore be read as a measurement diagnostic as much as
 heterogeneity: a null that is uniform across positions is harder to attribute
 to selective invisibility of effort than one concentrated where effort is
-least observable.
-% [NUMBER: by-position estimates from final pass]
+least observable; the box-score $R^2$ gradient across positions ($0.75$
+attackers, $0.64$ midfielders, $0.50$ defenders, $0.23$ goalkeepers) makes
+the asymmetry concrete.
 The honest conclusion this section supports is bounded: the analysis speaks
 to \emph{event-visible} performance, and a null there is consistent with
 effort responses the algorithm cannot see. Two mechanical artifacts are
