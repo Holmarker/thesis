@@ -326,7 +326,9 @@ ratings_raw <- bind_rows(lapply(seq_along(rating_files), function(i) {
 safe_write_csv(ratings_raw, clean_row_out)
 message("Saved clean row-level ratings to: ", clean_row_out)
 
-monthly_all <- summarise_monthly(ratings_raw)
+# D9 (text/DECISIONS.md): club friendlies (FotMob league_id 489) are not
+# competitive club allocation and are excluded from all monthly aggregates
+monthly_all <- summarise_monthly(ratings_raw %>% filter(coalesce(league_id, -1L) != 489L))
 safe_write_csv(monthly_all, monthly_all_out)
 message("Saved monthly all-competitions ratings to: ", monthly_all_out)
 

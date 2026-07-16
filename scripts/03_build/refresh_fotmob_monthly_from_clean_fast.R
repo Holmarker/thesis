@@ -97,6 +97,8 @@ dt[, dedup_rank := frank(
 dt <- dt[is.na(match_id) | dedup_rank == 1L]
 dt[, dedup_rank := NULL]
 
+# D9: club friendlies (league_id 489) excluded from monthly aggregates
+dt <- dt[is.na(league_id) | league_id != 489L]
 monthly_all <- summarise_monthly_dt(dt)
 fwrite(monthly_all, monthly_all_out)
 cat("Saved monthly all-competitions ratings to:", monthly_all_out, "\n")

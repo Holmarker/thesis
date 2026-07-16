@@ -25,6 +25,15 @@ matches the per-league scrape manifests (22/23: 46.5k monthly rows, 23/24:
 
 | D7 | Monthly source-league label = league of the month's actual source-league matches (fallback: first observed) | `first(source_league_name)` after an alphabetical sort could label a month with a stale roster tag (e.g. a Rangers month labeled Argentine Primera via a cup row), corrupting league×month FE cells and league standardization. Impact: 2,052 of 529k months relabeled (0.39%); full grid re-estimated, all conclusions unchanged (third-decimal movements) | No — labeling correctness, independent of outcomes |
 
+| D9 | Club friendlies (FotMob league_id 489, incl. "Hybrid Friendlies") excluded from all monthly aggregates (minutes, ratings, goals); rows retained in the archive file | Friendlies are not competitive club allocation: preseason line-ups are experimentation, not selection. 5,957 player-match rows; 2,432 player-months consisted of nothing but friendly/NT football and were wrongly coded as "played". Decided 2026-07-16, before any restricted estimation | No — definitional, quantified before any estimate was run on the restricted definition |
+
+**Open sub-decision (D9b):** international friendlies (league_id 114, 2,194 rows)
+and national-team competitive matches (World Cup qualifiers, continental
+tournaments; a few thousand rows) still enter the all-comps aggregates. Same
+logic arguably applies for the extensive margin (NT minutes are not the club's
+allocation); for the intensive margin NT matches are real rated performances.
+Decide before the final pass.
+
 ## Specification freeze (2026-07-13) — TO BE CONFIRMED before further estimation
 
 - **Primary FE structure:** spell + league×month — chosen because the strategy
