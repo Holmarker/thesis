@@ -1,9 +1,9 @@
 split,level,n
-foreign,FALSE,91091
-foreign,TRUE,86158
-club_tenure,1-3y,75002
-club_tenure,3-6y,6214
-club_tenure,<1y,128807
-league_tenure,1-3y,79740
-league_tenure,3-6y,10322
-league_tenure,<1y,122882
+foreign,FALSE,91926
+foreign,TRUE,86127
+club_tenure,1-3y,75679
+club_tenure,3-6y,6256
+club_tenure,<1y,130112
+league_tenure,1-3y,80282
+league_tenure,3-6y,10343
+league_tenure,<1y,124399
