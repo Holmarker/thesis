@@ -47,6 +47,13 @@ All spell + league×month:
 | club×month FE (within teammates), played | +1.2pp* | 0.013 | 212,047 |
 | club×month FE, minutes | +0.5 | 0.82 | 212,047 |
 
+Within-teammates, intensive margin (spell + club×month, all variants):
+z-ratings −0.009 to −0.015, all n.s. (p=0.26–0.43, N≈132,600) — same sign and
+magnitude as the primary design and the win-controlled cell. Every strict lens
+on the performance margin agrees: small negative, never positive. Speculative
+mechanism (do NOT assert): showcase-while-underperforming — more minutes,
+slightly worse conditional output.
+
 - Present as measurement-bounded: 0 to ≈ −1pp / −6 min. TM-only sign-flip is
   the permanent cautionary exhibit (coverage artifact). Within-teammates
   comparison does NOT corroborate the decline (positive, different sample and
