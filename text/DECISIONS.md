@@ -31,7 +31,7 @@ matches the per-league scrape manifests (22/23: 46.5k monthly rows, 23/24:
 
 | D8 | Crosswalk verified on exact date of birth against a full FotMob DOB scrape (10,532 of 10,570 ids, 99.6%) | **Executed 2026-07-16.** Rules fixed and committed before the data existed (commit 0b1ee20). Results: 9,844 of 10,564 approved pairs verified (93%); **112 wrong-namesake pairs demoted** (birth years differ — generic-name collisions, e.g. Brazilian mononyms); 111 same-year DOB discrepancies kept as verified-with-flag (site data-entry differences); 21 unsafe conflicts resolved deterministically; **292 previously unmatched players rescued** (exact DOB + name >= 85 + two-way uniqueness); 37 pairs unverifiable (no DOB on one side, retained with flag). Net merge-safe: 9,667 -> ~9,868 | No — rules pre-committed; the same-year refinement was made after inspecting mismatch *composition* (name-identical small-gap pairs), not any regression |
 
-## Specification freeze (2026-07-13) — TO BE CONFIRMED before further estimation
+## Specification freeze (2026-07-13) — **CONFIRMED by author 2026-07-16**, before the final estimation pass
 
 - **Primary FE structure:** spell + league×month — chosen because the strategy
   chapter argues within-contract, within-league-time comparisons are the
