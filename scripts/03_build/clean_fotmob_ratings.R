@@ -326,9 +326,22 @@ ratings_raw <- bind_rows(lapply(seq_along(rating_files), function(i) {
 safe_write_csv(ratings_raw, clean_row_out)
 message("Saved clean row-level ratings to: ", clean_row_out)
 
-# D9 (text/DECISIONS.md): club friendlies (FotMob league_id 489) are not
-# competitive club allocation and are excluded from all monthly aggregates
-monthly_all <- summarise_monthly(ratings_raw %>% filter(coalesce(league_id, -1L) != 489L))
+# D9/D9b (text/DECISIONS.md): friendlies and national-team competitions are
+# not competitive club allocation and are excluded from all monthly
+# aggregates. Explicit id list + name-pattern fallback for future scrapes
+# (pattern must never match "Europa League"). League matches are untouched:
+# they carry the league's own competition id.
+intl_ids <- readr::read_csv(
+  "data/international_competition_ids.csv",
+  show_col_types = FALSE
+)$league_id
+intl_pattern <- "friendl|world cup qual|nations league|africa cup|gold cup|copa america|asian cup|olympi|\\bu1[79]\\b|\\bu2[013]\\b|^euro( |$)"
+club_competitive <- ratings_raw %>%
+  filter(
+    !coalesce(league_id, -1L) %in% intl_ids,
+    !str_detect(tolower(coalesce(league_name, "")), intl_pattern)
+  )
+monthly_all <- summarise_monthly(club_competitive)
 safe_write_csv(monthly_all, monthly_all_out)
 message("Saved monthly all-competitions ratings to: ", monthly_all_out)
 

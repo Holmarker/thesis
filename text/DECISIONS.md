@@ -27,12 +27,7 @@ matches the per-league scrape manifests (22/23: 46.5k monthly rows, 23/24:
 
 | D9 | Club friendlies (FotMob league_id 489, incl. "Hybrid Friendlies") excluded from all monthly aggregates (minutes, ratings, goals); rows retained in the archive file | Friendlies are not competitive club allocation: preseason line-ups are experimentation, not selection. 5,957 player-match rows; 2,432 player-months consisted of nothing but friendly/NT football and were wrongly coded as "played". Decided 2026-07-16, before any restricted estimation | No — definitional, quantified before any estimate was run on the restricted definition |
 
-**Open sub-decision (D9b):** international friendlies (league_id 114, 2,194 rows)
-and national-team competitive matches (World Cup qualifiers, continental
-tournaments; a few thousand rows) still enter the all-comps aggregates. Same
-logic arguably applies for the extensive margin (NT minutes are not the club's
-allocation); for the intensive margin NT matches are real rated performances.
-Decide before the final pass.
+| D9b | All national-team football excluded from monthly aggregates: NT friendlies, World Cup qualifiers, continental tournaments, youth internationals (explicit 22-id list in `data/international_competition_ids.csv`, 21,562 rows incl. D9, + name-pattern fallback for future scrapes). FIFA **Club** World Cup kept (club competition). League matches untouched by construction (they carry the league's own id) | NT minutes are the national coach's allocation, not the club's; decided by author 2026-07-16 before any restricted estimation | No — definitional, quantified before estimation |
 
 ## Specification freeze (2026-07-13) — TO BE CONFIRMED before further estimation
 

@@ -97,8 +97,12 @@ dt[, dedup_rank := frank(
 dt <- dt[is.na(match_id) | dedup_rank == 1L]
 dt[, dedup_rank := NULL]
 
-# D9: club friendlies (league_id 489) excluded from monthly aggregates
-dt <- dt[is.na(league_id) | league_id != 489L]
+# D9/D9b: friendlies and national-team competitions excluded from monthly
+# aggregates (id list + name-pattern fallback; never matches "Europa League")
+intl_ids <- fread("RSpeciale/data/international_competition_ids.csv")$league_id
+intl_pattern <- "friendl|world cup qual|nations league|africa cup|gold cup|copa america|asian cup|olympi|\\bu1[79]\\b|\\bu2[013]\\b|^euro( |$)"
+dt <- dt[!(league_id %in% intl_ids) | is.na(league_id)]
+dt <- dt[!grepl(intl_pattern, tolower(fcoalesce(league_name, "")))]
 monthly_all <- summarise_monthly_dt(dt)
 fwrite(monthly_all, monthly_all_out)
 cat("Saved monthly all-competitions ratings to:", monthly_all_out, "\n")
