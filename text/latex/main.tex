@@ -833,39 +833,57 @@ league-season-position cells, leave the picture unchanged. \\
 \subsection{What the rating measures, and why the null is credible}
 \label{sec:results-anatomy}
 
-Interpreting an absence of effect requires knowing what the outcome variable
-actually captures. A decomposition of roughly 337{,}000 rated player-matches
-is instructive. Regressing the match rating on its observable ingredients,
-minutes played alone explain 15\% of the variance, goals and assists raise this
-to 43\%, and adding the average rating of a player's teammates that day reaches
-55\%; the implied prices are about $+0.93$ rating points for a goal, $+0.77$ for
-an assist, $-1.03$ for a red card, and $+0.90$ for a full ninety minutes. In
-round terms the rating is roughly 45\% scoreboard events and minutes, 10\% the
-team's collective result, and 45\% residual. Three features of this structure
-bear directly on the analysis. \\
+Interpreting the estimates of the previous section requires knowing what the
+outcome variable actually captures. The rating itself is a well-behaved
+object: across 1.14 million rated player-matches it averages $6.84$ with a
+standard deviation of $0.78$, spans the 5th--95th percentile range
+$5.8$--$8.2$, takes only 86 distinct values, and awards a perfect 10 exactly
+twice --- a compressed, center-heavy scale, not a long-tailed one. A
+decomposition of 504{,}236 rated player-matches shows what moves it.
+Regressing the match rating on its observable ingredients, minutes played
+alone explain 15\% of the variance; goals and assists alone, 34\%; together,
+47\%; and adding team-day effects reaches 55\%. The implied prices are about
+$+0.93$ rating points for a goal, $+0.77$ for an assist, $-1.03$ for a red
+card, and $+0.90$ for a full ninety minutes. In round terms the rating is
+half scoreboard events and minutes, a further tenth the team's collective
+day, and the rest residual --- the part only the algorithm sees. Four
+features of this structure bear directly on the analysis. \\
 
 First, a single match rating is mostly noise about the individual: the
-within-player match-to-match standard deviation (0.74) is more than twice the
-between-player standard deviation of career averages (0.31), so a monthly
-average of about four matches is only around 40\% signal. Second, roughly a
-third of match-level rating variance sits at the team-match level, because
-results and match dominance enter every teammate's rating simultaneously; the
-rating therefore partly measures team quality, which is why the strictest
-specifications difference out team-time variation. Third, the rating is
-effectively a different instrument in each position---explained variance ranges
-from 0.75 for attackers, whose ratings are largely restated goal involvement,
-down to 0.23 for goalkeepers, whose ratings are dominated by team
-outcomes---and minutes buy rating points mechanically even in event-free
-matches, with substitute appearances shrunk toward a common anchor near 6.2. \\
+within-player match-to-match standard deviation ($0.74$) is two and a half
+times the between-player standard deviation of career averages ($0.29$), so
+a monthly average of three to four matches is only around 40\% signal ---
+the statistical case for monthly aggregation and minutes-weighting rather
+than match-level outcomes. Second, 38\% of match-level rating variance sits
+at the team-match level, because results and match dominance enter every
+teammate's rating simultaneously; the rating therefore partly measures team
+quality, which is why the strictest specifications difference out
+league-time variation, why the win-share control is the most
+measurement-justified covariate in the grid, and why a within-club-month
+comparison appears in the battery at all. Third, the rating is effectively a
+different instrument in each position: explained variance falls from $0.75$
+for attackers, whose ratings largely restate goal involvement, through
+$0.64$ for midfielders and $0.50$ for defenders, to $0.23$ for goalkeepers,
+whose ratings are dominated by team outcomes. A null on the pooled rating is
+therefore a stronger statement for attackers, where effort that produces
+events would be seen, than for goalkeepers, where it largely would not.
+Fourth, minutes buy rating points mechanically even in event-free matches
+--- about $+0.8$ per ninety with no goal, assist, or card involvement ---
+and substitute cameos are shrunk toward a common anchor near $6.2$ with
+barely a third of the dispersion of full appearances ($\mathrm{SD}$ $0.37$
+versus $0.81$), which is the mechanical case for the minutes-weighted
+outcome and the substitution-adjusted robustness. \\
 
-These properties mean the intensive-margin null is a statement about a
-deliberately noisy, minutes-contaminated, team-laden measure. Correcting for the
-contamination does not overturn it: outcomes built from sixty-minute-plus
-appearances only, minutes-bin-rescaled ratings, and league-month percentile
-ranks that are immune to skew and shrinkage all reproduce the same
-signature---small positives under naive fixed effects that vanish under spell
-fixed effects and are near-exact zeros within club-month. Correcting the
-measurement sharpens the null rather than revealing a hidden effect.
+These properties mean the intensive-margin estimates are statements about a
+deliberately noisy, minutes-contaminated, team-laden measure --- and every
+correction for the contamination points the same way. Absorbing match
+results moves the primary estimate from $-0.020$ to $-0.026$; outcomes built
+from sixty-minute-plus appearances only, minutes-bin-rescaled ratings, and
+league-month percentile ranks reproduce the same signature of small naive
+positives reversing under spell fixed effects; and the within-club-month
+comparison, which deletes team context entirely, lands at the same small
+negative ($-0.009$ to $-0.015$, not significant). Correcting the measurement
+sharpens the conclusion rather than revealing a hidden premium.
 
 \subsection{The extensive margin: playing time}
 \label{sec:results-extensive}
