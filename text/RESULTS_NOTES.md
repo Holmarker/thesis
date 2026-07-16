@@ -86,6 +86,14 @@ slightly worse conditional output.
   premium is not merely absent — under the literature's own definition and
   this design, the point estimate is significantly negative."
 
+## Rating eligibility rule (measured 2026-07-16)
+
+- FotMob assigns NO rating below 10 minutes played (0% of ~99k sub-10' cameos
+  rated; ~97% rated from minute 10). At exactly 10-12 minutes: mean 6.20-6.23,
+  SD ~0.35 (the anchor); dispersion widens monotonically (0.40@15', 0.52@30',
+  0.57@45', 0.81@90'). Explains the 709k unrated appearance rows (D4) as an
+  institutional rule; defines what the strict panel conditions on.
+
 ## Inference
 
 - Cluster: player (primary). Robustness in primary cell: player SE 0.0120,
