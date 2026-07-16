@@ -38,10 +38,36 @@ matches the per-league scrape manifests (22/23: 46.5k monthly rows, 23/24:
   strictest available design. Chosen for that reason, not for its estimates.
 - **Full grid always reported:** all four FE structures × both outcome
   definitions. No single-cell claims; fragility is reported as fragility.
-- **Primary outcomes:** intensive = monthly minutes-weighted rating;
-  extensive = `played_any`. Robustness: unweighted rating, standardized
-  variants, TM-only outcomes, drop-gap sample.
+- **Primary outcomes (AMENDED 2026-07-16, post-freeze — see D10):**
+  intensive = monthly minutes-weighted rating; extensive = `played_fotmob` /
+  `fotmob_minutes` on FotMob-covered league-months. Robustness: combined
+  `played_any`/`minutes_any`, TM-only outcomes, unweighted and standardized
+  rating variants.
 - **Inference:** cluster by player (cluster robustness table as check).
+
+## D10 — extensive-margin outcomes switched to FotMob-only (2026-07-16)
+
+**Decision (data owner):** both margins are measured from FotMob alone;
+extensive-margin outcomes are `played_fotmob` and `fotmob_minutes`, estimated
+on FotMob-covered league-months. TM-based and combined outcomes remain in
+every output as robustness rows.
+
+**Result-independent rationale:** the TM appearance log comes from older
+scrapes that sometimes crashed (owner statement, D6 addendum); it misses
+22,429 player-months of verified play (coverage gaps); and it is not a single
+consistent source across leagues and competitions. FotMob is one source, one
+collection method, DOB-verified identities, with coverage that can be
+delimited explicitly (covered league-months).
+
+**Contamination flag — stated plainly:** this amendment was made AFTER the
+frozen pass revealed that the three outcome definitions disagree (TM-only
++2.3pp, combined ~0, FotMob-only −0.8pp in the primary design). The
+result-independent case for FotMob-only is genuine, but the timing is not
+innocent. Mitigations: (i) all three definitions reported side by side in the
+extensive-margin table, permanently; (ii) the thesis text must present the
+extensive margin as measurement-bounded (0 to ≈−1pp), never as a robust
+effect; (iii) supervisor to adjudicate the measurement question as promised
+under D6.
 
 ## Sample restrictions — DECIDED 2026-07-15, ex ante (no restricted estimates seen)
 

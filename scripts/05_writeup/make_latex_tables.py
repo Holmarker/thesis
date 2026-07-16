@@ -222,38 +222,45 @@ write("tab_intensive_fe.tex", f"""% Intensive-margin Bosman effect across FE str
 # ---------- tab_extensive ----------
 sel = rows(os.path.join(REG, "fotmob_selection_margin_results.csv"))
 cm = rows(os.path.join(REG, "fotmob_club_month_fe_results.csv"))
-b_played = pick(sel, model_name="bosman_selection", sample_name="all_comps_full",
-                outcome_name="played_tm", spec_name="spell_leaguemonth", term="BosmanTRUE")
+def sel_pick(outcome):
+    return pick(sel, model_name="bosman_selection", sample_name="all_comps_full",
+                outcome_name=outcome, spec_name="spell_leaguemonth", term="BosmanTRUE")
+fm_p = sel_pick("played_fotmob"); fm_m = sel_pick("fotmob_minutes")
+any_p = sel_pick("played_any"); tm_p = sel_pick("played_tm")
 e06 = pick(sel, model_name="expiry_selection", sample_name="all_comps_full",
-           outcome_name="played_tm", spec_name="spell_leaguemonth", term="expiry_bin_6m::0:6")
+           outcome_name="played_fotmob", spec_name="spell_leaguemonth", term="expiry_bin_6m::0:6")
 cm_by = {r["outcome_name"]: r for r in cm}
 def pp(r):
     return f"${float(r['estimate']) * 100:+.1f}$\\,pp"
 write("tab_extensive.tex", f"""% Extensive margin: selection into playing (auto-generated)
 \\begin{{table}}[htbp]
   \\centering
-  \\caption{{Extensive margin: contract status and the probability of playing.}}
+  \\caption{{Extensive margin: contract status and playing time (spell $+$ league$\\times$month FE).}}
   \\label{{tab:extensive}}
   \\begin{{tabular}}{{llrr}}
     \\toprule
-    Specification & Outcome & Estimate & $p$ \\\\
+    Outcome (source) & & Estimate & $p$ \\\\
     \\midrule
-    \\multicolumn{{4}}{{l}}{{\\textit{{Panel A. Full panel (Transfermarkt outcomes)}}}} \\\\
-    Spell $+$ league\\,$\\times$\\,month & Played (Bosman)      & {pp(b_played)}  & {pval(b_played['p_value'])}   \\\\
-    Spell $+$ league\\,$\\times$\\,month & Played (0--6m bin)   & {pp(e06)} & {pval(e06['p_value'])} \\\\
+    \\multicolumn{{4}}{{l}}{{\\textit{{Panel A. Primary: FotMob, covered league-months (D10)}}}} \\\\
+    Played & Bosman window       & {pp(fm_p)}  & {pval(fm_p['p_value'])}   \\\\
+    Minutes & Bosman window      & {num(fm_m['estimate'], 1, sign=True)}  & {pval(fm_m['p_value'])}   \\\\
+    Played & 0--6m expiry bin    & {pp(e06)} & {pval(e06['p_value'])} \\\\
     \\midrule
-    \\multicolumn{{4}}{{l}}{{\\textit{{Panel B. Within teammates (club\\,$\\times$\\,month FE)}}}} \\\\
-    Spell $+$ club\\,$\\times$\\,month & Played              & {pp(cm_by['played'])}  & {pval(cm_by['played']['p_value'])} \\\\
-    Spell $+$ club\\,$\\times$\\,month & Minutes             & {num(cm_by['Minutes_tm']['estimate'], 1, sign=True)}      & {pval(cm_by['Minutes_tm']['p_value'])}   \\\\
-    Spell $+$ club\\,$\\times$\\,month & Mean rating         & {num(cm_by['z_mean']['estimate'], sign=True)}    & {pval(cm_by['z_mean']['p_value'])}   \\\\
-    Spell $+$ club\\,$\\times$\\,month & Minutes-wtd.\\ rating & {num(cm_by['z_weighted']['estimate'], sign=True)}    & {pval(cm_by['z_weighted']['p_value'])}   \\\\
+    \\multicolumn{{4}}{{l}}{{\\textit{{Panel B. Measurement robustness: same design, other sources}}}} \\\\
+    Played (TM or FotMob) & Bosman window & {pp(any_p)} & {pval(any_p['p_value'])} \\\\
+    Played (TM only) & Bosman window      & {pp(tm_p)}  & {pval(tm_p['p_value'])}   \\\\
+    \\midrule
+    \\multicolumn{{4}}{{l}}{{\\textit{{Panel C. Within teammates (club\\,$\\times$\\,month FE)}}}} \\\\
+    Played & & {pp(cm_by['played'])}  & {pval(cm_by['played']['p_value'])} \\\\
+    Minutes & & {num(cm_by['Minutes_tm']['estimate'], 1, sign=True)}      & {pval(cm_by['Minutes_tm']['p_value'])}   \\\\
     \\bottomrule
   \\end{{tabular}}
 
   \\vspace{{4pt}}
-  {{\\footnotesize\\itshape Note: playing-probability effects survive every FE
-  structure; residual mean-rating movements reflect the mechanical minutes
-  channel and vanish in the minutes-weighted rating and among regulars.\\par}}
+  {{\\footnotesize\\itshape Note: the extensive margin is measurement-bounded:
+  FotMob-only outcomes show a small decline, the combined definition is null,
+  and the TM-only definition (coverage-gapped) flips sign --- Panel B reports
+  all three permanently (see decisions log, D10).\\par}}
 \\end{{table}}
 """)
 

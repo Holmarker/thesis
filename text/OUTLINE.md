@@ -5,14 +5,16 @@
 
 Status legend: `todo` · `skeleton` (headers/notes only) · `draft` (full text, unpolished) · `revised` (edited once) · `final`
 
-## Headline (SETTLED 2026-07-15)
+## Headline (FINAL — post frozen pass, 2026-07-16)
 
-*A well-audited null on the performance margin — naive specs reproduce the
-literature's contract-year premium, the audit ladder (league×month, spell FE)
-dismantles it — plus a small surviving decline in playing probability. The
-contrast with Frick's (2011) positive journalist-rating result suggests
-narrative in the rater, not effort on the pitch. The decisions log / ex-ante
-freeze is a methodological contribution in its own right.*
+*Performance margin: a precisely audited null — the naive contract-year premium
+(+0.025, p=0.02) dies under league×month composition and spell FE (primary:
+−0.020, p=0.10). Playing-time margin: measurement-bounded between zero and a
+small decline — FotMob-only primary shows −0.8pp / −5.7 min (p≈0.03/0.002),
+combined-evidence null, TM-only flips sign (+2.3pp, coverage artifact) — never
+to be called "robust". The Frick journalist-rating contrast, the audit ladder,
+and the decisions log (D1–D10) are the contribution. Anti-overclaim notes in
+LITERATURE.md apply throughout.*
 
 ## Manuscript
 

@@ -1,26 +1,30 @@
 % Extensive margin: selection into playing (auto-generated)
 \begin{table}[htbp]
   \centering
-  \caption{Extensive margin: contract status and the probability of playing.}
+  \caption{Extensive margin: contract status and playing time (spell $+$ league$\times$month FE).}
   \label{tab:extensive}
   \begin{tabular}{llrr}
     \toprule
-    Specification & Outcome & Estimate & $p$ \\
+    Outcome (source) & & Estimate & $p$ \\
     \midrule
-    \multicolumn{4}{l}{\textit{Panel A. Full panel (Transfermarkt outcomes)}} \\
-    Spell $+$ league\,$\times$\,month & Played (Bosman)      & $+2.3$\,pp  & ${<}0.0001$   \\
-    Spell $+$ league\,$\times$\,month & Played (0--6m bin)   & $+14.0$\,pp & ${<}0.0001$ \\
+    \multicolumn{4}{l}{\textit{Panel A. Primary: FotMob, covered league-months (D10)}} \\
+    Played & Bosman window       & $-0.8$\,pp  & $0.031$   \\
+    Minutes & Bosman window      & $-5.7$  & $0.0015$   \\
+    Played & 0--6m expiry bin    & $-2.4$\,pp & $0.18$ \\
     \midrule
-    \multicolumn{4}{l}{\textit{Panel B. Within teammates (club\,$\times$\,month FE)}} \\
-    Spell $+$ club\,$\times$\,month & Played              & $+1.2$\,pp  & $0.013$ \\
-    Spell $+$ club\,$\times$\,month & Minutes             & $+0.5$      & $0.82$   \\
-    Spell $+$ club\,$\times$\,month & Mean rating         & $+0.001$    & $0.94$   \\
-    Spell $+$ club\,$\times$\,month & Minutes-wtd.\ rating & $+0.003$    & $0.85$   \\
+    \multicolumn{4}{l}{\textit{Panel B. Measurement robustness: same design, other sources}} \\
+    Played (TM or FotMob) & Bosman window & $-0.2$\,pp & $0.6$ \\
+    Played (TM only) & Bosman window      & $+2.3$\,pp  & ${<}0.0001$   \\
+    \midrule
+    \multicolumn{4}{l}{\textit{Panel C. Within teammates (club\,$\times$\,month FE)}} \\
+    Played & & $+1.2$\,pp  & $0.013$ \\
+    Minutes & & $+0.5$      & $0.82$   \\
     \bottomrule
   \end{tabular}
 
   \vspace{4pt}
-  {\footnotesize\itshape Note: playing-probability effects survive every FE
-  structure; residual mean-rating movements reflect the mechanical minutes
-  channel and vanish in the minutes-weighted rating and among regulars.\par}
+  {\footnotesize\itshape Note: the extensive margin is measurement-bounded:
+  FotMob-only outcomes show a small decline, the combined definition is null,
+  and the TM-only definition (coverage-gapped) flips sign --- Panel B reports
+  all three permanently (see decisions log, D10).\par}
 \end{table}
