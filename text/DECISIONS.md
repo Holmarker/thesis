@@ -69,6 +69,16 @@ extensive margin as measurement-bounded (0 to ≈−1pp), never as a robust
 effect; (iii) supervisor to adjudicate the measurement question as promised
 under D6.
 
+## D11 — final_365 comparability variant (2026-07-16, post-freeze, flagged)
+
+Added a final-contract-year (DaysToExpiry <= 365) treatment dummy to the
+threshold models, in the naive and primary designs. Rationale: the
+contract-year literature defines treatment as the final YEAR; comparability
+required it. Flag: added after the frozen pass (result-independent rationale,
+non-innocent timing — same protocol as D10). Result recorded in
+RESULTS_NOTES.md regardless of direction: naive replicates the literature's
+premium; the primary design reverses it (−0.03, p<0.001).
+
 ## Sample restrictions — DECIDED 2026-07-15, ex ante (no restricted estimates seen)
 
 Decided by the author before any restricted-sample estimation was run. To be

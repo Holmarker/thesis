@@ -45,6 +45,9 @@ prepare_threshold_vars <- function(df) {
   df %>%
     mutate(
       final_180 = DaysToExpiry <= 180,
+      # final contract year: the treatment definition used by most of the
+      # contract-year literature (comparability variant, logged post-freeze)
+      final_365 = DaysToExpiry <= 365,
       expiry_window = cut(
         DaysToExpiry,
         breaks = c(0, 180, 360, 720, Inf),
@@ -56,7 +59,17 @@ prepare_threshold_vars <- function(df) {
 }
 
 run_threshold_models <- function(df, sample_name) {
-  threshold_df <- prepare_threshold_vars(df)
+  threshold_df <- prepare_threshold_vars(df) %>%
+    arrange(player_id, Month) %>%
+    group_by(player_id) %>%
+    mutate(
+      prev_expiry = lag(ContractExpiryDate),
+      new_spell = is.na(prev_expiry) |
+        abs(coalesce(as.numeric(ContractExpiryDate - prev_expiry), 0)) > 90,
+      player_spell = paste0(player_id, "_", cumsum(new_spell))
+    ) %>%
+    ungroup() %>%
+    mutate(league_month = paste0(fotmob_source_league, "_", Month))
 
   list(
     tidy_fe_model(
@@ -71,6 +84,24 @@ run_threshold_models <- function(df, sample_name) {
       sample_name,
       "fotmob_minutes_weighted_rating"
     ),
+    tidy_fe_model(
+      feols(fotmob_mean_rating ~ final_365 | player_id + Month, data = threshold_df, cluster = ~player_id),
+      "final_365_fe",
+      sample_name,
+      "fotmob_mean_rating"
+    ),
+    tidy_fe_model(
+      feols(fotmob_minutes_weighted_rating ~ final_365 | player_id + Month, data = threshold_df, cluster = ~player_id),
+      "final_365_fe",
+      sample_name,
+      "fotmob_minutes_weighted_rating"
+    ),
+    tidy_fe_model(
+      feols(fotmob_mean_rating ~ final_365 | player_spell + league_month, data = threshold_df, cluster = ~player_id),
+      "final_365_spell_lm",
+      sample_name,
+      "fotmob_mean_rating"
+    ) ,
     tidy_fe_model(
       feols(fotmob_mean_rating ~ i(expiry_window, ref = "181-360") | player_id + Month, data = threshold_df, cluster = ~player_id),
       "expiry_window_fe",
